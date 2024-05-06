@@ -1,9 +1,9 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
+import java.util.List;
+
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
-
-import java.util.List;
 
 @Label("Components")
 public interface ComponentsDescriptor extends AsyncApiDescriptor {
@@ -23,8 +23,8 @@ public interface ComponentsDescriptor extends AsyncApiDescriptor {
     @Relation("DEFINES_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-   /* @Relation("DEFINES_SECURITY_SCHEME")
-    List<SecuritySchemeDescriptor> getSecuritySchemes();*/
+    @Relation("DEFINES_SECURITY_SCHEME")
+    List<SecuritySchemeDescriptor> getSecuritySchemes();
 
     @Relation("DEFINES_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getServerVariables();

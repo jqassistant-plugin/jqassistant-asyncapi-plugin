@@ -34,6 +34,11 @@ public interface OperationTraitsDescriptor extends AsyncApiDescriptor, Reference
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
+    @Relation("HAS_TAG")
+    SecuritySchemeDescriptor getSecurity();
+
+    void setSecurity(SecuritySchemeDescriptor security);
+
 
    /* @Relation("HAS_BINDINGS")
     List<MessageBindingsDescriptor> setBindings();

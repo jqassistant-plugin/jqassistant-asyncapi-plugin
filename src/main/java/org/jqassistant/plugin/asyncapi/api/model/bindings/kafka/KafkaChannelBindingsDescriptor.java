@@ -3,11 +3,10 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.kafka;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
-import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 
 @Label("Kafka_Channel")
-public interface KafkaChannelBindingsDescriptor extends ChannelBindingsDescriptor , ReferenceDescriptor {
+public interface KafkaChannelBindingsDescriptor extends ChannelBindingsDescriptor {
 
     String getTopic();
 

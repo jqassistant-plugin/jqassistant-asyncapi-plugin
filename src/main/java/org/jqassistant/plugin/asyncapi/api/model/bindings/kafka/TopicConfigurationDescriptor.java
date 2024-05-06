@@ -3,10 +3,9 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.kafka;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
-import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 
 @Label("Topic_Configuration")
-public interface TopicConfigurationDescriptor extends AsyncApiDescriptor, ReferenceDescriptor {
+public interface TopicConfigurationDescriptor extends AsyncApiDescriptor {
 
     String getCleanupPolicy();
 

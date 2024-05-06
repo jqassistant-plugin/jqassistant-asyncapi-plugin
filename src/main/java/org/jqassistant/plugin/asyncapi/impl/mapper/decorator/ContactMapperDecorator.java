@@ -5,11 +5,9 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import org.jqassistant.plugin.asyncapi.api.model.ContactDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.info.Contact;
 import org.jqassistant.plugin.asyncapi.impl.mapper.ContactMapper;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 import org.mapstruct.Context;
 
-public abstract class ContactMapperDecorator extends AbstractReferenceObjectMapperDecorator<Contact, ContactDescriptor>
-        implements ContactMapper, TreeNodeMapper {
+public abstract class ContactMapperDecorator extends AbstractReferenceObjectMapperDecorator<Contact, ContactDescriptor> implements ContactMapper {
 
     public ContactMapperDecorator(ContactMapper mapper) {
         super("contact", mapper);

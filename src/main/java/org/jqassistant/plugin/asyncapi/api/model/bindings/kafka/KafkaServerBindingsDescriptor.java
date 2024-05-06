@@ -2,12 +2,10 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.kafka;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
 
 @Label("Kafka_Server")
-public interface KafkaServerBindingsDescriptor extends ServerBindingsDescriptor , ReferenceDescriptor {
-
+public interface KafkaServerBindingsDescriptor extends ServerBindingsDescriptor {
 
     String getSchemaRegistryUrl();
 

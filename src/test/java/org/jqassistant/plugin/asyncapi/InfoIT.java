@@ -61,7 +61,9 @@ class InfoIT extends AbstractPluginIT {
                 assertThat(tag.getExternalDocs()
                         .getDescription()).isEqualTo("Modo Jeans use of Kafka");
             } else if (tag.getName() == null) {
-                assertThat(((ReferenceDescriptor) tag).getReference()).isEqualTo("#/components/tags/kafka");
+                TagDescriptor tasg = tag;
+                System.out.println(tasg.getReference());
+                assertThat(tag.getReference()).isEqualTo("#/components/tags/kafka");
             }
         }
     }

@@ -19,8 +19,6 @@ public interface OperationReplyMapper extends ReferenceableObjectMapper<Operatio
     @Mapping(target = "reference", ignore = true)
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
-    @Mapping(target = "address", source = "address", ignore = true)
-    @Mapping(target = "channel", source = "channel", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     OperationReplyDescriptor toDescriptor(OperationReply reply, @Context Scanner scanner);

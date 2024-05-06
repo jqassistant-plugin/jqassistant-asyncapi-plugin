@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = { TagMapper.class, ChannelsMapper.class, ExternalDocsMapper.class, MessagesMapper.class, ParametersMapper.class, OperationMapper.class,
         ComponentsCorrelationIdMapper.class, ServerVariablesMapper.class, ServerMapper.class, MessageTraitMapper.class, ComponentsOperationTraitsMapper.class,
-        OperationReplyAddressMapper.class, OperationReplyMapper.class })
+        OperationReplyAddressMapper.class, OperationReplyMapper.class, SecuritySchemesMapper.class })
 @DecoratedWith(ComponentsMapperDecorator.class)
 public interface ComponentsMapper extends DescriptorMapper<Components, ComponentsDescriptor> {
 
@@ -21,7 +21,7 @@ public interface ComponentsMapper extends DescriptorMapper<Components, Component
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "operationReplyAddresses", source = "replyAddresses")
     @Mapping(target = "operationReplies", source = "replies")
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "schemas", "securitySchemes", "serverBindings", "channelBindings", "operationBindings",
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "schemas",  "serverBindings", "channelBindings", "operationBindings",
             "messageBindings" })
 
     @Override

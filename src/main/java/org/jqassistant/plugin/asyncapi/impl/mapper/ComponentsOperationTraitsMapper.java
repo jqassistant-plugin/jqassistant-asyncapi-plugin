@@ -13,7 +13,7 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageExampleMapper.class }, config = DescriptorMapperConfig.class)
+@Mapper(uses = { CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageExampleMapper.class, SecuritySchemesMapper.class }, config = DescriptorMapperConfig.class)
 @DecoratedWith(ComponentsOperationTraitsMapperDecorator.class)
 public interface ComponentsOperationTraitsMapper extends ReferenceableObjectMapper<OperationTraits, OperationTraitsDescriptor> {
 

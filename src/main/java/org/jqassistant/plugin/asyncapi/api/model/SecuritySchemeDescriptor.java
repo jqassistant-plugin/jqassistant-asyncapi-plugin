@@ -43,7 +43,7 @@ public interface SecuritySchemeDescriptor extends AsyncApiDescriptor {
 
     void setScopes(String scopes);
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+  /*  @Relation("HAS_EXTERNAL_DOCUMENTATION")
     OAuthFlowsDescriptor getOAuthFlows();
 
     void setOAuthFlows(OAuthFlowsDescriptor flows);
@@ -51,6 +51,6 @@ public interface SecuritySchemeDescriptor extends AsyncApiDescriptor {
     @Relation("HAS_BINDINGS")
     List<MessageBindingsDescriptor> setBindings();
 
-    void getBindings(List<MessageBindingsDescriptor> bindings);
+    void getBindings(List<MessageBindingsDescriptor> bindings);*/
 
 }

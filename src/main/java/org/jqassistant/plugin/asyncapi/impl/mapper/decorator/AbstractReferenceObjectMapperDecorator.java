@@ -10,12 +10,12 @@ import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
+import org.jqassistant.plugin.asyncapi.impl.mapper.service.PathMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferencesMapper;
 
 public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends AsyncApiDescriptor>
-        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper, ReferencesMapper<D> {
+        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper, PathMapper<D> {
 
     private final String elementName;
 
@@ -30,13 +30,11 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
     public D toDescriptor(T object, Scanner scanner) {
         enterTreeNode(elementName, scanner);
         D descriptor = mapper.toDescriptor(object, scanner);
-        if(object != null && object.getReference() != null){
-            descriptor = ReferencesMapper.super.setReference(descriptor, scanner);
+        if (descriptor != null) {
+            descriptor = PathMapper.super.setPath(descriptor, scanner);
         }
-        if(descriptor != null) {
-            descriptor.setPath(scanner.getContext()
-                    .peek(MappingPath.class)
-                    .getPath());
+        if (object != null && object.getReference() != null) {
+            //reference setzen
         }
         leaveTreeNode(scanner);
         return descriptor;
@@ -46,13 +44,15 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
     public List<D> toDescriptors(Map<String, T> values, Scanner scanner) {
         List<D> descriptors = new ArrayList<>();
         enterTreeNode(elementName, scanner);
-        if(values != null) {
+        if (values != null) {
             for (Map.Entry<String, T> entry : values.entrySet()) {
                 String name = entry.getKey();
                 T value = entry.getValue();
                 enterTreeNode(name, scanner);
                 D descriptor = mapper.toDescriptor(value, scanner);
-                descriptor.setPath(scanner.getContext().peek(MappingPath.class).getPath());
+                descriptor.setPath(scanner.getContext()
+                        .peek(MappingPath.class)
+                        .getPath());
                 descriptors.add(descriptor);
                 leaveTreeNode(scanner);
             }
@@ -64,7 +64,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
     @Override
     public List<D> toDescriptors(List<T> values, Scanner scanner) {
         List<D> descriptors = new ArrayList<>();
-        if(values != null) {
+        if (values != null) {
             int slot = 0;
             for (T value : values) {
                 descriptors.add(this.listToDescriptor(value, slot, scanner));
@@ -75,9 +75,11 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
     }
 
     public D listToDescriptor(T object, int slot, Scanner scanner) {
-        enterTreeNode(elementName+"["+slot+"]", scanner);
+        enterTreeNode(elementName + "[" + slot + "]", scanner);
         D descriptor = mapper.toDescriptor(object, scanner);
-        descriptor.setPath(scanner.getContext().peek(MappingPath.class).getPath());
+        descriptor.setPath(scanner.getContext()
+                .peek(MappingPath.class)
+                .getPath());
         leaveTreeNode(scanner);
         return descriptor;
     }
