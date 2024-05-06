@@ -1,0 +1,86 @@
+asyncapi: 3.0.0
+id: 'https://github.com/dalelane/my-first-asyncapi-v3-doc'
+components: # 1 tag, 1 short channel, 1 message, 1 schema, 1 security scheme, 1 operation trait, 1 message trait
+  tags:
+    kafka:
+      name: kafka
+      description: Resources relating to Kafka clusters
+  channels:
+    userSignedUp:
+      title: channel1.3
+      description: This channel contains a message per each user who signs up in our application.
+      address: user_signedup
+  messages:
+    SomethingDoing:
+      name: anotherName
+      title: Something Progress
+      summary: >-
+        notification with something progress information
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SomethingDoingPayload'
+  schemas:
+    SomethingDoingPayload:
+      allOf:
+        - $ref: '#/components/schemas/SimpleBody'
+        - type: object
+          required:
+            - raId
+            - notes
+          properties:
+            raName:
+              type: string
+            raId:
+              type: string
+            notes:
+              type: object
+              $ref: '#/components/schemas/SomethingDoingNotes'
+            hamburgerMessage:
+              type: object
+              $ref: '#/components/schemas/HamburgerMessage'
+    HamburgerMessage:
+      type: object
+      required:
+        - cheese
+        - lettuce
+      properties:
+        email:
+          type: string
+        lettuce:
+          type: vegetable
+        cheese:
+          type: dairy
+          format: rectangle
+        variables:
+          $ref: '#/components/schemas/SimpleBody'
+        hamburger:
+          type: food
+          items:
+            - $ref: '#/components/schemas/HamburgerMessage'
+  parameters:
+    userId:
+      description: Id of the user.
+      location: $message.payload#/user/id
+      enum: [ "I", "am", "an", "enum" ]
+      default: "test"
+      examples: [ "one  brilliant example", "another example" ]
+  externalDocs:
+    description: More info about the components
+    url: https://ibm.github.io/event-streams/
+  # securitySchemes:
+  #   kafkaEventStreams:
+  #     type: scramSha512
+  #     description: Event Streams credentials
+  operationTraits:
+    kafka:
+      title: Kafka operation traits
+      summary: Operation traits that are common to all Kafka operations
+      description: Detailed **description** goes here
+  messageTraits:
+    kafkaHeaders:
+      headers:
+        type: object
+        properties:
+          someCustomHeader:
+            description: A common header included for all Kafka messages
+            type: string

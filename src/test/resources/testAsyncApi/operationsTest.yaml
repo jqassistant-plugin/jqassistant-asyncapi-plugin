@@ -1,0 +1,38 @@
+asyncapi: 3.0.0
+id: 'https://github.com/dalelane/my-first-asyncapi-v3-doc'
+operations:
+  sendProcess:
+    title: User sign up
+    summary: Action to sign a user up.
+    description: A longer description
+    channel:
+      $ref: '#/channels/userSignup'
+    action: send
+    security:
+      - petstore_auth:
+          - write:pets
+          - read:pets
+    tags:
+      - name: user
+      - name: signup
+      - name: register
+    bindings:
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'myGroupId' ]
+        clientId:
+          type: string
+          enum: [ 'myClientId' ]
+        bindingVersion: '0.5.0'
+    traits:
+      - $ref: "#/components/operationTraits/kafka"
+    messages:
+      - $ref: '#/components/messages/userSignedUp'
+    reply:
+      address:
+        location: '$message.header#/replyTo'
+      channel:
+        $ref: '#/channels/userSignupReply'
+      messages:
+        - $ref: '#/components/messages/userSignedUpReply'
