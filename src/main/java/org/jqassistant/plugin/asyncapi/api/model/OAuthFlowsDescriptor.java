@@ -4,7 +4,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OAuthFlow")
-public interface OAuthFlowsDescriptor extends AsyncApiDescriptor , ReferenceDescriptor{
+public interface OAuthFlowsDescriptor extends AsyncApiDescriptor {
 
     @Relation("IMPLICIT_FLOW")
     OAuthFlowDescriptor getImplicitFlow();
@@ -21,7 +21,7 @@ public interface OAuthFlowsDescriptor extends AsyncApiDescriptor , ReferenceDesc
 
     void setClientCredentials(OAuthFlowDescriptor clientCredentials);
 
-    @Relation("AUTHORIZATION_CODE__FLOW")
+    @Relation("AUTHORIZATION_CODE_FLOW")
     OAuthFlowDescriptor getAuthorizationCode();
 
     void setAuthorizationCode(OAuthFlowDescriptor authorizationCode);

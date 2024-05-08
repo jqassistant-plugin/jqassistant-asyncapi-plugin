@@ -16,7 +16,6 @@ public interface KafkaOperationBindingsMapper extends DescriptorMapper<Operation
 
     KafkaOperationBindingsMapper INSTANCE = Mappers.getMapper(KafkaOperationBindingsMapper.class);
 
-    @Mapping(target = "reference", ignore = true)
     @Mapping(target = "groupId", ignore = true)
     @Mapping(target = "clientId", ignore = true)
     @Mapping(target = "bindingVersion", ignore = true)

@@ -3,7 +3,7 @@ package org.jqassistant.plugin.asyncapi.api.model;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("Server_Variable")
-public interface ServerVariableDescriptor extends AsyncApiDescriptor , ReferenceDescriptor{
+public interface ServerVariableDescriptor extends AsyncApiDescriptor{
 
     String getEnumValues();
 

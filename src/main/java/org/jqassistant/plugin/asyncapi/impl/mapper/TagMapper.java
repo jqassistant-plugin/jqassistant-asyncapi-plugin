@@ -19,7 +19,6 @@ public interface TagMapper extends ReferenceableObjectMapper<Tag, TagDescriptor>
 
     TagMapper INSTANCE = Mappers.getMapper(TagMapper.class);
 
-    @Mapping(target = "reference", ignore = true)
     @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override

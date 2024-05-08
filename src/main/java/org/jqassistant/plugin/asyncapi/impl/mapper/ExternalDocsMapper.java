@@ -27,12 +27,12 @@ public interface ExternalDocsMapper extends ReferenceableObjectMapper<ExternalDo
     ExternalDocsDescriptor toDescriptor(ExternalDocumentation externalDocs, @Context Scanner scanner);
 
     @Override
-    default List<ExternalDocsDescriptor> toDescriptors(List<ExternalDocumentation> values, Scanner scanner) {
+    default List<ExternalDocsDescriptor> toDescriptors(List<ExternalDocumentation> values, @Context Scanner scanner) {
         return emptyList();
     }
 
     @Override
-    default List<ExternalDocsDescriptor> toDescriptors(Map<String, ExternalDocumentation> values, Scanner scanner) {
+    default List<ExternalDocsDescriptor> toDescriptors(Map<String, ExternalDocumentation> values, @Context Scanner scanner) {
         return emptyList();
     }
 }

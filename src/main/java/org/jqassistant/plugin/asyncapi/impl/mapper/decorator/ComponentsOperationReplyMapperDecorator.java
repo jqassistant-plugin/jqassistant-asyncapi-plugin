@@ -14,7 +14,7 @@ public abstract class ComponentsOperationReplyMapperDecorator extends AbstractRe
         implements ComponentsOperationReplyMapper {
 
     public ComponentsOperationReplyMapperDecorator(ComponentsOperationReplyMapper mapper) {
-        super("replies", mapper);
+        super("replies", OperationReplyDescriptor.class, mapper);
     }
 
     @Override

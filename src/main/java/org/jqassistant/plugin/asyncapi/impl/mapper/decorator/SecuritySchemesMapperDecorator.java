@@ -14,7 +14,7 @@ public abstract class SecuritySchemesMapperDecorator extends AbstractReferenceOb
         implements SecuritySchemesMapper {
 
     public SecuritySchemesMapperDecorator(SecuritySchemesMapper mapper) {
-        super("securitySchemes", mapper);
+        super("securitySchemes", SecuritySchemeDescriptor.class, mapper);
     }
 
     @Override

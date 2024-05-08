@@ -16,12 +16,12 @@ info:
     - name: example
       description: Things that are used as examples of the spec
       externalDocs:
-    #   $ref: "#/components/I'm a external reference"
+        $ref: "#/components/I'm a external reference"
     - name: simple
-    #- $ref: "#/components/tags/kafka"
+    - $ref: "#/components/tags/kafka"
   externalDocs:
     description: Background about the spec
-  #  url: https://www.asyncapi.com/docs/reference/specification/v3.0.0-next-major-spec.8
+    url: https://www.asyncapi.com/docs/reference/specification/v3.0.0-next-major-spec.8
 servers:
   eventstreams:
     #  url: es-kafka-bootstrap-eventstreams.{host}:{port}
@@ -36,7 +36,7 @@ servers:
       - $ref: '#/components/tags/kafka'
     externalDocs:
       description: More info about Event Streams
-    #     url: https://ibm.github.io/event-streams/
+      url: https://ibm.github.io/event-streams/
     variables:
       host:
         default: apps.dale-lane.cp.fyre.ibm.com
@@ -46,12 +46,12 @@ servers:
           - apps.dalelane-neptune.cp.fyre.ibm.com
       port:
         default: 443
-#    security:
-#      - $ref: '#/components/securitySchemes/kafkaEventStreams'
+    security:
+      - $ref: '#/components/securitySchemes/kafkaEventStreams'
     bindings:
       kafka:
-        #    schemaRegistryUrl: https://my-apicurio-schema-registry.com
-        #   schemaRegistryVendor: apicurio
+        schemaRegistryUrl: https://my-apicurio-schema-registry.com
+        schemaRegistryVendor: apicurio
         bindingVersion: '0.4.0'
 defaultContentType: application/json
 channels:
@@ -59,18 +59,18 @@ channels:
     address: MODO.ORDERS
     messages:
       newOrderMessage:
-    #      $ref: '#/components/messages/newOrder'
+        $ref: '#/components/messages/newOrder'
     title: Orders Topic
     summary: A topic for notifications of new Modo Jeans orders
     description: This is how the **Orders** topic is used in [Modo](https://modojeans.com).
-#    servers:
-#      - $ref: '#/servers/eventstreams'
+    servers:
+      - $ref: '#/servers/eventstreams'
     tags:
       - name: example
         description: Things that are used as examples of the spec
       - name: orders
         description: Resources relating to Modo Jeans orders
-    #     - $ref: '#/components/tags/kafka'
+      - $ref: '#/components/tags/kafka'
     externalDocs:
       description: More info about the Modo order system
       url: https://modojeans.com/intranet/orders
@@ -91,7 +91,7 @@ operations:
     summary: Event detailing a new order
     description: This is about how you **subscribe** to receive order notifications
     security:
-#      - $ref: '#/components/securitySchemes/kafkaEventStreams'
+      - $ref: '#/components/securitySchemes/kafkaEventStreams'
     tags:
       - name: orders
         description: Resources relating to Modo Jeans orders
@@ -99,7 +99,7 @@ operations:
       description: Info about signing up for order notifications
       url: https://modojeans.com/intranet/orders/signup
     traits:
-  #     - $ref: '#/components/operationTraits/kafka'
+      - $ref: '#/components/operationTraits/kafka'
 components:
   tags:
     kafka:
@@ -125,7 +125,7 @@ components:
         url: https://modojeans.com/intranet/kafka
       messages:
         userSignedUp:
-      #     $ref: '#/components/messages/userSignedUp'
+          $ref: '#/components/messages/userSignedUp'
       tags:
         kafka:
           name: kafka
@@ -185,7 +185,7 @@ components:
       payload:
         type: object
         order:
-      #    $ref: '#/components/schemas/newOrder'
+          $ref: '#/components/schemas/newOrder'
       schemaFormat: application/vnd.aai.asyncapi+yaml;version=3.0.0
       contentType: application/json
       bindings:
@@ -218,14 +218,14 @@ components:
               cost: 9.99
               customer: bob@customer.com
       traits:
-    #    - $ref: '#/components/messageTraits/kafkaHeaders'
+       - $ref: '#/components/messageTraits/kafkaHeaders'
   schemas:
     newOrder:
       title: New Order message payload
       type: object
       oneOf:
-      #    - $ref: '#/components/schemas/newOrderV1'
-      #    - $ref: '#/components/schemas/newOrderV2'
+        - $ref: '#/components/schemas/newOrderV1'
+        - $ref: '#/components/schemas/newOrderV2'
       required:
         - version
         - id

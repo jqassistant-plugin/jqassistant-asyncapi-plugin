@@ -14,7 +14,7 @@ public abstract class SecurityMapperDecorator extends AbstractReferenceObjectMap
         implements SecurityMapper {
 
     public SecurityMapperDecorator(SecurityMapper mapper) {
-        super("security", mapper);
+        super("security", SecuritySchemeDescriptor.class, mapper);
     }
 
     @Override

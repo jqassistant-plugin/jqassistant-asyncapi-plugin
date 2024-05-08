@@ -37,7 +37,7 @@ public interface ServerDescriptor extends AsyncApiDescriptor {
 
     void setPathName(String pathName);
 
-    @Relation("USES_SERVER_VARIABLES")
+    @Relation("HAS_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getVariables();
 
     @Relation("HAS_SECURITY_SCHEME")
@@ -53,6 +53,6 @@ public interface ServerDescriptor extends AsyncApiDescriptor {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("USES_SERVER_BINDINGS")
+    @Relation("HAS_SERVER_BINDING")
     List<ServerBindingsDescriptor> getBindings();
 }

@@ -14,7 +14,7 @@ public abstract class ParametersMapperDecorator extends AbstractReferenceObjectM
         implements ParametersMapper {
 
     public ParametersMapperDecorator(ParametersMapper mapper) {
-        super("parameters", mapper);
+        super("parameters", ParametersDescriptor.class, mapper);
     }
 
     @Override

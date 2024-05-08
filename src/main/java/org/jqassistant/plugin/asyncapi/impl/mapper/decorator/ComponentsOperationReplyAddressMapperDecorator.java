@@ -15,7 +15,7 @@ public abstract class ComponentsOperationReplyAddressMapperDecorator
         implements ComponentsOperationReplyAddressMapper {
 
     public ComponentsOperationReplyAddressMapperDecorator(ComponentsOperationReplyAddressMapper mapper) {
-        super("replyAddresses", mapper);
+        super("replyAddresses", OperationReplyAddressDescriptor.class, mapper);
     }
 
     @Override

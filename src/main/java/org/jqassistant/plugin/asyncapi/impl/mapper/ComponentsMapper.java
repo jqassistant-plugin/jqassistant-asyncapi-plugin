@@ -9,8 +9,8 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ComponentsMapperDec
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { TagMapper.class, ChannelsMapper.class, ExternalDocsMapper.class, MessagesMapper.class, ParametersMapper.class, OperationMapper.class,
-        ComponentsCorrelationIdMapper.class, ServerVariablesMapper.class, ServerMapper.class, MessageTraitMapper.class, ComponentsOperationTraitsMapper.class,
+@Mapper(uses = { TagMapper.class, ChannelsMapper.class, ChannelBindingsMapper.class, ExternalDocsMapper.class, MessagesMapper.class, ParametersMapper.class, OperationMapper.class,
+        ComponentsCorrelationIdMapper.class, ServerVariablesMapper.class, ServerMapper.class, ComponentsMessageTraitMapper.class, ComponentsOperationTraitMapper.class,
         OperationReplyAddressMapper.class, OperationReplyMapper.class, SecuritySchemesMapper.class })
 @DecoratedWith(ComponentsMapperDecorator.class)
 public interface ComponentsMapper extends DescriptorMapper<Components, ComponentsDescriptor> {
@@ -21,7 +21,7 @@ public interface ComponentsMapper extends DescriptorMapper<Components, Component
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "operationReplyAddresses", source = "replyAddresses")
     @Mapping(target = "operationReplies", source = "replies")
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "schemas",  "serverBindings", "channelBindings", "operationBindings",
+    @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "schemas",  "serverBindings",  "operationBindings",
             "messageBindings" })
 
     @Override

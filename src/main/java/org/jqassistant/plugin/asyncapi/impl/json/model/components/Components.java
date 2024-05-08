@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.jqassistant.plugin.asyncapi.impl.json.model.components;
 
+import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -64,6 +66,7 @@ public class Components extends ReferenceObject {
 
     @JsonProperty(value = "replyAddresses")
     private Map<String, OperationReplyAddress> replyAddresses;
+
 
     @JsonProperty(value = "externalDocs")
     private ExternalDocumentation externalDocs;

@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class MessagesMapperDecorator extends AbstractReferenceObjectMapperDecorator<MessageObject, MessageDescriptor> implements MessagesMapper {
 
     public MessagesMapperDecorator(MessagesMapper mapper) {
-        super("messages", mapper);
+        super("messages", MessageDescriptor.class, mapper);
     }
 
     @Override

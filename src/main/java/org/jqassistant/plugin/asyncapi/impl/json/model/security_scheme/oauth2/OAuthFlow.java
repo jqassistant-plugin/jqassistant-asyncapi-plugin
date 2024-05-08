@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-package org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.flows;
+package org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2;
 
 import java.util.Map;
 
@@ -19,4 +19,10 @@ public class OAuthFlow extends ReferenceObject {
 
     @JsonProperty("availableScopes")
     private Map<String, String> availableScopes;
+
+    @JsonProperty("authorizationUrl")
+    private String authorizationUrl;
+
+    @JsonProperty("tokenUrl")
+    private String tokenUrl;
 }

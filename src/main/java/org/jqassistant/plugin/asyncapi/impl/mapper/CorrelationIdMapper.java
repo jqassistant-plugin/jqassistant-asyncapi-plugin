@@ -16,7 +16,7 @@ import org.mapstruct.*;
 @DecoratedWith(CorrelationIdMapperDecorator.class)
 public interface CorrelationIdMapper extends ReferenceableObjectMapper<CorrelationID, CorrelationIDDescriptor> {
 
-    @Mapping(target = "reference", ignore = true)
+
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
 

@@ -4,6 +4,7 @@ package org.jqassistant.plugin.asyncapi.impl.json.model.channel;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,6 +42,7 @@ public class ChannelObject extends ReferenceObject {
     @JsonProperty(value = "parameters")
     private Map<String, ChannelParameter> parameters;
 
+    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     @JsonProperty(value = "tags")
     private List<Tag> tags;
 

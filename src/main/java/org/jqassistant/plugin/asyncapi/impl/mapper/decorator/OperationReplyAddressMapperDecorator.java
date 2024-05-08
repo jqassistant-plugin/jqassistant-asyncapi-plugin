@@ -14,7 +14,7 @@ public abstract class OperationReplyAddressMapperDecorator
         extends AbstractReferenceObjectMapperDecorator<OperationReplyAddress, OperationReplyAddressDescriptor> implements OperationReplyAddressMapper {
 
     public OperationReplyAddressMapperDecorator(OperationReplyAddressMapper mapper) {
-        super("address", mapper);
+        super("address", OperationReplyAddressDescriptor.class, mapper);
     }
 
     @Override

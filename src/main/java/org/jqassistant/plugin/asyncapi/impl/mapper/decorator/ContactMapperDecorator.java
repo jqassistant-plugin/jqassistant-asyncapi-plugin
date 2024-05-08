@@ -10,7 +10,7 @@ import org.mapstruct.Context;
 public abstract class ContactMapperDecorator extends AbstractReferenceObjectMapperDecorator<Contact, ContactDescriptor> implements ContactMapper {
 
     public ContactMapperDecorator(ContactMapper mapper) {
-        super("contact", mapper);
+        super("contact", ContactDescriptor.class, mapper);
     }
 
     @Override

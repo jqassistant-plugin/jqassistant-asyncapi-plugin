@@ -27,15 +27,4 @@ public class KafkaChannelBinding extends ChannelBinding {
     @JsonProperty("bindingVersion")
     private String bindingVersion = "0.5.0";
 
-    public KafkaChannelBinding(String topic, Integer partitions, Integer replicas, KafkaChannelTopicConfiguration topicConfiguration, String bindingVersion) {
-        this.topic = topic;
-        this.partitions = partitions;
-        this.replicas = replicas;
-        this.topicConfiguration = topicConfiguration;
-        this.bindingVersion = bindingVersion;
-    }
-
-    public KafkaChannelBinding() {
-    }
-
 }

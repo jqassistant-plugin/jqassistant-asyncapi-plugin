@@ -14,12 +14,17 @@ public abstract class ExternalDocsMapperDecorator extends AbstractReferenceObjec
         implements ExternalDocsMapper {
 
     public ExternalDocsMapperDecorator(ExternalDocsMapper mapper) {
-        super("externalDocs", mapper);
+        super("externalDocs", ExternalDocsDescriptor.class, mapper);
     }
 
     @Override
     public ExternalDocsDescriptor toDescriptor(ExternalDocumentation externalDocs, @Context Scanner scanner) {
         return super.toDescriptor(externalDocs, scanner);
+    }
+
+    @Override
+    public List<ExternalDocsDescriptor> toDescriptors(List<ExternalDocumentation> values, @Context Scanner scanner) {
+        return super.toDescriptors(values, scanner);
     }
 
     @Override

@@ -14,13 +14,11 @@ public abstract class MessageExampleMapperDecorator extends AbstractReferenceObj
         implements MessageExampleMapper {
 
     public MessageExampleMapperDecorator(MessageExampleMapper mapper) {
-        super("examples", mapper);
+        super("examples", MessageExampleDescriptor.class, mapper);
     }
 
     @Override
     public List<MessageExampleDescriptor> toDescriptors(Map<String, MessageExample> examples, @Context Scanner scanner) {
         return super.toDescriptors(examples, scanner);
     }
-
-    //TODO: handle varying pathname "traits" and "messageTraits"
 }

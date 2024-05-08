@@ -13,14 +13,14 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { TagMapper.class, ExternalDocsMapper.class, ParametersMapper.class, CorrelationIdMapper.class, MessagesMapper.class, ServerMapper.class
-        /*ChannelBindingsMapper.class */ }, config = DescriptorMapperConfig.class)
+@Mapper(uses = { TagMapper.class, ExternalDocsMapper.class, ParametersMapper.class, CorrelationIdMapper.class, MessagesMapper.class, ServerMapper.class,
+        ChannelBindingsMapper.class  }, config = DescriptorMapperConfig.class)
 @DecoratedWith(ChannelsMapperDecorator.class)
 public interface ChannelsMapper extends ReferenceableObjectMapper<ChannelObject, ChannelDescriptor> {
 
     ChannelsMapper INSTANCE = Mappers.getMapper(ChannelsMapper.class);
 
-    @Mapping(target = "reference", ignore = true)
+
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "bindings", ignore = true)
     @Mapping(target = "name", ignore = true)

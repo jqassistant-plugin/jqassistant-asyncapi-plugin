@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class ServerMapperDecorator extends AbstractReferenceObjectMapperDecorator<Server, ServerDescriptor> implements ServerMapper {
 
     public ServerMapperDecorator(ServerMapper mapper) {
-        super("servers", mapper);
+        super("servers", ServerDescriptor.class, mapper);
     }
 
     @Override

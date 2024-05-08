@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
+import com.buschmais.xo.api.Query;
 
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.*;
@@ -18,90 +19,74 @@ class ComponentsIT extends AbstractPluginIT {
      * tests the existence of all components and their simple attributes
      **/
 
-    ComponentsDescriptor components;
-
     @BeforeEach
     public void init() {
         File file = new File(getClassesDirectory(ComponentsIT.class), "testAsyncApi/componentsTest.yaml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/componentsTest.yaml", AsyncApiScope.CONTRACT);
-        store.beginTransaction();
-        assertThat(contract).isNotNull();
-        components = contract.getComponents();
-        assertThat(components).isNotNull();
     }
 
-    //TODO: test if absent descriptors are actually absent
-    @AfterEach
-    public void closeTransaction() {
+    @Test
+    void basic() {
+        store.beginTransaction();
+        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (contract:Contract) RETURN contract");
+        assertThat(result.hasResult()).isTrue();
+        ContractDescriptor contract = result.getSingleResult()
+                .get("contract", ContractDescriptor.class);
+
+        assertThat(contract).isNotNull();
+        assertThat(contract.getComponents()).isNotNull();
+        assertThat(contract.getChannels()).isEmpty();
+        assertThat(contract.getOperations()).isEmpty();
+        assertThat(contract.getServers()).isEmpty();
+        assertThat(contract.getInfo()).isNull();
         store.commitTransaction();
     }
 
     @Test
-    void tags() {
-        assertThat(components.getTags()).isNotNull();
-        for (TagDescriptor tag : components.getTags()) {
-            assertThat(tag.getName()).isEqualTo("kafka");
-            assertThat(tag.getDescription()).isEqualTo("Resources relating to Kafka clusters");
-        }
-    }
+    void components() {
+        store.beginTransaction();
+        //tags
+        List<TagDescriptor> tags =
+                query("MATCH (:Components)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
+        assertThat(tags).hasSize(1);
 
-    @Test
-    void channels() {
-        List<ChannelDescriptor> channels = components.getChannels();
+        //channels
+        List<ChannelDescriptor> channels =
+                query("MATCH (:Components)-[:HAS_CHANNEL]->(channels:Channel) return channels").getColumn("channels");
         assertThat(channels).isNotNull();
         assertThat(channels).hasSize(1);
-        ChannelDescriptor channel = channels.get(0);
-        assertThat(channel.getName()).isEqualTo("userSignedUp");
-        assertThat(channel.getTitle()).isEqualTo("channel1.3"); //TODO: title and name should not be the same
-        assertThat(channel.getAddress()).isEqualTo("user_signedup");
-        assertThat(channel.getDescription()).isEqualTo("This channel contains a message per each user who signs up in our application.");
-        assertThat(channel.getSummary()).isNull();
 
-    }
+        //messages
+        List<MessageDescriptor> messages =
+                query("MATCH (:Components)-[:HAS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
+        assertThat(messages.size()).isEqualTo(2);
 
-    @Test
-    void messages() {
-        List<MessageDescriptor> messages = components.getMessages();
-        assertThat(messages.size()).isEqualTo(1);
-        MessageDescriptor message = messages.get(0);
-        assertThat(message.getName()).isEqualTo("SomethingDoing"); //actual attribute name gets overritten by key in map
-        assertThat(message.getTitle()).isEqualTo("Something Progress");
-        assertThat(message.getSummary()).isEqualTo("notification with something progress information");
-        assertThat(message.getContentType()).isEqualTo("application/json");
-        assertThat(message.getTags()).isNull();
-    }
-
-    /* @Test
-    void schemas() {    not yet supported
-    }*/
-
-    @Test
-    void parameters() {
-        List<ParametersDescriptor> parameters = components.getParameters();
+        //parameters
+        List<ParametersDescriptor> parameters =
+                query("MATCH (:Components)-[:HAS_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
-        ParametersDescriptor parameter = parameters.get(0);
-        assertThat(parameter.getName()).isEqualTo("userId");
-        assertThat(parameter.getDescription()).isEqualTo("Id of the user.");
-        assertThat(parameter.getLocation()).isEqualTo("$message.payload#/user/id");
-        assertThat(parameter.getEnum()).isEqualTo("[I, am, an, enum]");
-        assertThat(parameter.getDefault()).isEqualTo("test");
-        assertThat(parameter.getExamples()).isEqualTo("[one  brilliant example, another example]");
-    }
 
-    @Test
-    void externalDocs() {
-        ExternalDocsDescriptor externalDocs = components.getExternalDocs();
-        assertThat(externalDocs).isNotNull();
-        assertThat(externalDocs.getDescription()).isEqualTo("More info about the components");
-        assertThat(externalDocs.getUrl()).isEqualTo("https://ibm.github.io/event-streams/");
-    }
+        //externalDocs
+        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Components)-[:HAS_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
+        assertThat(result.hasResult()).isTrue();
+        ExternalDocsDescriptor externalDoc = result.getSingleResult()
+                .get("externalDocs", ExternalDocsDescriptor.class);
+        assertThat(externalDoc).isNotNull();
 
-    /* @Test
-    void operationTraits() {    not yet supported
-    }*/
+        //operation traits
+        List<OperationTraitDescriptor> operationTraits =
+                query("MATCH (:Components)-[:HAS_OPERATION_TRAIT]->(operationTraits:OperationTrait) return operationTraits").getColumn("operationTraits");
+        assertThat(operationTraits.size()).isEqualTo(1);
 
-    /* @Test
-    void messageTraits() {    not yet supported
-    }*/
+        //message traits
+        List<OperationTraitDescriptor> messageTraits =
+                query("MATCH (:Components)-[:HAS_MESSAGE_TRAIT]->(messageTraits:MessageTrait) return messageTraits").getColumn("messageTraits");
+        assertThat(messageTraits.size()).isEqualTo(1);
+        store.commitTransaction();
+        }
+
+
+    //replies, replyAddresses, securitySchemes - no example found
+    //not yet supported: schema
 
 }

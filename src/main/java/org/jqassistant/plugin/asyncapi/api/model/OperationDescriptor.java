@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
 
 @Label("Operation")
-public interface OperationDescriptor extends AsyncApiDescriptor, ReferenceDescriptor {
+public interface OperationDescriptor extends AsyncApiDescriptor {
     String getTitle();
 
     void setTitle(String title);
@@ -37,14 +37,14 @@ public interface OperationDescriptor extends AsyncApiDescriptor, ReferenceDescri
     List<ChannelDescriptor> getChannel();
     //only ReferenceObject
 
-    @Relation("HAS_BINDINGS")
+    @Relation("HAS_BINDING")
     List<OperationBindingsDescriptor> getBindings();
 
-    @Relation("USES_MESSAGES")
+    @Relation("USES_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("HAS_OPERATION_TRAITS")
-    List<OperationTraitsDescriptor> getOperationTraits();
+    @Relation("HAS_OPERATION_TRAIT")
+    List<OperationTraitDescriptor> getOperationTraits();
 
     @Relation("USES_REPLY")
     OperationReplyDescriptor getOperationReply();

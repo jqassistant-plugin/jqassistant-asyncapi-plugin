@@ -14,7 +14,7 @@ public abstract class MessageTraitMapperDecorator extends AbstractReferenceObjec
         implements MessageTraitMapper {
 
     public MessageTraitMapperDecorator(MessageTraitMapper mapper) {
-        super("traits", mapper);
+        super("traits", MessageTraitDescriptor.class, mapper);
     }
 
     @Override

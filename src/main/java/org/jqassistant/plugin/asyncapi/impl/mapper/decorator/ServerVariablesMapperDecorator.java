@@ -15,7 +15,7 @@ public abstract class ServerVariablesMapperDecorator extends AbstractReferenceOb
         implements ServerVariablesMapper, TreeNodeMapper {
 
     public ServerVariablesMapperDecorator(ServerVariablesMapper mapper) {
-        super("variables", mapper);
+        super("variables", ServerVariableDescriptor.class, mapper);
     }
 
     @Override

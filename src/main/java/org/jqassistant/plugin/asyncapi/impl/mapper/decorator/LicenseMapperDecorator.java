@@ -12,7 +12,7 @@ public abstract class LicenseMapperDecorator extends AbstractReferenceObjectMapp
         implements LicenseMapper, TreeNodeMapper {
 
     public LicenseMapperDecorator(LicenseMapper mapper) {
-        super("license", mapper);
+        super("license", LicenseDescriptor.class, mapper);
     }
 
     @Override

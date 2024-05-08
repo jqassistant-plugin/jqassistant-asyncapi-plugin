@@ -6,10 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
-import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.flows.AuthorizationCodeOAuthFlow;
-import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.flows.ClientCredentialsOAuthFlow;
-import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.flows.ImplicitOAuthFlow;
-import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.flows.PasswordOAuthFlow;
 
 @Getter
 @Setter
@@ -17,14 +13,14 @@ import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.fl
 public class OAuthFlows extends ReferenceObject {
 
     @JsonProperty("implicit")
-    private ImplicitOAuthFlow implicit;
+    private OAuthFlow implicit;
 
     @JsonProperty("password")
-    private PasswordOAuthFlow password;
+    private OAuthFlow password;
 
     @JsonProperty("clientCredentials")
-    private ClientCredentialsOAuthFlow clientCredentials;
+    private OAuthFlow clientCredentials;
 
     @JsonProperty("authorizationCode")
-    private AuthorizationCodeOAuthFlow authorizationCode;
+    private OAuthFlow authorizationCode;
 }

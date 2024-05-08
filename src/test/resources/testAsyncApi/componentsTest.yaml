@@ -19,6 +19,8 @@ components: # 1 tag, 1 short channel, 1 message, 1 schema, 1 security scheme, 1 
       contentType: application/json
       payload:
         $ref: '#/components/schemas/SomethingDoingPayload'
+    AnotherMessage:
+      name: message2
   schemas:
     SomethingDoingPayload:
       allOf:
@@ -65,12 +67,17 @@ components: # 1 tag, 1 short channel, 1 message, 1 schema, 1 security scheme, 1 
       default: "test"
       examples: [ "one  brilliant example", "another example" ]
   externalDocs:
-    description: More info about the components
-    url: https://ibm.github.io/event-streams/
-  # securitySchemes:
-  #   kafkaEventStreams:
-  #     type: scramSha512
-  #     description: Event Streams credentials
+      description: More info about the components
+      url: https://ibm.github.io/event-streams/
+  securitySchemes:
+    AuthFlow2Example:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://example.com/api/oauth/dialog
+          availableScopes:
+            write:pets: modify pets in your account
+            read:pets: read your pets
   operationTraits:
     kafka:
       title: Kafka operation traits

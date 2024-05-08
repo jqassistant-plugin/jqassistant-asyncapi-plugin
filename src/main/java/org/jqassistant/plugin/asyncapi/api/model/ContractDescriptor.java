@@ -19,7 +19,7 @@ public interface ContractDescriptor extends AsyncApiDescriptor {
 
     void setDefaultContentType(String defaultContentType);
 
-    @Relation("HOLDS_INFO")
+    @Relation("HAS_INFO")
     InfoDescriptor getInfo();
 
     void setInfo(InfoDescriptor info);
@@ -29,13 +29,13 @@ public interface ContractDescriptor extends AsyncApiDescriptor {
 
     void setComponents(ComponentsDescriptor components);
 
-    @Relation("HAS_CHANNELS")
+    @Relation("HAS_CHANNEL")
     List<ChannelDescriptor> getChannels();
 
     @Relation("USES_OPERATION")
     List<OperationDescriptor> getOperations();
 
-    @Relation("HAS_SERVERS")
+    @Relation("HAS_SERVER")
     List<ServerDescriptor> getServers();
 
 }

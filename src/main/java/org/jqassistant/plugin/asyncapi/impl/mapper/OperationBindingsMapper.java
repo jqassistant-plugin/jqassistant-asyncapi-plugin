@@ -16,7 +16,7 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface OperationBindingsMapper extends DescriptorMapper<OperationBinding, OperationBindingsDescriptor> {
-    @Mapping(target = "reference", ignore = true)
+
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")

@@ -1,0 +1,43 @@
+asyncapi: 3.0.0
+channels:
+  oneChannel:
+    address: 'one_Channel'
+    messages:
+      userSignupMessage:
+        bindings:
+          amqp:
+            contentEncoding: gzip
+            messageType: 'user.signup'
+            bindingVersion: 0.3.0
+servers:
+  oneServer:
+    bindings:
+      pulsar:
+        tenant: contoso
+        bindingVersion: '0.1.0'
+operations:
+  oneOperation:
+    bindings:
+      mqtt:
+        qos: 2
+        retain: true
+        bindingVersion: 0.2.0
+components:
+  channels:
+    oneFantasticChannel:
+      bindings:
+        amqp:
+          is: queue
+          queue:
+            exclusive: true
+        kafka:
+          topic: 'my-specific-topic-name'
+          partitions: 20
+          replicas: 3
+          topicConfiguration:
+            cleanup.policy: [ "delete", "compact" ]
+            retention.ms: 604800000
+            retention.bytes: 1000000000
+            delete.retention.ms: 86400000
+            max.message.bytes: 1048588
+          bindingVersion: '0.4.0'

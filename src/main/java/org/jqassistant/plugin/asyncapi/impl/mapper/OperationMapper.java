@@ -13,7 +13,7 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { ExternalDocsMapper.class, ChannelMapper.class, ParametersMapper.class, MessagesMapper.class, OperationTraitsMapper.class,
+@Mapper(uses = { ExternalDocsMapper.class, ChannelMapper.class, ParametersMapper.class, MessagesMapper.class, OperationTraitMapper.class,
         OperationReplyMapper.class, TagMapper.class,
         /* OperationBindingsMapper.class*/ }, config = DescriptorMapperConfig.class)
 @DecoratedWith(OperationMapperDecorator.class)
@@ -21,7 +21,6 @@ public interface OperationMapper extends ReferenceableObjectMapper<Operation, Op
 
     OperationMapper INSTANCE = Mappers.getMapper(OperationMapper.class);
 
-    @Mapping(target = "reference", ignore = true)
     @Mapping(target = "operationTraits", source = "traits")
     @Mapping(target = "operationReply", ignore = true)
     @Mapping(target = "securityScheme", ignore = true)

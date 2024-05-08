@@ -15,7 +15,7 @@ import org.mapstruct.*;
 @Mapper
 @DecoratedWith(ChannelBindingsMapperDecorator.class)
 public interface ChannelBindingsMapper extends ReferenceableObjectMapper<ChannelBinding, ChannelBindingsDescriptor> {
-    @Mapping(target = "reference", ignore = true)
+
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")

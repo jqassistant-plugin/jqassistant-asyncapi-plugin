@@ -9,14 +9,13 @@ import org.mapstruct.Context;
 
 public abstract class InfoMapperDecorator extends AbstractReferenceObjectMapperDecorator<Info, InfoDescriptor> implements InfoMapper {
 
-
     public InfoMapperDecorator(InfoMapper mapper) {
-        super("info", mapper);
+        super("info", InfoDescriptor.class, mapper);
     }
 
     @Override
     public InfoDescriptor toDescriptor(Info info, @Context Scanner scanner) {
-       return super.toDescriptor(info, scanner);
+        return super.toDescriptor(info, scanner);
     }
 
 }

@@ -5,31 +5,33 @@ import java.util.List;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
+import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
+
 @Label("Components")
 public interface ComponentsDescriptor extends AsyncApiDescriptor {
 
     @Relation("DEFINES_SCHEMA")
     SchemasDescriptor getSchemas();
 
-    @Relation("DEFINES_SERVERS")
+    @Relation("HAS_SERVERS")
     List<ServerDescriptor> getServers();
 
-    @Relation("DEFINES_CHANNEL")
+    @Relation("HAS_CHANNEL")
     List<ChannelDescriptor> getChannels();
 
-    @Relation("DEFINES_OPERATION")
+    @Relation("HAS_OPERATION")
     List<OperationDescriptor> getOperations();
 
-    @Relation("DEFINES_MESSAGE")
+    @Relation("HAS_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("DEFINES_SECURITY_SCHEME")
+    @Relation("HAS_SECURITY_SCHEME")
     List<SecuritySchemeDescriptor> getSecuritySchemes();
 
-    @Relation("DEFINES_SERVER_VARIABLE")
+    @Relation("HAS_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getServerVariables();
 
-    @Relation("HAS_PARAMETER")
+    @Relation("HAS_PARAMETERS")
     List<ParametersDescriptor> getParameters();
 
     @Relation("HAS_CORRELATION_ID")
@@ -41,7 +43,6 @@ public interface ComponentsDescriptor extends AsyncApiDescriptor {
     @Relation("HAS_REPLY_ADDRESS")
     List<OperationReplyAddressDescriptor> getOperationReplyAddresses();
 
-    //probably list needed - source: map with several docs
     @Relation("HAS_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
@@ -50,17 +51,19 @@ public interface ComponentsDescriptor extends AsyncApiDescriptor {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("HAS_OPERATION_TRAITS")
-    List<OperationTraitsDescriptor> getOperationTraits();
+    @Relation("HAS_OPERATION_TRAIT")
+    List<OperationTraitDescriptor> getOperationTraits();
 
-    @Relation("HAS_MESSAGE_TRAITS")
+    @Relation("HAS_MESSAGE_TRAIT")
     List<MessageTraitDescriptor> getMessageTraits();
+
+    @Relation("HAS_CHANNEL_BINDING")
+    List<ChannelBindingsDescriptor> getChannelBindings();
 
   /*   @Relation("HAS_SERVER_BINDINGS")
     List<ServerBindingsDescriptor> getServerBindings();
 
-    @Relation("HAS_CHANNEL_BINDINGS")
-    List<ChannelBindingsDescriptor> getChannelBindings();
+
 
     @Relation("HAS_OPERATION_BINDINGS")
     List<OperationBindingsDescriptor> getOperationBindings();

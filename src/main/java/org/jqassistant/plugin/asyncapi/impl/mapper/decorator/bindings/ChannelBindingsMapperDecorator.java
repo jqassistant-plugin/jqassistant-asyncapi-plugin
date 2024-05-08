@@ -17,7 +17,7 @@ import org.mapstruct.Context;
 public abstract class ChannelBindingsMapperDecorator extends AbstractReferenceObjectMapperDecorator<ChannelBinding, ChannelBindingsDescriptor> implements ChannelBindingsMapper {
 
     public ChannelBindingsMapperDecorator(ChannelBindingsMapper mapper) {
-        super("bindings", mapper);
+        super("bindings", ChannelBindingsDescriptor.class, mapper);
     }
 
     @Override

@@ -20,7 +20,6 @@ public interface ChannelMapper extends ReferenceableObjectMapper<ChannelObject, 
 
     ChannelMapper INSTANCE = Mappers.getMapper(ChannelMapper.class);
 
-    @Mapping(target = "reference", ignore = true)
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "bindings", ignore = true)
     @Mapping(target = "name", ignore = true)

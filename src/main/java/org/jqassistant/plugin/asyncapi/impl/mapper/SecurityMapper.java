@@ -13,14 +13,15 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {}, config = DescriptorMapperConfig.class)
+@Mapper(uses = { FlowsMapper.class}, config = DescriptorMapperConfig.class)
 @DecoratedWith(SecurityMapperDecorator.class)
 public interface SecurityMapper extends ReferenceableObjectMapper<SecurityScheme, SecuritySchemeDescriptor> {
 
     SecurityMapper INSTANCE = Mappers.getMapper(SecurityMapper.class);
 
     @Mapping(target = "path", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "flows" })
+    @Mapping(target = "OAuthFlows", source = "flows")
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     SecuritySchemeDescriptor toDescriptor(SecurityScheme scheme, @Context Scanner scanner);
 

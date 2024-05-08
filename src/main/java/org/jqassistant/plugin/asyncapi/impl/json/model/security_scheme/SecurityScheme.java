@@ -14,7 +14,7 @@ import org.jqassistant.plugin.asyncapi.impl.json.model.security_scheme.oauth2.OA
 public class SecurityScheme extends ReferenceObject {
 
     @JsonProperty("type")
-    private SecurityType type;
+    private String type;
 
     @JsonProperty(value = "description")
     private String description;

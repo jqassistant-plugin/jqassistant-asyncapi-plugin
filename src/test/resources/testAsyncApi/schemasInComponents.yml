@@ -1,0 +1,40 @@
+asyncapi: 3.0.0
+components:
+  schemas:
+    SomethingDoingPayload:
+      allOf:
+        - $ref: '#/components/schemas/SimpleBody'
+        - type: object
+          required:
+            - raId
+            - notes
+          properties:
+            raName:
+              type: string
+            raId:
+              type: string
+            notes:
+              type: object
+              $ref: '#/components/schemas/SomethingDoingNotes'
+            hamburgerMessage:
+              type: object
+              $ref: '#/components/schemas/HamburgerMessage'
+    HamburgerMessage:
+      type: object
+      required:
+        - cheese
+        - lettuce
+      properties:
+        email:
+          type: string
+        lettuce:
+          type: vegetable
+        cheese:
+          type: dairy
+          format: rectangle
+        variables:
+          $ref: '#/components/schemas/SimpleBody'
+        hamburger:
+          type: food
+          items:
+            - $ref: '#/components/schemas/HamburgerMessage'

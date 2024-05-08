@@ -14,7 +14,7 @@ public abstract class CorrelationIdMapperDecorator extends AbstractReferenceObje
         implements CorrelationIdMapper {
 
     public CorrelationIdMapperDecorator(CorrelationIdMapper mapper) {
-        super("correlationId", mapper);
+        super("correlationId", CorrelationIDDescriptor.class, mapper);
     }
 
     @Override

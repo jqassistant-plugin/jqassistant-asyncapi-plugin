@@ -14,7 +14,7 @@ public abstract class ComponentsCorrelationIdMapperDecorator extends AbstractRef
         implements ComponentsCorrelationIdMapper {
 
     public ComponentsCorrelationIdMapperDecorator(ComponentsCorrelationIdMapper mapper) {
-        super("correlationIds", mapper);
+        super("correlationIds", CorrelationIDDescriptor.class, mapper);
     }
 
     @Override

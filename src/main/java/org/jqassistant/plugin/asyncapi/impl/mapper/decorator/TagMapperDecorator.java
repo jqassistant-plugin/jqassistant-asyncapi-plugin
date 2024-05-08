@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class TagMapperDecorator extends AbstractReferenceObjectMapperDecorator<Tag, TagDescriptor> implements TagMapper {
 
     public TagMapperDecorator(TagMapper mapper) {
-        super("tags", mapper);
+        super("tags", TagDescriptor.class, mapper);
     }
 
     /**

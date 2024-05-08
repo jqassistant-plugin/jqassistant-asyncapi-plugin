@@ -50,6 +50,6 @@ public interface MessageTraitDescriptor extends AsyncApiDescriptor {
    /* @Relation("HAS_BINDINGS")
     List<MessageBindingsDescriptor> setBindings(); */
 
-    @Relation("HAS_EXAMPLES")
+    @Relation("HAS_EXAMPLE")
     List<MessageExampleDescriptor> getExamples();
 }

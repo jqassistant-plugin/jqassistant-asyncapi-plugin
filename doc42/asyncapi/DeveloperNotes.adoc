@@ -1,14 +1,4 @@
 
-*To keep in mind handling paths:*
-
-- traits coming from MessageObject and OperationObject  have pathname "traits"
-
-- traits in the components sector have like messageTraits, operationsTraits
-
-- same with bindings
-
-
-*- Mention use of classes of Springwolf-AsyncApi*
 
 *Path Structure:*
 

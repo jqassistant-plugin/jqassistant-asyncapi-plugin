@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OperationReply")
-public interface OperationReplyDescriptor extends AsyncApiDescriptor, ReferenceDescriptor{
+public interface OperationReplyDescriptor extends AsyncApiDescriptor{
 
     @Relation("HAS_ADDRESS")
     OperationReplyAddressDescriptor getAddress();
@@ -18,7 +18,7 @@ public interface OperationReplyDescriptor extends AsyncApiDescriptor, ReferenceD
 
     void setChannel(ChannelDescriptor channel); // is reference
 
-    @Relation("DEFINES_MESSAGES")
+    @Relation("DEFINES_MESSAGE")
     List<MessageDescriptor> getMessages();
 
     void setMessages(List<MessageDescriptor> messages);

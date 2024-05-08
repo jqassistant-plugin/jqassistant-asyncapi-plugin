@@ -17,7 +17,6 @@ import org.mapstruct.*;
 @DecoratedWith(ServerVariablesMapperDecorator.class)
 public interface ServerVariablesMapper extends ReferenceableObjectMapper<ServerVariable, ServerVariableDescriptor> {
 
-    @Mapping(target = "reference", ignore = true)
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
