@@ -16,11 +16,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 class InfoIT extends AbstractPluginIT {
 
     @BeforeEach
-    @TestStore(type = TestStore.Type.REMOTE)
     public void init() {
         File file = new File(getClassesDirectory(InfoIT.class), "testAsyncApi/infoTest.yaml");
-        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/infoTest.yaml", AsyncApiScope.CONTRACT);
-
+        getScanner().scan(file, "testAsyncApi/infoTest.yaml", AsyncApiScope.CONTRACT);
     }
 
     @Test
