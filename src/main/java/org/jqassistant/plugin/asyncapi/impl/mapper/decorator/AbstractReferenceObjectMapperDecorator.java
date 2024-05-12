@@ -11,12 +11,11 @@ import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.PathMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 
 public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends AsyncApiDescriptor>
-        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper, PathMapper<D> {
+        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper {
 
     private final String elementName;
 
@@ -54,7 +53,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
                 T value = entry.getValue();
                 enterTreeNode(name, scanner);
                 D descriptor = this.basicToDescriptor(value, scanner);
-                if(descriptor != null){
+                if (descriptor != null) {
                     descriptor.setName(entry.getKey());
                 }
                 descriptors.add(descriptor);
@@ -91,31 +90,28 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
      * Core Method to map each object to a descriptor. Takes the object, resolves the descriptor (reference or not) and sets the path.
      **/
     private D basicToDescriptor(T object, Scanner scanner) {
-        D descriptor = resolveReference(object, scanner);
-        if (descriptor != null) {
-            return descriptor;
+        D descriptor;
+        if (object != null && object.getReference() != null) {
+            descriptor = resolveReference(object.getReference(), scanner);
+        } else {
+            descriptor = mapper.toDescriptor(object, scanner);
         }
-        descriptor = mapper.toDescriptor(object, scanner);
-        descriptor = PathMapper.super.setPath(descriptor, scanner);
+        if (descriptor != null) {
+            MappingPath mappingPath = scanner.getContext()
+                    .peek(MappingPath.class);
+            descriptor.setPath(mappingPath.getPath());
+        }
         return descriptor;
     }
 
-    /**
-     * Reference Resolver: Checks if the given object is a reference. Case true, returns a ReferenceDescriptor and with the required descriptor type.
-     **/
-    private D resolveReference(T object, Scanner scanner) {
-        if (object != null && object.getReference() != null) {
-            ReferenceDescriptor referenceDescriptor = scanner.getContext()
-                    .getStore()
-                    .create(ReferenceDescriptor.class);
-            referenceDescriptor.setReference(object.getReference());
-            D descriptor = scanner.getContext()
-                    .getStore()
-                    .addDescriptorType(referenceDescriptor, descriptorType);
-            descriptor = PathMapper.super.setPath(descriptor, scanner);
-            return descriptor;
-        }
-        return null;
+    private D resolveReference(String reference, Scanner scanner) {
+        ReferenceDescriptor referenceDescriptor = scanner.getContext()
+                .getStore()
+                .create(ReferenceDescriptor.class);
+        referenceDescriptor.setReference(reference);
+        return scanner.getContext()
+                .getStore()
+                .addDescriptorType(referenceDescriptor, descriptorType);
     }
 
 }
