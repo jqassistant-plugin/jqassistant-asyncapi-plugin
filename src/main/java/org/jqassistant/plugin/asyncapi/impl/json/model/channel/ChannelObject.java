@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBindings;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ExternalDocumentation;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.json.model.Tag;
@@ -50,5 +50,5 @@ public class ChannelObject extends ReferenceObject {
     private ExternalDocumentation externalDocs;
 
     @JsonProperty(value = "bindings")
-    private Map<String, ChannelBinding> bindings;
+    private ChannelBindings bindings;
 }

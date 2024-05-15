@@ -13,12 +13,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/pulsar/README.md#channel-binding-object">Pulsar Channel</a>
  *
  */
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class PulsarChannelBinding extends ChannelBinding {
+
+public class PulsarChannelBinding {
 
     /**
      * Required. The namespace the channel is associated with.

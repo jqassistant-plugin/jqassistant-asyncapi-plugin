@@ -58,7 +58,9 @@ public interface ComponentsDescriptor extends AsyncApiDescriptor {
     List<MessageTraitDescriptor> getMessageTraits();
 
     @Relation("HAS_CHANNEL_BINDING")
-    List<ChannelBindingsDescriptor> getChannelBindings();
+    ChannelBindingsDescriptor getChannelBindings();
+
+    void setChannelBindings(ChannelBindingsDescriptor channelBindings);
 
   /*   @Relation("HAS_SERVER_BINDINGS")
     List<ServerBindingsDescriptor> getServerBindings();

@@ -6,25 +6,20 @@ import javax.xml.validation.Schema;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.schema.SchemaObject;
 
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
+@ToString
 public class KafkaOperationBinding extends OperationBinding {
 
+
     @JsonProperty("groupId")
-    private Schema groupId;
+    private SchemaObject groupId;
 
     @JsonProperty("clientId")
-    private Schema clientId;
+    private SchemaObject clientId;
 
-    /**
-     * The version of this binding. If omitted, "latest" MUST be assumed.
-     */
-    @Builder.Default
-    @JsonProperty("bindingVersion")
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.5.0")
     private String bindingVersion = "0.5.0";
 }

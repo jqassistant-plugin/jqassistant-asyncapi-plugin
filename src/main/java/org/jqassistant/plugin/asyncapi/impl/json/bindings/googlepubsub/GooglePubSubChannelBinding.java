@@ -10,12 +10,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/googlepubsub/README.md#channel-binding-object">GooglePubSub Channel</a>
  */
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class GooglePubSubChannelBinding extends ChannelBinding {
+
+public class GooglePubSubChannelBinding {
     /**
      * An object of key-value pairs (These are used to categorize Cloud Resources like Cloud Pub/Sub Topics.)
      */

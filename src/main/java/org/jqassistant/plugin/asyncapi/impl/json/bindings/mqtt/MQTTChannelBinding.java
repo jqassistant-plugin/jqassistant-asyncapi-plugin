@@ -12,9 +12,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/mqtt/README.md#channel-binding-object">MQTT Channel</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class MQTTChannelBinding extends ChannelBinding {
+
+public class MQTTChannelBinding {
 }

@@ -10,7 +10,5 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
  */
 
 public class AMQP1OperationBinding extends OperationBinding {
-    AMQP1OperationBinding(){
 
-    }
 }

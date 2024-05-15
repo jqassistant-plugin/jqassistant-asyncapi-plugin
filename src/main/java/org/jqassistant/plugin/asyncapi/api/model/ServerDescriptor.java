@@ -54,5 +54,7 @@ public interface ServerDescriptor extends AsyncApiDescriptor {
     List<TagDescriptor> getTags();
 
     @Relation("HAS_SERVER_BINDING")
-    List<ServerBindingsDescriptor> getBindings();
+    ServerBindingsDescriptor getBindings();
+
+    void setBindings(ServerBindingsDescriptor bindings);
 }

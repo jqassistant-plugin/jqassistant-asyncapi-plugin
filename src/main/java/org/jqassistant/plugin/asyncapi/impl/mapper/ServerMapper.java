@@ -8,21 +8,21 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.ServerDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.server.Server;
+import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.ServerBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ServerMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ListToStringMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.mapstruct.*;
 
-@Mapper(uses = { ListToStringMapper.class, TagMapper.class, ExternalDocsMapper.class, ServerVariablesMapper.class })
+@Mapper(uses = { ListToStringMapper.class, TagMapper.class, ExternalDocsMapper.class, ServerVariablesMapper.class, ServerBindingsMapper.class })
 @DecoratedWith(ServerMapperDecorator.class)
 public interface ServerMapper extends ReferenceableObjectMapper<Server, ServerDescriptor> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "security", ignore = true)
-    @Mapping(target = "bindings", ignore = true)
     @Mapping(target = "path", ignore = true)
 
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "bindings", "security" })
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "security" })
     @Override
     ServerDescriptor toDescriptor(Server server, @Context Scanner scanner);
 

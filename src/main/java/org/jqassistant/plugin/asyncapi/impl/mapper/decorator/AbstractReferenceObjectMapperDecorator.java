@@ -15,7 +15,7 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 
 public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends AsyncApiDescriptor>
-        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper {
+        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper{
 
     private final String elementName;
 

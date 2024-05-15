@@ -1,18 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.jqassistant.plugin.asyncapi.impl.json.model.components;
 
-import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBinding;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ServerBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.bindings.*;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ExternalDocumentation;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.json.model.Tag;
@@ -67,7 +62,6 @@ public class Components extends ReferenceObject {
     @JsonProperty(value = "replyAddresses")
     private Map<String, OperationReplyAddress> replyAddresses;
 
-
     @JsonProperty(value = "externalDocs")
     private ExternalDocumentation externalDocs;
 
@@ -81,14 +75,14 @@ public class Components extends ReferenceObject {
     private Map<String, MessageTrait> messageTraits;
 
     @JsonProperty(value = "serverBindings")
-    private Map<String, ServerBinding> serverBindings;
+    private ServerBindings serverBindings;
 
     @JsonProperty(value = "channelBindings")
-    private Map<String, ChannelBinding> channelBindings;
+    private ChannelBindings channelBindings;
 
     @JsonProperty(value = "operationBindings")
-    private Map<String, OperationBinding> operationBindings;
+    private OperationBindings operationBindings;
 
     @JsonProperty(value = "messageBindings")
-    private Map<String, MessageBinding> messageBindings;
+    private MessageBindings messageBindings;
 }

@@ -12,12 +12,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/mqtt/README.md#message-binding-object">MQTT Message</a>
  */
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class MQTTMessageBinding extends ChannelBinding {
+
+public class MQTTMessageBinding {
     /**
      * Either: 0 (zero): Indicates that the payload is unspecified bytes, or 1: Indicates that the payload is UTF-8
      * encoded character data.

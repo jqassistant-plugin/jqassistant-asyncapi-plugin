@@ -10,12 +10,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/amqp/README.md#channel">JMS Channel</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class JMSChannelBinding extends ChannelBinding {
+
+public class JMSChannelBinding {
     /**
      * OPTIONAL, defaults to the channel name. The destination (queue) name for this channel. SHOULD only be specified
      * if the channel name differs from the actual destination name, such as when the channel name is not a valid

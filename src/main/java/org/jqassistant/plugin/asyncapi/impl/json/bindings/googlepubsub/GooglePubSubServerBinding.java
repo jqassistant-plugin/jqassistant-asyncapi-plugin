@@ -12,9 +12,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/googlepubsub/README.md#server-binding-object">GooglePubSub Server</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class GooglePubSubServerBinding extends ChannelBinding {
+
+public class GooglePubSubServerBinding {
 }

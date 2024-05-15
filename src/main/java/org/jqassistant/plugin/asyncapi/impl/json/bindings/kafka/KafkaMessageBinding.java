@@ -6,44 +6,28 @@ import javax.xml.validation.Schema;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.schema.SchemaObject;
 
 /**
  * This object contains information about the message representation in Kafka.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@Getter
+@Setter
+@ToString
 public class KafkaMessageBinding extends MessageBinding {
-    /**
-     * The message key. NOTE: You can also use the reference object way.
-     */
-    @JsonProperty(value = "key")
-    private Schema key;
 
-    /**
-     * If a Schema Registry is used when performing this operation, tells where the id of schema is stored (e.g. header or payload).
-     */
+    @JsonProperty(value = "key")
+    private SchemaObject key; //temporary solution
+
     @JsonProperty(value = "schemaIdLocation")
     private String schemaIdLocation;
 
-    /**
-     * Number of bytes or vendor specific values when schema id is encoded in payload (e.g confluent/ apicurio-legacy / apicurio-new).
-     */
     @JsonProperty(value = "schemaIdPayloadEncoding")
     private String schemaIdPayloadEncoding;
 
-    /**
-     * Freeform string for any naming strategy class to use. Clients should default to the vendor default if not supplied.
-     */
     @JsonProperty(value = "schemaLookupStrategy")
     private String schemaLookupStrategy;
 
-    /**
-     * The version of this binding. If omitted, "latest" MUST be assumed.
-     */
-    @Builder.Default
-    @JsonProperty("bindingVersion")
-    private String bindingVersion = "0.5.0";
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.5.0" )
+    private String bindingVersion;
 }

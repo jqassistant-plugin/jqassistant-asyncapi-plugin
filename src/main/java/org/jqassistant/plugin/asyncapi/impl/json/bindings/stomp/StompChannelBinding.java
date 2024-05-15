@@ -12,9 +12,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/stomp/README.md#channel-binding-object">STOMP Channel</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class StompChannelBinding extends ChannelBinding {
+
+public class StompChannelBinding {
 }

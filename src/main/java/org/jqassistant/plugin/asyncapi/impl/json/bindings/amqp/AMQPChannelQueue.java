@@ -23,9 +23,6 @@ public class AMQPChannelQueue {
     @JsonProperty("autoDelete")
     private Boolean autoDelete;
 
-    /**
-     * The virtual host of the queue. Defaults to /.
-     */
     @JsonProperty(value = "vhost", defaultValue = "/")
     private String vhost;
 }

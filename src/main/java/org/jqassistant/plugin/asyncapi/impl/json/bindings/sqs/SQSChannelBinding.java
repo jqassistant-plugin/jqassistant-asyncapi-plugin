@@ -29,12 +29,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/sqs/README.md#channel">SQS Channel</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class SQSChannelBinding extends ChannelBinding {
+
+public class SQSChannelBinding {
     /**
      * Required. A definition of the queue that will be used as the channel.
      */

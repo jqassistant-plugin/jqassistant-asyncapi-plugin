@@ -8,10 +8,10 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
 @Getter
 @Setter
 @ToString
-public class AMQPChannelBinding extends ChannelBinding {
+public class AMQPChannelBinding  {
 
-    @JsonProperty(value = "is", required = true, defaultValue = "routingKey")
-    private AMQPChannelType is;
+    @JsonProperty(value = "is", defaultValue = "routingKey") //quick fix: should actually be an enum
+    private String is;
 
     @JsonProperty("exchange")
     private AMQPChannelExchange exchange;

@@ -38,9 +38,9 @@ public interface ChannelDescriptor extends AsyncApiDescriptor {
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
     @Relation("HAS_BINDING")
-    List<ChannelBindingsDescriptor> getBindings();
+    ChannelBindingsDescriptor getBindings();
 
-    void setBindings(List<ChannelBindingsDescriptor> bindings);
+    void setBindings(ChannelBindingsDescriptor bindings);
 
     @Relation("HAS_MESSAGE")
     List<MessageDescriptor> getMessages();

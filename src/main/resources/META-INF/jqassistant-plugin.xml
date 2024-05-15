@@ -41,7 +41,7 @@
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpMessageBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpOperationBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpServerBindingsDescriptor</class>
-
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor</class>
 
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaChannelBindingsDescriptor</class>

@@ -7,21 +7,21 @@ import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 @Label("Topic_Configuration")
 public interface TopicConfigurationDescriptor extends AsyncApiDescriptor {
 
-    String getCleanupPolicy();
+    String[] getCleanupPolicy();
 
-    void setCleanupPolicy(String cleanupPolicy);
+    void setCleanupPolicy(String[] cleanupPolicy);
 
-    long getRetentionMS();
+    long getRetentionMs();
 
-    void setRetentionMS(long retentionMs);
+    void setRetentionMs(long retentionMs);
 
     long getRetentionBytes();
 
     void setRetentionBytes(long retentionBytes);
 
-    long getDeleteRetentionMS();
+    long getDeleteRetentionMs();
 
-    void setDeleteRetentionMS(long deleteRetentionMs);
+    void setDeleteRetentionMs(long deleteRetentionMs);
 
     int getMaxMessageBytes();
 

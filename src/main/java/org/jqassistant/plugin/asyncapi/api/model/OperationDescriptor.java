@@ -38,7 +38,9 @@ public interface OperationDescriptor extends AsyncApiDescriptor {
     //only ReferenceObject
 
     @Relation("HAS_BINDING")
-    List<OperationBindingsDescriptor> getBindings();
+    OperationBindingsDescriptor getBindings();
+
+    void setBindings(OperationBindingsDescriptor bindings);
 
     @Relation("USES_MESSAGE")
     List<MessageDescriptor> getMessages();

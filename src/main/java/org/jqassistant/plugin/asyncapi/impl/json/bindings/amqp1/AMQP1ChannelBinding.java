@@ -9,8 +9,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/amqp1/README.md#channel-binding-object">AMQP1 Channel</a>
  */
 
-public class AMQP1ChannelBinding extends ChannelBinding {
-    AMQP1ChannelBinding() {
+public class AMQP1ChannelBinding {
 
-    }
 }

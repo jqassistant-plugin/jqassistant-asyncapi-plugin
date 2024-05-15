@@ -8,14 +8,14 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.OperationDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.operation.Operation;
+import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.OperationBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.OperationMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = { ExternalDocsMapper.class, ChannelMapper.class, ParametersMapper.class, MessagesMapper.class, OperationTraitMapper.class,
-        OperationReplyMapper.class, TagMapper.class,
-        /* OperationBindingsMapper.class*/ }, config = DescriptorMapperConfig.class)
+        OperationReplyMapper.class, TagMapper.class, OperationBindingsMapper.class }, config = DescriptorMapperConfig.class)
 @DecoratedWith(OperationMapperDecorator.class)
 public interface OperationMapper extends ReferenceableObjectMapper<Operation, OperationDescriptor> {
 
@@ -24,10 +24,9 @@ public interface OperationMapper extends ReferenceableObjectMapper<Operation, Op
     @Mapping(target = "operationTraits", source = "traits")
     @Mapping(target = "operationReply", ignore = true)
     @Mapping(target = "securityScheme", ignore = true)
-    @Mapping(target = "bindings", ignore = true)
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "name", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "security", "bindings", "reply", "messages" })
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "security",  "reply", "messages" })
     @Override
     OperationDescriptor toDescriptor(Operation operation, @Context Scanner scanner);
 

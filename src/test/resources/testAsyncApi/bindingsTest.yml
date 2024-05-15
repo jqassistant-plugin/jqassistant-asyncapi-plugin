@@ -9,12 +9,23 @@ channels:
             contentEncoding: gzip
             messageType: 'user.signup'
             bindingVersion: 0.3.0
+          kafka:
+            key:
+              type: string
+              enum: [ 'myKey' ]
+            schemaIdLocation: 'payload'
+            schemaIdPayloadEncoding: '4'
+            bindingVersion: '0.5.0'
 servers:
   oneServer:
     bindings:
       pulsar:
         tenant: contoso
         bindingVersion: '0.1.0'
+      kafka:
+        schemaRegistryUrl: 'hyttps://my-schema-registry.com'
+        schemaRegistryVendor: 'confluent'
+        bindingVersion: '0.5.0'
 operations:
   oneOperation:
     bindings:
@@ -22,14 +33,22 @@ operations:
         qos: 2
         retain: true
         bindingVersion: 0.2.0
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'myGroupId' ]
+        clientId:
+          type: string
+          enum: [ 'myClientId' ]
+        bindingVersion: '0.5.0'
 components:
   channels:
     oneFantasticChannel:
       bindings:
-        amqp:
-          is: queue
-          queue:
-            exclusive: true
+      #  amqp:
+      #    is: queue
+      #    queue:
+      #      exclusive: true
         kafka:
           topic: 'my-specific-topic-name'
           partitions: 20

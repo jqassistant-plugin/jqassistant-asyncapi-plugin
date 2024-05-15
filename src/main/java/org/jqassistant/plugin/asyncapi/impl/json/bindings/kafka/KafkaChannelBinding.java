@@ -12,6 +12,10 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
 @ToString
 public class KafkaChannelBinding extends ChannelBinding {
 
+    public KafkaChannelBinding() {
+
+    }
+
     @JsonProperty("topic")
     private String topic;
 

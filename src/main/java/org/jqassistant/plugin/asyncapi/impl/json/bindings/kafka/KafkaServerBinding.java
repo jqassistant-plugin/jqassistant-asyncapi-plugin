@@ -8,30 +8,24 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ServerBinding;
 /**
  * This object contains information about the server representation in Kafka.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+
+
+@Setter
+@Getter
+@ToString
 public class KafkaServerBinding extends ServerBinding {
-    /**
-     * API URL for the Schema Registry used when producing Kafka messages (if a Schema Registry was used)
-     */
+
+    KafkaServerBinding(){
+
+    }
+
     @JsonProperty("schemaRegistryUrl")
     private String schemaRegistryUrl;
 
-    /**
-     * MUST NOT be specified if schemaRegistryUrl is not specified
-     * </p>
-     * The vendor of Schema Registry and Kafka serdes library that should be used (e.g. apicurio, confluent, ibm, or karapace)
-     */
     @JsonProperty("schemaRegistryVendor")
     private String schemaRegistryVendor;
 
-    /**
-     * The version of this binding. If omitted, "latest" MUST be assumed.
-     */
-    @Builder.Default
-    @JsonProperty("bindingVersion")
+
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.5.0")
     private String bindingVersion = "0.5.0";
 }

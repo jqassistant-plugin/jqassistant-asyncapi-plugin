@@ -1,4 +1,4 @@
-package org.jqassistant.plugin.asyncapi.impl.mapper;
+package org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.kafka;
 
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
@@ -17,8 +17,10 @@ public interface KafkaChannelBindingsMapper extends DescriptorMapper<KafkaChanne
 
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "name", ignore = true)
+    @Mapping(target = "kafka", ignore = true)
+    @Mapping(target = "amqp", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
-    KafkaChannelBindingsDescriptor toDescriptor(KafkaChannelBinding binding, @Context Scanner scanner);
+    KafkaChannelBindingsDescriptor toDescriptor(KafkaChannelBinding kafka, @Context Scanner scanner);
 
 }

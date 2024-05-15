@@ -12,9 +12,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/redis/README.md#message-binding-object">Redis Message</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class RedisMessageBinding extends ChannelBinding {
+
+public class RedisMessageBinding {
 }

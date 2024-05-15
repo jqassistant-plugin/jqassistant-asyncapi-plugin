@@ -12,8 +12,4 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/mercure/README.md#message-binding-object">Mercure Message</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class MercureMessageBinding extends ChannelBinding {}
+public class MercureMessageBinding {}

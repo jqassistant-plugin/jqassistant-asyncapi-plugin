@@ -5,6 +5,7 @@ import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 
 import org.jqassistant.plugin.asyncapi.api.model.ComponentsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.components.Components;
+import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.ChannelBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ComponentsMapperDecorator;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;

@@ -20,12 +20,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/sns/README.md#channel">SNS Channel</a>
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class SNSChannelBinding extends ChannelBinding {
+
+public class SNSChannelBinding {
     /**
      * Required. The name of the topic. Can be different from the channel name to allow flexibility around AWS resource
      * naming limitations.

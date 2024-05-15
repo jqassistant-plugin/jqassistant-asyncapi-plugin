@@ -14,12 +14,8 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
  *
  * @see <a href="https://github.com/asyncapi/bindings/blob/master/websockets/README.md#channel-binding-object">WebSocket Channel</a>
  */
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class WebSocketChannelBinding extends ChannelBinding {
+
+public class WebSocketChannelBinding  {
     /**
      * The HTTP method to use when establishing the connection. Its value MUST be either GET or POST.
      */

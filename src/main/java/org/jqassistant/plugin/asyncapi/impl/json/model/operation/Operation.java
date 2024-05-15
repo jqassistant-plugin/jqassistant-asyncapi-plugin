@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBindings;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ExternalDocumentation;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.json.model.Tag;
@@ -51,7 +52,7 @@ public class Operation extends ReferenceObject {
     private ExternalDocumentation externalDocs;
 
     @JsonProperty(value = "bindings")
-    private Map<String, OperationBinding> bindings;
+    private OperationBindings bindings;
 
     @JsonProperty(value = "traits")
     private List<OperationTraits> traits;
