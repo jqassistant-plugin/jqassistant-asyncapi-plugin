@@ -29,6 +29,14 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
 
     private static final Logger LOG = LoggerFactory.getLogger(AsyncAPIScannerPlugin.class);
 
+    private ObjectMapper mapper;
+
+    @Override
+    public void initialize() {
+        this.mapper = new YAMLMapper();
+        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+    }
+
     @Override
     public boolean accepts(FileResource fileResource, String path, Scope scope) {
         return AsyncApiScope.CONTRACT.equals(scope) &&
@@ -43,7 +51,7 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
         final ContractDescriptor contractDescriptor = store.addDescriptorType(fileDescriptor, ContractDescriptor.class);
 
         try (InputStream inputStream = fileResource.createStream()) {
-            AsyncAPI asyncApi = parseYaml(inputStream);
+            AsyncAPI asyncApi = mapper.readValue(inputStream, AsyncAPI.class);
 
             scanner.getContext().push(ReferenceResolver.class, new ReferenceResolver());
             scanner.getContext().push(MappingPath.class, new MappingPath());
@@ -55,11 +63,5 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
             }
         }
         return contractDescriptor;
-    }
-
-    private AsyncAPI parseYaml(InputStream inputStream) throws IOException {
-        ObjectMapper mapper = new YAMLMapper();
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        return mapper.readValue(inputStream, AsyncAPI.class);
     }
 }

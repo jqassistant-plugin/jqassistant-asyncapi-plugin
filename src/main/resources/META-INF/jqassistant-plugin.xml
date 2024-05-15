@@ -1,6 +1,6 @@
 <jqassistant-plugin xmlns="http://schema.jqassistant.org/plugin/v2.2"
-                    id="jqa.plugin.openapi"
-                    name="jQAssistant OpenApi Plugin"
+                    id="jqa.plugin.asyncapi"
+                    name="jQAssistant AsyncApi Plugin"
                     version="${project.version}">
     <description>Provides a scanner for OpenAPI files.</description>
     <model>
