@@ -12,14 +12,10 @@ import org.mapstruct.Context;
 
 public abstract class TagMapperDecorator extends AbstractReferenceObjectMapperDecorator<Tag, TagDescriptor> implements TagMapper {
 
-    public TagMapperDecorator(TagMapper mapper) {
+    protected TagMapperDecorator(TagMapper mapper) {
         super("tags", TagDescriptor.class, mapper);
     }
 
-    /**
-     * Procedure for InfoDescriptor not entirely correct: should actually reference the position of
-     * the tag in the list; Use case not yet encountered, so simplified representation here.
-     **/
     @Override
     public TagDescriptor toDescriptor(Tag tag, @Context Scanner scanner) {
         return super.toDescriptor(tag, scanner);

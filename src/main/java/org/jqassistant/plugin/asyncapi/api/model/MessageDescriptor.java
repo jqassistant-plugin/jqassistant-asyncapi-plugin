@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
 @Label("Message")
-public interface MessageDescriptor extends AsyncApiDescriptor {
+public interface MessageDescriptor extends ReferenceableDescriptor {
 
   /*  @Relation("USES_HEADERS")
     Object getHeaders();

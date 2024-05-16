@@ -2,10 +2,10 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.amqp;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
 @Label("AMQP_Channel_Exchange")
-public interface AmqpExchangeDescriptor extends AsyncApiDescriptor {
+public interface AmqpExchangeDescriptor extends ReferenceableDescriptor {
 
     String getName();
 

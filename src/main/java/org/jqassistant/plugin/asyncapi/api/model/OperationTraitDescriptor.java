@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OperationTrait")
-public interface OperationTraitDescriptor extends AsyncApiDescriptor {
+public interface OperationTraitDescriptor extends ReferenceableDescriptor {
 
     String getTitle();
 

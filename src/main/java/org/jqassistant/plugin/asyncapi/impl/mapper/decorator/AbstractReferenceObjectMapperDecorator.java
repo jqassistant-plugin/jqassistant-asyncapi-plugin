@@ -7,15 +7,15 @@ import java.util.Map;
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 
-import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 
-public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends AsyncApiDescriptor>
-        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper{
+public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends ReferenceableDescriptor>
+        implements ReferenceableObjectMapper<T, D>, TreeNodeMapper {
 
     private final String elementName;
 

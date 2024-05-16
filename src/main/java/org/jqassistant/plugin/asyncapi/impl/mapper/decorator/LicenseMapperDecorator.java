@@ -11,7 +11,7 @@ import org.mapstruct.Context;
 public abstract class LicenseMapperDecorator extends AbstractReferenceObjectMapperDecorator<License, LicenseDescriptor>
         implements LicenseMapper, TreeNodeMapper {
 
-    public LicenseMapperDecorator(LicenseMapper mapper) {
+    protected LicenseMapperDecorator(LicenseMapper mapper) {
         super("license", LicenseDescriptor.class, mapper);
     }
 

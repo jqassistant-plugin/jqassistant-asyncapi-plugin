@@ -2,11 +2,12 @@ package org.jqassistant.plugin.asyncapi.api.model;
 
 import java.util.List;
 
+import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("Contract")
-public interface ContractDescriptor extends AsyncApiDescriptor {
+public interface ContractDescriptor extends Descriptor {
     String getAsyncApiVersion();
 
     void setAsyncApiVersion(String asyncApiVersion);

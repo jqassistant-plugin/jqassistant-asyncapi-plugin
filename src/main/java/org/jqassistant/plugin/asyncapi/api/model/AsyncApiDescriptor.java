@@ -5,5 +5,5 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("AsyncAPI")
 @Abstract
-public interface AsyncApiDescriptor extends ReferenceableDescriptor {
+public interface AsyncApiDescriptor {
 }

@@ -3,7 +3,6 @@ package org.jqassistant.plugin.asyncapi.impl.json.bindings.sqs;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
 
 /**
  * Use the Channel Binding Operation for Point-to-Point SQS channels.

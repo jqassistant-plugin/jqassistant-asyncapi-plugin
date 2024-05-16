@@ -16,9 +16,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 @ToString
 public class ServerBindings extends ReferenceObject {
 
-    public ServerBindings() {
-    }
-
     /**
      * to be extended
      **/

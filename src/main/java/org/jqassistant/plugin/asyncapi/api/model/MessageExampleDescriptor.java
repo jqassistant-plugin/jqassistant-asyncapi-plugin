@@ -5,7 +5,7 @@ import java.util.Map;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("MessageExample")
-public interface MessageExampleDescriptor extends AsyncApiDescriptor{
+public interface MessageExampleDescriptor extends ReferenceableDescriptor {
 
     Map<String, Object> getHeaders();
 

@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
 
 @Label("Operation")
-public interface OperationDescriptor extends AsyncApiDescriptor {
+public interface OperationDescriptor extends ReferenceableDescriptor {
     String getTitle();
 
     void setTitle(String title);

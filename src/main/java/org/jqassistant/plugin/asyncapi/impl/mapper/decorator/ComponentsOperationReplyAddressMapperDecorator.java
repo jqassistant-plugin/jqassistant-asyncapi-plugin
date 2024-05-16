@@ -14,7 +14,7 @@ public abstract class ComponentsOperationReplyAddressMapperDecorator
         extends AbstractReferenceObjectMapperDecorator<OperationReplyAddress, OperationReplyAddressDescriptor>
         implements ComponentsOperationReplyAddressMapper {
 
-    public ComponentsOperationReplyAddressMapperDecorator(ComponentsOperationReplyAddressMapper mapper) {
+    protected ComponentsOperationReplyAddressMapperDecorator(ComponentsOperationReplyAddressMapper mapper) {
         super("replyAddresses", OperationReplyAddressDescriptor.class, mapper);
     }
 

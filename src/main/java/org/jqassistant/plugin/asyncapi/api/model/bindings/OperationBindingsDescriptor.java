@@ -3,14 +3,14 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
-import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpOperationBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaOperationBindingsDescriptor;
 
 @Label("Operation_Binding")
-public interface OperationBindingsDescriptor extends AsyncApiDescriptor {
+public interface OperationBindingsDescriptor extends ReferenceableDescriptor {
 
-    @Relation("HAS_AMQP_BINDING")
+    @Relation("HAS_AMQP_OPERATION")
     AmqpOperationBindingsDescriptor getAmqp();
 
     void setAmqp(AmqpOperationBindingsDescriptor amqp);

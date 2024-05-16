@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("MessageTrait")
-public interface MessageTraitDescriptor extends AsyncApiDescriptor {
+public interface MessageTraitDescriptor extends ReferenceableDescriptor {
 
     /*  @Relation("USES_HEADERS")
     Object getHeaders();

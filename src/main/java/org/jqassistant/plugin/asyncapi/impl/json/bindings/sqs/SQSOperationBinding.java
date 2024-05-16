@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
 /**
  * SQS Point-To-Point
@@ -22,7 +22,7 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SQSOperationBinding extends OperationBinding {
+public class SQSOperationBinding extends ReferenceObject {
     /**
      * Required. Queue objects that are either the endpoint for an SNS Operation Binding Object, or the deadLetterQueue
      * of the SQS Operation Binding Object

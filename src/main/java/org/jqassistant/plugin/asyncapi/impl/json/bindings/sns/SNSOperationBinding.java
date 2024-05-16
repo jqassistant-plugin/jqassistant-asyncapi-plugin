@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
 /**
  * This object contains information operation binding in SNS.
@@ -34,7 +34,7 @@ import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class SNSOperationBinding extends OperationBinding {
+public class SNSOperationBinding extends ReferenceObject {
 
     /**
      * Optional. Often we can assume that the SNS Topic is the channel name-we provide this field in case the you need

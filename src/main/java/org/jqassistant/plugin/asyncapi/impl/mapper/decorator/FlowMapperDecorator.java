@@ -12,7 +12,7 @@ import org.mapstruct.Context;
 
 public abstract class FlowMapperDecorator extends AbstractReferenceObjectMapperDecorator<OAuthFlow, OAuthFlowDescriptor> implements FlowMapper {
 
-    public FlowMapperDecorator(FlowMapper mapper) {
+    protected FlowMapperDecorator(FlowMapper mapper) {
         super("flow", OAuthFlowDescriptor.class, mapper);
     }
 

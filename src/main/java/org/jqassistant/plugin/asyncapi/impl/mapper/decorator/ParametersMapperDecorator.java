@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class ParametersMapperDecorator extends AbstractReferenceObjectMapperDecorator<ChannelParameter, ParametersDescriptor>
         implements ParametersMapper {
 
-    public ParametersMapperDecorator(ParametersMapper mapper) {
+    protected ParametersMapperDecorator(ParametersMapper mapper) {
         super("parameters", ParametersDescriptor.class, mapper);
     }
 

@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ServerBinding;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.ServerBindings;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ExternalDocumentation;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;

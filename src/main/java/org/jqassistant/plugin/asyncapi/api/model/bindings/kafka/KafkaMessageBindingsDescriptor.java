@@ -2,11 +2,11 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.kafka;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor;
-import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 
 @Label("Kafka_Message")
-public interface KafkaMessageBindingsDescriptor extends ChannelBindingsDescriptor {
+public interface KafkaMessageBindingsDescriptor extends ReferenceableDescriptor {
 
     //can be SchemaObject, Reference Object OR AVRO Schema Object
     SchemaDescriptor getKey();

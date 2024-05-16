@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class MessageExampleMapperDecorator extends AbstractReferenceObjectMapperDecorator<MessageExample, MessageExampleDescriptor>
         implements MessageExampleMapper {
 
-    public MessageExampleMapperDecorator(MessageExampleMapper mapper) {
+    protected MessageExampleMapperDecorator(MessageExampleMapper mapper) {
         super("examples", MessageExampleDescriptor.class, mapper);
     }
 

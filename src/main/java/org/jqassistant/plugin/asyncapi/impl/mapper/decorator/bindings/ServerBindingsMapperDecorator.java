@@ -11,7 +11,7 @@ import org.mapstruct.Context;
 public abstract class ServerBindingsMapperDecorator extends AbstractReferenceObjectMapperDecorator<ServerBindings, ServerBindingsDescriptor>
         implements ServerBindingsMapper {
 
-    public ServerBindingsMapperDecorator(ServerBindingsMapper mapper) {
+    protected ServerBindingsMapperDecorator(ServerBindingsMapper mapper) {
         super("bindings", ServerBindingsDescriptor.class, mapper);
     }
 

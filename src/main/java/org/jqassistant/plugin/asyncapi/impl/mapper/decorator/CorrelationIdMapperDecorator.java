@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class CorrelationIdMapperDecorator extends AbstractReferenceObjectMapperDecorator<CorrelationID, CorrelationIDDescriptor>
         implements CorrelationIdMapper {
 
-    public CorrelationIdMapperDecorator(CorrelationIdMapper mapper) {
+    protected CorrelationIdMapperDecorator(CorrelationIdMapper mapper) {
         super("correlationId", CorrelationIDDescriptor.class, mapper);
     }
 

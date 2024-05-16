@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class OperationTraitMapperDecorator extends AbstractReferenceObjectMapperDecorator<OperationTraits, OperationTraitDescriptor>
         implements OperationTraitMapper {
 
-    public OperationTraitMapperDecorator(OperationTraitMapper mapper) {
+    protected OperationTraitMapperDecorator(OperationTraitMapper mapper) {
         super("traits", OperationTraitDescriptor.class, mapper);
     }
 

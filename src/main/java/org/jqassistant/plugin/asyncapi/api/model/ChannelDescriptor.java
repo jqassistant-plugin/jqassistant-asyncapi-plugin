@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 
 @Label("Channel")
-public interface ChannelDescriptor extends AsyncApiDescriptor {
+public interface ChannelDescriptor extends ReferenceableDescriptor  {
 
     String getAddress();
 

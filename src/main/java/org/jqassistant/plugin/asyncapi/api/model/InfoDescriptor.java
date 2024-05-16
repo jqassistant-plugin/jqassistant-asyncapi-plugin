@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("Info")
-public interface InfoDescriptor extends AsyncApiDescriptor {
+public interface InfoDescriptor extends ReferenceableDescriptor {
 
     String getTitle();
 

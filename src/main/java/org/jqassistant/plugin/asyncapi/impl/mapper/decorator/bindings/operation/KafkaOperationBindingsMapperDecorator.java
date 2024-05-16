@@ -11,7 +11,7 @@ import org.mapstruct.Context;
 public abstract class KafkaOperationBindingsMapperDecorator
         extends AbstractReferenceObjectMapperDecorator<KafkaOperationBinding, KafkaOperationBindingsDescriptor> implements KafkaOperationBindingsMapper {
 
-    public KafkaOperationBindingsMapperDecorator(KafkaOperationBindingsMapper mapper) {
+    protected KafkaOperationBindingsMapperDecorator(KafkaOperationBindingsMapper mapper) {
         super("kafka", KafkaOperationBindingsDescriptor.class, mapper);
     }
 

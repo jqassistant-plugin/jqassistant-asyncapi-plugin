@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class ExternalDocsMapperDecorator extends AbstractReferenceObjectMapperDecorator<ExternalDocumentation, ExternalDocsDescriptor>
         implements ExternalDocsMapper {
 
-    public ExternalDocsMapperDecorator(ExternalDocsMapper mapper) {
+    protected ExternalDocsMapperDecorator(ExternalDocsMapper mapper) {
         super("externalDocs", ExternalDocsDescriptor.class, mapper);
     }
 

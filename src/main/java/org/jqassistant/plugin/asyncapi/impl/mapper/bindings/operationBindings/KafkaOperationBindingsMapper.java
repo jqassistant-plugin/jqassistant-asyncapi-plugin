@@ -12,14 +12,11 @@ import org.mapstruct.*;
 @DecoratedWith(KafkaOperationBindingsMapperDecorator.class)
 public interface KafkaOperationBindingsMapper extends DescriptorMapper<KafkaOperationBinding, KafkaOperationBindingsDescriptor> {
 
-
-    @Mapping(target = "kafka", ignore = true)
-    @Mapping(target = "amqp", ignore = true)
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "clientId", ignore = true)
     @Mapping(target = "groupId", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "groupId", "clientId"})
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     KafkaOperationBindingsDescriptor toDescriptor(KafkaOperationBinding binding, @Context Scanner scanner);
 }

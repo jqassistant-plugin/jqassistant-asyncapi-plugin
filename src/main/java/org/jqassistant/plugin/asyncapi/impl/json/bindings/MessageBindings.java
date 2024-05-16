@@ -8,17 +8,12 @@ import lombok.ToString;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.amqp.AMQPMessageBinding;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.jms.JMSMessageBinding;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.kafka.KafkaMessageBinding;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.pulsar.PulsarMessageBinding;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.websockets.WebSocketMessageBinding;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
 @Setter
 @Getter
 @ToString
 public class MessageBindings extends ReferenceObject {
-
-    public MessageBindings() {
-    }
 
     /**
      * to be extended
@@ -32,11 +27,5 @@ public class MessageBindings extends ReferenceObject {
 
     @JsonProperty(value = "jms")
     private JMSMessageBinding jms;
-
-    @JsonProperty(value = "pulsar")
-    private PulsarMessageBinding pulsar;
-
-    @JsonProperty(value = "ws")
-    private WebSocketMessageBinding ws;
 
 }

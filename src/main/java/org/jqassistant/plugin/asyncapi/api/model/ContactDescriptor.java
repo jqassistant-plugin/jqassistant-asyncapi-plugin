@@ -3,7 +3,7 @@ package org.jqassistant.plugin.asyncapi.api.model;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("Contact")
-public interface ContactDescriptor extends AsyncApiDescriptor {
+public interface ContactDescriptor extends ReferenceableDescriptor {
     String getName();
 
     void setName(String name);

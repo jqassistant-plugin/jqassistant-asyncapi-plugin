@@ -5,21 +5,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
 @Getter
 @Setter
 @ToString
-public class AMQPMessageBinding extends MessageBinding {
+public class AMQPMessageBinding extends ReferenceObject {
     @JsonProperty("contentEncoding")
     private String contentEncoding;
 
     @JsonProperty("messageType")
     private String messageType;
 
-    /**
-     * The version of this binding. If omitted, "latest" MUST be assumed.
-     */
     @JsonProperty(value = "bindingVersion", defaultValue = "0.3.0")
     private String bindingVersion;
 }

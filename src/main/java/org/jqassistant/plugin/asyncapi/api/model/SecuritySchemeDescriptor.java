@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
 @Label("SecurityScheme")
-public interface SecuritySchemeDescriptor extends AsyncApiDescriptor {
+public interface SecuritySchemeDescriptor extends ReferenceableDescriptor {
 
     String getType();
 

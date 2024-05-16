@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class OperationReplyAddressMapperDecorator
         extends AbstractReferenceObjectMapperDecorator<OperationReplyAddress, OperationReplyAddressDescriptor> implements OperationReplyAddressMapper {
 
-    public OperationReplyAddressMapperDecorator(OperationReplyAddressMapper mapper) {
+    protected OperationReplyAddressMapperDecorator(OperationReplyAddressMapper mapper) {
         super("address", OperationReplyAddressDescriptor.class, mapper);
     }
 

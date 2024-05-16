@@ -6,9 +6,12 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
 
 @Label("Components")
-public interface ComponentsDescriptor extends AsyncApiDescriptor {
+public interface ComponentsDescriptor extends ReferenceableDescriptor {
 
     @Relation("DEFINES_SCHEMA")
     SchemasDescriptor getSchemas();
@@ -62,15 +65,13 @@ public interface ComponentsDescriptor extends AsyncApiDescriptor {
 
     void setChannelBindings(ChannelBindingsDescriptor channelBindings);
 
-  /*   @Relation("HAS_SERVER_BINDINGS")
-    List<ServerBindingsDescriptor> getServerBindings();
-
-
+    @Relation("HAS_SERVER_BINDINGS")
+    ServerBindingsDescriptor getServerBindings();
 
     @Relation("HAS_OPERATION_BINDINGS")
-    List<OperationBindingsDescriptor> getOperationBindings();
+    OperationBindingsDescriptor getOperationBindings();
 
     @Relation("HAS_MESSAGE_BINDINGS")
-    List<MessageBindingsDescriptor> getMessageBindings(); */
+    MessageBindingsDescriptor getMessageBindings();
 
 }

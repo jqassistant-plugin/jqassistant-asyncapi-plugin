@@ -13,19 +13,17 @@ import org.mapstruct.Context;
 public abstract class ComponentsCorrelationIdMapperDecorator extends AbstractReferenceObjectMapperDecorator<CorrelationID, CorrelationIDDescriptor>
         implements ComponentsCorrelationIdMapper {
 
-    public ComponentsCorrelationIdMapperDecorator(ComponentsCorrelationIdMapper mapper) {
+    protected ComponentsCorrelationIdMapperDecorator(ComponentsCorrelationIdMapper mapper) {
         super("correlationIds", CorrelationIDDescriptor.class, mapper);
     }
 
     @Override
     public List<CorrelationIDDescriptor> toDescriptors(Map<String, CorrelationID> id, @Context Scanner scanner) {
-        // super("correlationIds");
         return super.toDescriptors(id, scanner);
     }
 
     @Override
     public List<CorrelationIDDescriptor> toDescriptors(List<CorrelationID> ids, @Context Scanner scanner) {
-        // super("correlationIds");
         return super.toDescriptors(ids, scanner);
     }
 

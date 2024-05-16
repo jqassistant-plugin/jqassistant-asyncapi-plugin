@@ -2,10 +2,10 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.amqp;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
 @Label("AMQP_Operation")
-public interface AmqpOperationBindingsDescriptor extends OperationBindingsDescriptor {
+public interface AmqpOperationBindingsDescriptor extends ReferenceableDescriptor {
 
     int getExpiration();
 

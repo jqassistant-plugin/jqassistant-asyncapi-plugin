@@ -2,10 +2,10 @@ package org.jqassistant.plugin.asyncapi.api.model.bindings.amqp;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
 @Label("AMQP_Message")
-public interface AmqpMessageBindingsDescriptor extends ChannelBindingsDescriptor {
+public interface AmqpMessageBindingsDescriptor extends ReferenceableDescriptor {
 
     String getContentEncoding();
 
@@ -13,7 +13,7 @@ public interface AmqpMessageBindingsDescriptor extends ChannelBindingsDescriptor
 
     String getMessageType();
 
-    void setMessageType(String MessageType);
+    void setMessageType(String messageType);
 
     String getBindingVersion();
 

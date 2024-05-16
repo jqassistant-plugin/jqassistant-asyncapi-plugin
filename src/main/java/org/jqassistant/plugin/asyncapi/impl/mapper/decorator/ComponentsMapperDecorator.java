@@ -9,7 +9,7 @@ import org.mapstruct.Context;
 
 public abstract class ComponentsMapperDecorator extends AbstractReferenceObjectMapperDecorator<Components, ComponentsDescriptor> implements ComponentsMapper {
 
-    public ComponentsMapperDecorator(ComponentsMapper mapper) {
+    protected ComponentsMapperDecorator(ComponentsMapper mapper) {
         super("components", ComponentsDescriptor.class, mapper);
     }
 

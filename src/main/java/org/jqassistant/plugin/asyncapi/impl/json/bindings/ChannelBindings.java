@@ -16,9 +16,6 @@ import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 @ToString
 public class ChannelBindings extends ReferenceObject {
 
-    public ChannelBindings() {
-    }
-
     @JsonProperty(value = "kafka")
     private KafkaChannelBinding kafka;
 

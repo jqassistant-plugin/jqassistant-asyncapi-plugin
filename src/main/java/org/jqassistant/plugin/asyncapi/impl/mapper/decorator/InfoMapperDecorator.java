@@ -9,7 +9,7 @@ import org.mapstruct.Context;
 
 public abstract class InfoMapperDecorator extends AbstractReferenceObjectMapperDecorator<Info, InfoDescriptor> implements InfoMapper {
 
-    public InfoMapperDecorator(InfoMapper mapper) {
+    protected InfoMapperDecorator(InfoMapper mapper) {
         super("info", InfoDescriptor.class, mapper);
     }
 

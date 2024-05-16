@@ -1,45 +1,20 @@
 // SPDX-License-Identifier: Apache-2.0
 package org.jqassistant.plugin.asyncapi.impl.json.bindings.mqtt;
 
-import javax.xml.validation.Schema;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ServerBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
-/**
- * This object contains information about the server representation in MQTT.
- *
- * @see <a href="https://github.com/asyncapi/bindings/blob/master/mqtt/README.md#server-binding-object">MQTT Channel</a>
- */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class MQTTServerBinding extends ServerBinding {
-    /**
-     * The client identifier.
-     */
+public class MQTTServerBinding extends ReferenceObject {
+
     @JsonProperty("clientId")
     private String clientId;
 
-    /**
-     * Whether to create a persistent connection or not. When false, the connection will be persistent.
-     * This is called clean start in MQTTv5.
-     */
     @JsonProperty("cleanSession")
     private Boolean cleanSession;
 
-    /**
-     * Last Will and Testament configuration. topic, qos, message and retain are properties of this object as shown below.
-     */
     @JsonProperty("lastWill")
     private MQTTServerLastWill lastWill;
 
-    /**
-     * Interval in seconds of the longest period of time the broker and the client can endure without sending a message.
-     */
     @JsonProperty("keepAlive")
     private Integer keepAlive;
 
@@ -56,42 +31,7 @@ public class MQTTServerBinding extends ServerBinding {
     @JsonProperty("maximumPacketSize")
     private Object maximumPacketSize;
 
-    /**
-     * OPTIONAL, defaults to latest. The version of this binding.
-     */
-    @Builder.Default
-    @JsonProperty("bindingVersion")
-    private String bindingVersion = "0.2.0";
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.2.0")
+    private String bindingVersion;
 
-    public static class MQTTServerBindingBuilder {
-    }
-
-    public static MQTTServerBindingBuilder builder() {
-        return new CustomMQTTServerBindingBuilder();
-    }
-
-    public static class CustomMQTTServerBindingBuilder extends MQTTServerBindingBuilder {
-        private Object sessionExpiryInterval;
-        private Object maximumPacketSize;
-
-        public MQTTServerBindingBuilder sessionExpiryInterval(Integer integer) {
-            this.sessionExpiryInterval = integer;
-            return this;
-        }
-
-        public MQTTServerBindingBuilder sessionExpiryInterval(Schema schema) {
-            this.sessionExpiryInterval = schema;
-            return this;
-        }
-
-        public MQTTServerBindingBuilder maximumPacketSize(Integer integer) {
-            this.maximumPacketSize = integer;
-            return this;
-        }
-
-        public MQTTServerBindingBuilder maximumPacketSize(Schema schema) {
-            this.maximumPacketSize = schema;
-            return this;
-        }
-    }
 }

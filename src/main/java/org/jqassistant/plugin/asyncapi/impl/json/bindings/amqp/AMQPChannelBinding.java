@@ -3,7 +3,6 @@ package org.jqassistant.plugin.asyncapi.impl.json.bindings.amqp;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
 
 @Getter
 @Setter

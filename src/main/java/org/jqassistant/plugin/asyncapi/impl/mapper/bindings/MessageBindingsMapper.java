@@ -6,25 +6,22 @@ import java.util.Map;
 
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
-import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBindings;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBindings;
-import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.kafka.KafkaChannelBindingsMapper;
+import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.messageBindings.JmsMessageBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.messageBindings.KafkaMessageBindingsMapper;
-import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.ChannelBindingsMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.MessageBindingsMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.mapstruct.*;
 
-@Mapper(uses = KafkaMessageBindingsMapper.class)
+@Mapper(uses = { KafkaMessageBindingsMapper.class, JmsMessageBindingsMapper.class })
 @DecoratedWith(MessageBindingsMapperDecorator.class)
 public interface MessageBindingsMapper extends ReferenceableObjectMapper<MessageBindings, MessageBindingsDescriptor> {
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "amqp", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "amqp", "jms", "ws", "pulsar"})
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "amqp" })
     @Override
     MessageBindingsDescriptor toDescriptor(MessageBindings bindings, @Context Scanner scanner);
 

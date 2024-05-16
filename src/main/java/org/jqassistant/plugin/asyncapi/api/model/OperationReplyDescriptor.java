@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OperationReply")
-public interface OperationReplyDescriptor extends AsyncApiDescriptor{
+public interface OperationReplyDescriptor extends ReferenceableDescriptor{
 
     @Relation("HAS_ADDRESS")
     OperationReplyAddressDescriptor getAddress();

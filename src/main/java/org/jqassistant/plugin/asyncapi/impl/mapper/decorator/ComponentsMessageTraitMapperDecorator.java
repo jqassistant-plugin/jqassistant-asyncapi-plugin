@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class ComponentsMessageTraitMapperDecorator extends AbstractReferenceObjectMapperDecorator<MessageTrait, MessageTraitDescriptor>
         implements ComponentsMessageTraitMapper {
 
-    public ComponentsMessageTraitMapperDecorator(ComponentsMessageTraitMapper mapper) {
+    protected ComponentsMessageTraitMapperDecorator(ComponentsMessageTraitMapper mapper) {
         super("messageTraits", MessageTraitDescriptor.class, mapper);
     }
 
@@ -21,6 +21,4 @@ public abstract class ComponentsMessageTraitMapperDecorator extends AbstractRefe
     public List<MessageTraitDescriptor> toDescriptors(Map<String, MessageTrait> traits, @Context Scanner scanner) {
         return super.toDescriptors(traits, scanner);
     }
-
-    //TODO: handle varying pathname "traits" and "messageTraits"
 }

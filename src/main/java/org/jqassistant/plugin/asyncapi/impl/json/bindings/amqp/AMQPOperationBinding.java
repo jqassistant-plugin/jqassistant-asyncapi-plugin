@@ -4,15 +4,18 @@ package org.jqassistant.plugin.asyncapi.impl.json.bindings.amqp;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBinding;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
-@Builder
-public class AMQPOperationBinding extends OperationBinding {
+@Getter
+@Setter
+@ToString
+public class AMQPOperationBinding extends ReferenceObject {
 
-    @Builder.Default
-    @JsonProperty("expiration")
-    private Integer expiration = 0;
+    @JsonProperty(value = "expiration", defaultValue = "0")
+    private Integer expiration;
 
     @JsonProperty("userId")
     private String userId;
@@ -38,7 +41,6 @@ public class AMQPOperationBinding extends OperationBinding {
     @JsonProperty("ack")
     private Boolean ack;
 
-    @Builder.Default
-    @JsonProperty("bindingVersion")
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.3.0")
     private String bindingVersion = "0.3.0";
 }

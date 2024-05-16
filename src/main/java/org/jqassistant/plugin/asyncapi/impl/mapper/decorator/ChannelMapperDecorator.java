@@ -12,7 +12,7 @@ import org.mapstruct.Context;
 
 public abstract class ChannelMapperDecorator extends AbstractReferenceObjectMapperDecorator<ChannelObject, ChannelDescriptor> implements ChannelMapper {
 
-    public ChannelMapperDecorator(ChannelMapper mapper) {
+    protected ChannelMapperDecorator(ChannelMapper mapper) {
         super("channel", ChannelDescriptor.class, mapper);
     }
 

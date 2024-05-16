@@ -2,13 +2,12 @@
 package org.jqassistant.plugin.asyncapi.impl.json.model.channel.message;
 
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBindings;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ExternalDocumentation;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.json.model.Tag;
@@ -47,7 +46,7 @@ public class MessageTrait extends ReferenceObject {
     private ExternalDocumentation externalDocs;
 
     @JsonProperty(value = "bindings")
-    private Map<String, MessageBinding> bindings;
+    private MessageBindings bindings;
 
     @JsonProperty(value = "examples")
     private List<MessageExample> examples;

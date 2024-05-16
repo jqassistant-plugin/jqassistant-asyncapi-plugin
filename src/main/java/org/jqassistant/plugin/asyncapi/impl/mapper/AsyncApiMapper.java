@@ -15,8 +15,6 @@ import org.mapstruct.MappingTarget;
 public interface AsyncApiMapper extends DescriptorEnricher<AsyncAPI, ContractDescriptor> {
 
     @Mapping(target = "asyncApiVersion", source = "asyncapi")
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
     @Override
     ContractDescriptor toDescriptor(AsyncAPI asyncApi, @MappingTarget ContractDescriptor contractDescriptor, @Context Scanner scanner);
 }

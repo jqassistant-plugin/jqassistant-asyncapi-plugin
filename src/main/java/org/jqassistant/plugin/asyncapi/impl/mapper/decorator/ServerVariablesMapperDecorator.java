@@ -14,7 +14,7 @@ import org.mapstruct.Context;
 public abstract class ServerVariablesMapperDecorator extends AbstractReferenceObjectMapperDecorator<ServerVariable, ServerVariableDescriptor>
         implements ServerVariablesMapper, TreeNodeMapper {
 
-    public ServerVariablesMapperDecorator(ServerVariablesMapper mapper) {
+    protected ServerVariablesMapperDecorator(ServerVariablesMapper mapper) {
         super("variables", ServerVariableDescriptor.class, mapper);
     }
 

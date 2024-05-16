@@ -5,16 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBinding;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 
 @Getter
 @Setter
 @ToString
-public class KafkaChannelBinding extends ChannelBinding {
-
-    public KafkaChannelBinding() {
-
-    }
+public class KafkaChannelBinding extends ReferenceObject {
 
     @JsonProperty("topic")
     private String topic;

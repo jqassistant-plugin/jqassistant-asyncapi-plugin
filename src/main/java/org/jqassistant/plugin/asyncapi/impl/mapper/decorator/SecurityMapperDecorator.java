@@ -13,7 +13,7 @@ import org.mapstruct.Context;
 public abstract class SecurityMapperDecorator extends AbstractReferenceObjectMapperDecorator<SecurityScheme, SecuritySchemeDescriptor>
         implements SecurityMapper {
 
-    public SecurityMapperDecorator(SecurityMapper mapper) {
+    protected SecurityMapperDecorator(SecurityMapper mapper) {
         super("security", SecuritySchemeDescriptor.class, mapper);
     }
 

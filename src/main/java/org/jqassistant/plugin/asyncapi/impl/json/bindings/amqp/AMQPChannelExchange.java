@@ -23,9 +23,6 @@ public class AMQPChannelExchange {
     @JsonProperty("autoDelete")
     private Boolean autoDelete;
 
-    /**
-     * The virtual host of the exchange. Defaults to /.
-     */
     @JsonProperty(value = "vhost", defaultValue = "/")
     private String vhost;
 }

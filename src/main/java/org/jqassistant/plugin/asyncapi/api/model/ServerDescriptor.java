@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
 
 @Label("Server")
-public interface ServerDescriptor extends AsyncApiDescriptor {
+public interface ServerDescriptor extends ReferenceableDescriptor{
     String getTitle();
 
     void setTitle(String title);
