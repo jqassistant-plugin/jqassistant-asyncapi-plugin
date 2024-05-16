@@ -37,7 +37,7 @@ public interface ChannelDescriptor extends ReferenceableDescriptor  {
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
-    @Relation("HAS_BINDING")
+    @Relation("HAS_BINDINGS")
     ChannelBindingsDescriptor getBindings();
 
     void setBindings(ChannelBindingsDescriptor bindings);

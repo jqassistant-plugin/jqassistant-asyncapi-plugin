@@ -15,6 +15,7 @@ channels:
               enum: [ 'myKey' ]
             schemaIdLocation: 'payload'
             schemaIdPayloadEncoding: '4'
+            schemaLookupStrategy: strategyClass
             bindingVersion: '0.5.0'
           jms:
             headers:
@@ -38,15 +39,16 @@ servers:
         tenant: contoso
         bindingVersion: '0.1.0'
       kafka:
-        schemaRegistryUrl: 'hyttps://my-schema-registry.com'
+        schemaRegistryUrl: 'https://my-schema-registry.com'
         schemaRegistryVendor: 'confluent'
-        bindingVersion: '0.5.0'
+        bindingVersion: '0.7.0'
       jms:
         jmsConnectionFactory: org.apache.activemq.ActiveMQConnectionFactory
         properties:
           - name: disableTimeStampsByDefault
             value: false
         clientID: my-application-1
+        bindingVersion: '0.5.0'
 operations:
   oneOperation:
     bindings:
@@ -61,7 +63,7 @@ operations:
         clientId:
           type: string
           enum: [ 'myClientId' ]
-        bindingVersion: '0.5.0'
+        bindingVersion: '0.5.3'
 components:
   channels:
     oneFantasticChannel:
@@ -80,6 +82,10 @@ components:
             retention.bytes: 1000000000
             delete.retention.ms: 86400000
             max.message.bytes: 1048588
+            confluent.key.schema.validation: true
+            confluent.key.subject.name.strategy: "TopicNameStrategy"
+            confluent.value.schema.validation: false
+            confluent.value.subject.name.strategy: "TopicNameStrategy"
           bindingVersion: '0.4.0'
         jms:
           destination: user-sign-up

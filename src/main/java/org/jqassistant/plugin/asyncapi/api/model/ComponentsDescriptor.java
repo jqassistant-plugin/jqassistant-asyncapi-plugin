@@ -60,7 +60,7 @@ public interface ComponentsDescriptor extends ReferenceableDescriptor {
     @Relation("HAS_MESSAGE_TRAIT")
     List<MessageTraitDescriptor> getMessageTraits();
 
-    @Relation("HAS_CHANNEL_BINDING")
+    @Relation("HAS_CHANNEL_BINDINGS")
     ChannelBindingsDescriptor getChannelBindings();
 
     void setChannelBindings(ChannelBindingsDescriptor channelBindings);

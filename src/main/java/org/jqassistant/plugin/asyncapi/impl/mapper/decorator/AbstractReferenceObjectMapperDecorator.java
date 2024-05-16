@@ -75,9 +75,11 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
             for (T value : values) {
                 enterTreeNode(elementName + "[" + index + "]", scanner);
                 D descriptor = this.basicToDescriptor(value, scanner);
-                descriptor.setPath(scanner.getContext()
-                        .peek(MappingPath.class)
-                        .getPath());
+                if (descriptor != null) {
+                    descriptor.setPath(scanner.getContext()
+                            .peek(MappingPath.class)
+                            .getPath());
+                }
                 leaveTreeNode(scanner);
                 descriptors.add(descriptor);
                 index++;
@@ -104,6 +106,9 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
         return descriptor;
     }
 
+     /**
+      * retrieves an ReferenceDescriptor with the given reference
+      **/
     private D resolveReference(String reference, Scanner scanner) {
         ReferenceDescriptor referenceDescriptor = scanner.getContext()
                 .getStore()

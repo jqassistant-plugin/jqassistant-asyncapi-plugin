@@ -21,6 +21,6 @@ public enum KafkaChannelTopicCleanupPolicy {
 
     @Override
     public String toString() {
-        return valueOf(type.toUpperCase()).toString();
+        return type.toUpperCase();
     }
 }

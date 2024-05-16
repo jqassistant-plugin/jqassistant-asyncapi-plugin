@@ -37,7 +37,7 @@ public interface OperationDescriptor extends ReferenceableDescriptor {
     List<ChannelDescriptor> getChannel();
     //only ReferenceObject
 
-    @Relation("HAS_BINDING")
+    @Relation("HAS_BINDINGS")
     OperationBindingsDescriptor getBindings();
 
     void setBindings(OperationBindingsDescriptor bindings);

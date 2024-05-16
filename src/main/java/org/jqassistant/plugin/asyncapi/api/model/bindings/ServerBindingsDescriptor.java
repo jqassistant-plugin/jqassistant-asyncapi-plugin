@@ -11,17 +11,17 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaServerBindi
 @Label("Server_Binding")
 public interface ServerBindingsDescriptor extends ReferenceableDescriptor {
 
-    @Relation("HAS_AMQP_SERVER")
+    @Relation("HAS_AMQP_BINDING")
     AmqpServerBindingsDescriptor getAmqp();
 
     void setAmqp(AmqpServerBindingsDescriptor amqp);
 
-    @Relation("HAS_KAFKA_SERVER")
+    @Relation("HAS_KAFKA_BINDING")
     KafkaServerBindingsDescriptor getKafka();
 
     void setKafka(KafkaServerBindingsDescriptor kafka);
 
-    @Relation("HAS_JMS_SERVER")
+    @Relation("HAS_JMS_BINDING")
     JmsServerBindingsDescriptor getJms();
 
     void setJms(JmsServerBindingsDescriptor jms);

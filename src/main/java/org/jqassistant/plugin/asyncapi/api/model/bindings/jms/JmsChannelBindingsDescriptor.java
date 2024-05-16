@@ -4,7 +4,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("jms_Channel")
+@Label("Jms_Channel")
 public interface JmsChannelBindingsDescriptor extends ReferenceableDescriptor {
 
     String getDestination();

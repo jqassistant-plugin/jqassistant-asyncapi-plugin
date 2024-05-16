@@ -4,7 +4,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("jms_Server")
+@Label("Jms_Server")
 public interface JmsServerBindingsDescriptor extends ReferenceableDescriptor {
 
     String getJmsConnectionFactory();

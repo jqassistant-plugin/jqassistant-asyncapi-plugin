@@ -55,7 +55,7 @@ public interface MessageDescriptor extends ReferenceableDescriptor {
 
     void setExternalDocumentation(ExternalDocsDescriptor externalDocumentation);
 
-    @Relation("HAS_BINDING")
+    @Relation("HAS_BINDINGS")
     MessageBindingsDescriptor getBindings();
 
     void setBindings(MessageBindingsDescriptor bindings);
