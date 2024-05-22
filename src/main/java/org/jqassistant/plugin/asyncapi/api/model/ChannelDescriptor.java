@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 
 @Label("Channel")
-public interface ChannelDescriptor extends ReferenceableDescriptor  {
+public interface ChannelDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getAddress();
 
@@ -29,23 +29,23 @@ public interface ChannelDescriptor extends ReferenceableDescriptor  {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("HAS_PARAMETERS")
+    @Relation("INCLUDES_PARAMETERS")
     List<ParametersDescriptor> getParameters();
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
-    @Relation("HAS_BINDINGS")
+    @Relation("DEFINES_BINDINGS")
     ChannelBindingsDescriptor getBindings();
 
     void setBindings(ChannelBindingsDescriptor bindings);
 
-    @Relation("HAS_MESSAGE")
+    @Relation("SUPPORTS_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("HAS_SERVER")
+    @Relation("IN_SERVER")
     List<ServerDescriptor> getServers();
 
     void setServers(List<ServerDescriptor> servers);

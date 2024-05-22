@@ -3,7 +3,7 @@ package org.jqassistant.plugin.asyncapi.api.model;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
 @Label("ExternalDocumentation")
-public interface ExternalDocsDescriptor extends ReferenceableDescriptor {
+public interface ExternalDocsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getDescription();
 

@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
 @Label("SecurityScheme")
-public interface SecuritySchemeDescriptor extends ReferenceableDescriptor {
+public interface SecuritySchemeDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getType();
 
@@ -43,12 +43,12 @@ public interface SecuritySchemeDescriptor extends ReferenceableDescriptor {
 
     void setScopes(String scopes);
 
-    @Relation("HAS_FLOWS")
+    @Relation("SUPPORTS_FLOWS")
     OAuthFlowsDescriptor getOAuthFlows();
 
     void setOAuthFlows(OAuthFlowsDescriptor flows);
 
-    @Relation("HAS_BINDING")
+    @Relation("DEFINES_BINDING")
     List<MessageBindingsDescriptor> setBindings();
 
     void getBindings(List<MessageBindingsDescriptor> bindings);

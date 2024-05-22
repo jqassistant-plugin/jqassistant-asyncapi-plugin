@@ -11,42 +11,42 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescr
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
 
 @Label("Components")
-public interface ComponentsDescriptor extends ReferenceableDescriptor {
+public interface ComponentsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     @Relation("DEFINES_SCHEMA")
     SchemasDescriptor getSchemas();
 
-    @Relation("HAS_SERVERS")
+    @Relation("DEFINES_SERVERS")
     List<ServerDescriptor> getServers();
 
-    @Relation("HAS_CHANNEL")
+    @Relation("DEFINES_CHANNEL")
     List<ChannelDescriptor> getChannels();
 
-    @Relation("HAS_OPERATION")
+    @Relation("DEFINES_OPERATION")
     List<OperationDescriptor> getOperations();
 
-    @Relation("HAS_MESSAGE")
+    @Relation("DEFINES_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("HAS_SECURITY_SCHEME")
+    @Relation("DEFINES_SECURITY_SCHEME")
     List<SecuritySchemeDescriptor> getSecuritySchemes();
 
-    @Relation("HAS_SERVER_VARIABLE")
+    @Relation("DEFINES_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getServerVariables();
 
-    @Relation("HAS_PARAMETERS")
+    @Relation("DEFINES_PARAMETERS")
     List<ParametersDescriptor> getParameters();
 
-    @Relation("HAS_CORRELATION_ID")
+    @Relation("DEFINES_CORRELATION_ID")
     List<CorrelationIDDescriptor> getCorrelationIds();
 
-    @Relation("HAS_REPLY")
+    @Relation("DEFINES_REPLY")
     List<OperationReplyDescriptor> getOperationReplies();
 
-    @Relation("HAS_REPLY_ADDRESS")
+    @Relation("DEFINES_REPLY_ADDRESS")
     List<OperationReplyAddressDescriptor> getOperationReplyAddresses();
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
@@ -54,24 +54,24 @@ public interface ComponentsDescriptor extends ReferenceableDescriptor {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("HAS_OPERATION_TRAIT")
+    @Relation("DEFINES_OPERATION_TRAIT")
     List<OperationTraitDescriptor> getOperationTraits();
 
-    @Relation("HAS_MESSAGE_TRAIT")
+    @Relation("DEFINES_MESSAGE_TRAIT")
     List<MessageTraitDescriptor> getMessageTraits();
 
-    @Relation("HAS_CHANNEL_BINDINGS")
+    @Relation("DEFINES_CHANNEL_BINDINGS")
     ChannelBindingsDescriptor getChannelBindings();
 
     void setChannelBindings(ChannelBindingsDescriptor channelBindings);
 
-    @Relation("HAS_SERVER_BINDINGS")
+    @Relation("DEFINES_SERVER_BINDINGS")
     ServerBindingsDescriptor getServerBindings();
 
-    @Relation("HAS_OPERATION_BINDINGS")
+    @Relation("DEFINES_OPERATION_BINDINGS")
     OperationBindingsDescriptor getOperationBindings();
 
-    @Relation("HAS_MESSAGE_BINDINGS")
+    @Relation("DEFINES_MESSAGE_BINDINGS")
     MessageBindingsDescriptor getMessageBindings();
 
 }

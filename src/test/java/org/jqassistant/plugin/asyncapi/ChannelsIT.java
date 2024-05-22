@@ -35,7 +35,7 @@ class ChannelsIT extends AbstractPluginIT {
         assertThat(contract).isNotNull();
 
         //simple attributes
-        Query.Result<Query.Result.CompositeRowObject> resultC = store.executeQuery("MATCH (:Components)-[:HAS_CHANNEL]->(channel:Channel {name:'secondChannel'}) return channel");
+        Query.Result<Query.Result.CompositeRowObject> resultC = store.executeQuery("MATCH (:Components)-[:DEFINES_CHANNEL]->(channel:Channel {name:'secondChannel'}) return channel");
         assertThat(resultC.hasResult()).isTrue();
         ChannelDescriptor channel = resultC.getSingleResult()
                 .get("channel", ChannelDescriptor.class);
@@ -46,17 +46,17 @@ class ChannelsIT extends AbstractPluginIT {
 
         //messages in channels
         List<MessageDescriptor> messages =
-                query("MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'secondChannel'})-[:HAS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:SUPPORTS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
         assertThat(messages.size()).isEqualTo(2);
 
         //parameters in channels
         List<ParametersDescriptor> parameters =
-                query("MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'secondChannel'})-[:HAS_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:INCLUDES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
 
         //parameters in channels
         List<ServerDescriptor> servers =
-                query("MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'secondChannel'})-[:HAS_SERVER]->(servers:Server) return servers").getColumn("servers");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:IN_SERVER]->(servers:Server) return servers").getColumn("servers");
         assertThat(servers.size()).isEqualTo(2);
 
         store.commitTransaction();

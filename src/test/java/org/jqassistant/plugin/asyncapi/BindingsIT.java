@@ -33,12 +33,12 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in components
         Query.Result<Query.Result.CompositeRowObject> channelBindings = store.executeQuery(
-                "MATCH (:Components)-[:HAS_CHANNEL]->(channel:Channel {name:'oneFantasticChannel'})-[HAS_BINDINGS]-> (bindings:Channel_Bindings) return bindings");
+                "MATCH (:Components)-[:DEFINES_CHANNEL]->(channel:Channel {name:'oneFantasticChannel'})-[DEFINES_BINDINGS]-> (bindings:Channel_Bindings) return bindings");
         assertThat(channelBindings.hasResult()).isTrue();
 
         //kafka
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[HAS_BINDINGS]-> (:Channel_Bindings)-[HAS_KAFKA_BINDING]->(kafka:Kafka_Channel) return kafka");
+                "MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[DEFINES_BINDINGS]-> (:Channel_Bindings)-[DEFINES_KAFKA_BINDING]->(kafka:Kafka_Channel) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaChannelBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaChannelBindingsDescriptor.class);
@@ -47,7 +47,7 @@ class BindingsIT extends AbstractPluginIT {
         assertThat(kafka.getReplicas()).isEqualTo(3);
         assertThat(kafka.getBindingVersion()).isEqualTo("0.4.0");
         Query.Result<Query.Result.CompositeRowObject> topicConfiguration = store.executeQuery(
-                "MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[HAS_BINDINGS]-> (:Channel_Bindings)-[HAS_KAFKA_BINDING]->(:Kafka_Channel)-[HAS_CONFIGURATION]->(topicConfig:Topic_Configuration) return topicConfig");
+                "MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[DEFINES_BINDINGS]-> (:Channel_Bindings)-[DEFINES_KAFKA_BINDING]->(:Kafka_Channel)-[DEFINES_CONFIGURATION]->(topicConfig:Topic_Configuration) return topicConfig");
         assertThat(topicConfiguration.hasResult()).isTrue();
         TopicConfigurationDescriptor topigConfig = topicConfiguration.getSingleResult()
                 .get("topicConfig", TopicConfigurationDescriptor.class);
@@ -66,7 +66,7 @@ class BindingsIT extends AbstractPluginIT {
         assertThat(topigConfig.getConfluentValueSchemaValidation()).isFalse();
         //websockets
         Query.Result<Query.Result.CompositeRowObject> wsBinding = store.executeQuery(
-                "MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[HAS_BINDINGS]-> (:Channel_Bindings)-[HAS_WEBSOCKETS_BINDING]->(ws:Websockets_Channel) return ws");
+                "MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[DEFINES_BINDINGS]-> (:Channel_Bindings)-[DEFINES_WEBSOCKETS_BINDING]->(ws:Websockets_Channel) return ws");
         assertThat(wsBinding.hasResult()).isTrue();
         WsChannelBindingsDescriptor ws = wsBinding.getSingleResult()
                 .get("ws", WsChannelBindingsDescriptor.class);
@@ -76,7 +76,7 @@ class BindingsIT extends AbstractPluginIT {
 
         //jms
         Query.Result<Query.Result.CompositeRowObject> jmsBinding = store.executeQuery(
-                "MATCH (:Components)-[:HAS_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[HAS_BINDINGS]-> (:Channel_Bindings)-[HAS_JMS_BINDING]->(jms:Jms_Channel) return jms");
+                "MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'oneFantasticChannel'})-[DEFINES_BINDINGS]-> (:Channel_Bindings)-[DEFINES_JMS_BINDING]->(jms:Jms_Channel) return jms");
         assertThat(jmsBinding.hasResult()).isTrue();
         JmsChannelBindingsDescriptor jms = jmsBinding.getSingleResult()
                 .get("jms", JmsChannelBindingsDescriptor.class);
@@ -91,18 +91,18 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in channel
         Query.Result<Query.Result.CompositeRowObject> messageBindings = store.executeQuery(
-                "MATCH (:Message {name:'userSignupMessage'})-[HAS_BINDING]->(bindings:Message_Binding) return bindings");
+                "MATCH (:Message {name:'userSignupMessage'})-[DEFINES_BINDING]->(bindings:Message_Binding) return bindings");
         assertThat(messageBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> jmsBinding = store.executeQuery(
-                "MATCH (:Message {name:'userSignupMessage'})-[HAS_BINDING]->(:Message_Binding)-[HAS_JMS_BINDING]->(jms:Jms_Message) return jms");
+                "MATCH (:Message {name:'userSignupMessage'})-[DEFINES_BINDING]->(:Message_Binding)-[DEFINES_JMS_BINDING]->(jms:Jms_Message) return jms");
         assertThat(jmsBinding.hasResult()).isTrue();
         JmsMessageBindingsDescriptor jms = jmsBinding.getSingleResult()
                 .get("jms", JmsMessageBindingsDescriptor.class);
         assertThat(jms.getBindingVersion()).isEqualTo("0.3.2");
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Message {name:'userSignupMessage'})-[HAS_BINDING]->(:Message_Binding)-[HAS_KAFKA_BINDING]->(kafka:Kafka_Message) return kafka");
+                "MATCH (:Message {name:'userSignupMessage'})-[DEFINES_BINDING]->(:Message_Binding)-[DEFINES_KAFKA_BINDING]->(kafka:Kafka_Message) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaMessageBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaMessageBindingsDescriptor.class);
@@ -117,11 +117,11 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in server
         Query.Result<Query.Result.CompositeRowObject> serverBindings = store.executeQuery(
-                "MATCH (:Server {name:'oneServer'})-[HAS_BINDING]->(bindings:Server_Binding) return bindings");
+                "MATCH (:Server {name:'oneServer'})-[DEFINES_BINDING]->(bindings:Server_Binding) return bindings");
         assertThat(serverBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> jmsBinding = store.executeQuery(
-                "MATCH (:Server {name:'oneServer'})-[HAS_BINDING]->(:Server_Binding)-[HAS_JMS_BINDING]->(jms:Jms_Server) return jms");
+                "MATCH (:Server {name:'oneServer'})-[DEFINES_BINDING]->(:Server_Binding)-[DEFINES_JMS_BINDING]->(jms:Jms_Server) return jms");
         assertThat(jmsBinding.hasResult()).isTrue();
         JmsServerBindingsDescriptor jms = jmsBinding.getSingleResult()
                 .get("jms", JmsServerBindingsDescriptor.class);
@@ -130,7 +130,7 @@ class BindingsIT extends AbstractPluginIT {
         assertThat(jms.getClientId()).isEqualTo("my-application-1");
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Server {name:'oneServer'})-[HAS_BINDING]->(:Server_Binding)-[HAS_KAFKA_BINDING]->(kafka:Kafka_Server) return kafka");
+                "MATCH (:Server {name:'oneServer'})-[DEFINES_BINDING]->(:Server_Binding)-[DEFINES_KAFKA_BINDING]->(kafka:Kafka_Server) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaServerBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaServerBindingsDescriptor.class);
@@ -145,11 +145,11 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in operation
         Query.Result<Query.Result.CompositeRowObject> operationBindings = store.executeQuery(
-                "MATCH (:Operation {name:'oneOperation'})-[HAS_BINDING]->(bindings:Operation_Binding) return bindings");
+                "MATCH (:Operation {name:'oneOperation'})-[DEFINES_BINDING]->(bindings:Operation_Binding) return bindings");
         assertThat(operationBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Operation {name:'oneOperation'})-[HAS_BINDING]->(:Operation_Binding)-[HAS_KAFKA_BINDING]->(kafka:Kafka_Operation) return kafka");
+                "MATCH (:Operation {name:'oneOperation'})-[DEFINES_BINDING]->(:Operation_Binding)-[DEFINES_KAFKA_BINDING]->(kafka:Kafka_Operation) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaOperationBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaOperationBindingsDescriptor.class);

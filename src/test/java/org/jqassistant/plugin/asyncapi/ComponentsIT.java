@@ -52,22 +52,22 @@ class ComponentsIT extends AbstractPluginIT {
 
         //channels
         List<ChannelDescriptor> channels =
-                query("MATCH (:Components)-[:HAS_CHANNEL]->(channels:Channel) return channels").getColumn("channels");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(channels:Channel) return channels").getColumn("channels");
         assertThat(channels).isNotNull();
         assertThat(channels).hasSize(1);
 
         //messages
         List<MessageDescriptor> messages =
-                query("MATCH (:Components)-[:HAS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
+                query("MATCH (:Components)-[:DEFINES_MESSAGE]->(messages:Message) return messages").getColumn("messages");
         assertThat(messages.size()).isEqualTo(2);
 
         //parameters
         List<ParametersDescriptor> parameters =
-                query("MATCH (:Components)-[:HAS_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
+                query("MATCH (:Components)-[:DEFINES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
 
         //externalDocs
-        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Components)-[:HAS_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
+        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Components)-[:REFERS_TO_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
         assertThat(result.hasResult()).isTrue();
         ExternalDocsDescriptor externalDoc = result.getSingleResult()
                 .get("externalDocs", ExternalDocsDescriptor.class);
@@ -75,12 +75,12 @@ class ComponentsIT extends AbstractPluginIT {
 
         //operation traits
         List<OperationTraitDescriptor> operationTraits =
-                query("MATCH (:Components)-[:HAS_OPERATION_TRAIT]->(operationTraits:OperationTrait) return operationTraits").getColumn("operationTraits");
+                query("MATCH (:Components)-[:DEFINES_OPERATION_TRAIT]->(operationTraits:OperationTrait) return operationTraits").getColumn("operationTraits");
         assertThat(operationTraits.size()).isEqualTo(1);
 
         //message traits
         List<OperationTraitDescriptor> messageTraits =
-                query("MATCH (:Components)-[:HAS_MESSAGE_TRAIT]->(messageTraits:MessageTrait) return messageTraits").getColumn("messageTraits");
+                query("MATCH (:Components)-[:DEFINES_MESSAGE_TRAIT]->(messageTraits:MessageTrait) return messageTraits").getColumn("messageTraits");
         assertThat(messageTraits.size()).isEqualTo(1);
         store.commitTransaction();
         }

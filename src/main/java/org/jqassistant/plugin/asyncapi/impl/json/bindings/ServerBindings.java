@@ -22,9 +22,6 @@ public class ServerBindings extends ReferenceObject {
     @JsonProperty(value = "kafka")
     private KafkaServerBinding kafka;
 
-    @JsonProperty(value = "amqp")
-    private AMQPServerBinding amqp;
-
     @JsonProperty(value = "jms")
     private JMSServerBinding jms;
 

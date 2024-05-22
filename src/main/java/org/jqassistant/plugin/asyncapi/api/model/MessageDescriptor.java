@@ -8,11 +8,11 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
 @Label("Message")
-public interface MessageDescriptor extends ReferenceableDescriptor {
+public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
   /*  @Relation("USES_HEADERS")
     Object getHeaders();
-    void setHeaders(Object headers); ein ParentObject für Schema und Multi Format Schema?
+    void setHeaders(Object headers); ein ParentObject fuer Schema und Multi Format Schema?
     auch referenceable
 
 
@@ -50,17 +50,17 @@ public interface MessageDescriptor extends ReferenceableDescriptor {
 
     void setTags(List<TagDescriptor> tags);
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocumentation();
 
     void setExternalDocumentation(ExternalDocsDescriptor externalDocumentation);
 
-    @Relation("HAS_BINDINGS")
+    @Relation("DEFINES_BINDINGS")
     MessageBindingsDescriptor getBindings();
 
     void setBindings(MessageBindingsDescriptor bindings);
 
-    @Relation("HAS_TRAIT")
+    @Relation("DEFINES_APPLICABLE_TRAIT")
     List<MessageTraitDescriptor> getTraits();
 
     void setTraits(List<MessageTraitDescriptor> traits);

@@ -10,12 +10,12 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaOperationBi
 @Label("Operation_Binding")
 public interface OperationBindingsDescriptor extends ReferenceableDescriptor {
 
-    @Relation("HAS_AMQP_BINDING")
+    @Relation("DEFINES_AMQP_BINDING")
     AmqpOperationBindingsDescriptor getAmqp();
 
     void setAmqp(AmqpOperationBindingsDescriptor amqp);
 
-    @Relation("HAS_KAFKA_BINDING")
+    @Relation("DEFINES_KAFKA_BINDING")
     KafkaOperationBindingsDescriptor getKafka();
 
     void setKafka(KafkaOperationBindingsDescriptor kafka);

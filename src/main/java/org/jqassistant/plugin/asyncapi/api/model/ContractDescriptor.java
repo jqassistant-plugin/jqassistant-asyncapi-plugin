@@ -7,7 +7,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("Contract")
-public interface ContractDescriptor extends Descriptor {
+public interface ContractDescriptor extends AsyncApiDescriptor, Descriptor {
     String getAsyncApiVersion();
 
     void setAsyncApiVersion(String asyncApiVersion);
@@ -20,23 +20,23 @@ public interface ContractDescriptor extends Descriptor {
 
     void setDefaultContentType(String defaultContentType);
 
-    @Relation("HAS_INFO")
+    @Relation("DEFINES_INFO")
     InfoDescriptor getInfo();
 
     void setInfo(InfoDescriptor info);
 
-    @Relation("HAS_COMPONENTS")
+    @Relation("DEFINES_COMPONENTS")
     ComponentsDescriptor getComponents();
 
     void setComponents(ComponentsDescriptor components);
 
-    @Relation("HAS_CHANNEL")
+    @Relation("DEFINES_CHANNEL")
     List<ChannelDescriptor> getChannels();
 
-    @Relation("USES_OPERATION")
+    @Relation("DEFINES_OPERATION")
     List<OperationDescriptor> getOperations();
 
-    @Relation("HAS_SERVER")
+    @Relation("DEFINES_SERVER")
     List<ServerDescriptor> getServers();
 
 }

@@ -13,22 +13,22 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.websockets.WsChannelBi
 public interface ChannelBindingsDescriptor
         extends ReferenceableDescriptor { //unter Annahme, dass bindings je protocol type nur einmal ja channel deklariert werden
 
-    @Relation("HAS_KAFKA_BINDING")
+    @Relation("DEFINES_KAFKA_BINDING")
     KafkaChannelBindingsDescriptor getKafka();
 
     void setKafka(KafkaChannelBindingsDescriptor bindings);
 
-    @Relation("HAS_AMQP_BINDING")
+    @Relation("DEFINES_AMQP_BINDING")
     AmqpChannelBindingsDescriptor getAmqp();
 
     void setAmqp(AmqpChannelBindingsDescriptor amqp);
 
-    @Relation("HAS_WEBSOCKETS_BINDING")
+    @Relation("DEFINES_WEBSOCKETS_BINDING")
     WsChannelBindingsDescriptor getWs();
 
     void setWs(WsChannelBindingsDescriptor ws);
 
-    @Relation("HAS_JMS_BINDING")
+    @Relation("DEFINES_JMS_BINDING")
     JmsChannelBindingsDescriptor getJms();
 
     void setJms(JmsChannelBindingsDescriptor jms);

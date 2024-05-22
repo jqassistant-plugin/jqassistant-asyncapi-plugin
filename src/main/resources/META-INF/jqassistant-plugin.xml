@@ -40,7 +40,6 @@
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpExchangeDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpMessageBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpOperationBindingsDescriptor</class>
-        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpServerBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsServerBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsChannelBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsMessageBindingsDescriptor</class>

@@ -4,7 +4,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OAuthFlow")
-public interface OAuthFlowsDescriptor extends ReferenceableDescriptor {
+public interface OAuthFlowsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     @Relation("IMPLICIT_FLOW")
     OAuthFlowDescriptor getImplicitFlow();

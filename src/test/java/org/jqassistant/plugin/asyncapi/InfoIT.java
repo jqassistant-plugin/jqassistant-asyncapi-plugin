@@ -40,7 +40,7 @@ class InfoIT extends AbstractPluginIT {
     @Test
     void simpleAttributes() {
         store.beginTransaction();
-        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Contract)-[:HAS_INFO]->(info:Info) RETURN info");
+        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Contract)-[:DEFINES_INFO]->(info:Info) RETURN info");
         assertThat(result.hasResult()).isTrue();
         InfoDescriptor info = result.getSingleResult()
                 .get("info", InfoDescriptor.class);
@@ -61,7 +61,7 @@ class InfoIT extends AbstractPluginIT {
     @Test
     void infoTags() {
         store.beginTransaction();
-        List<TagDescriptor> tags = query("MATCH (:Contract)-[:HAS_INFO]->(info:Info)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
+        List<TagDescriptor> tags = query("MATCH (:Contract)-[:DEFINES_INFO]->(info:Info)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags).hasSize(3);
         for (TagDescriptor tag : tags) {
             if ((tag.getName() != null) && tag.getName()
@@ -81,7 +81,7 @@ class InfoIT extends AbstractPluginIT {
     void externalDocsOfInfo() {
         store.beginTransaction();
         Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery(
-                "MATCH (:Info)-[:HAS_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
+                "MATCH (:Info)-[:REFERS_TO_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
         assertThat(result.hasResult()).isTrue();
         ExternalDocsDescriptor externalDoc = result.getSingleResult()
                 .get("externalDocs", ExternalDocsDescriptor.class);

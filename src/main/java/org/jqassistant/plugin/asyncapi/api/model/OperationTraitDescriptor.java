@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("OperationTrait")
-public interface OperationTraitDescriptor extends ReferenceableDescriptor {
+public interface OperationTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getTitle();
 
@@ -29,12 +29,12 @@ public interface OperationTraitDescriptor extends ReferenceableDescriptor {
 
     void setTags(List<TagDescriptor> tags);
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
-    @Relation("HAS_TAG")
+    @Relation("HAS_SECURITY_SCHEME")
     SecuritySchemeDescriptor getSecurity();
 
     void setSecurity(SecuritySchemeDescriptor security);

@@ -20,8 +20,7 @@ public interface ServerBindingsMapper extends ReferenceableObjectMapper<ServerBi
 
     @Mapping(target = "name", ignore = true)
     @Mapping(target = "path", ignore = true)
-    @Mapping(target = "amqp", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "amqp", "pulsar"})
+    @BeanMapping(ignoreUnmappedSourceProperties = {"reference",  "pulsar"})
     @Override
     ServerBindingsDescriptor toDescriptor(ServerBindings binding, @Context Scanner scanner);
 

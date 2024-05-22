@@ -8,19 +8,20 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.MessageTraitDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.channel.message.MessageTrait;
+import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.MessageBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.MessageTraitMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageExampleMapper.class }, config = DescriptorMapperConfig.class)
+@Mapper(uses = { CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageExampleMapper.class, MessageBindingsMapper.class }, config = DescriptorMapperConfig.class)
 @DecoratedWith(MessageTraitMapperDecorator.class)
 public interface MessageTraitMapper extends ReferenceableObjectMapper<MessageTrait, MessageTraitDescriptor> {
 
     MessageTraitMapper INSTANCE = Mappers.getMapper(MessageTraitMapper.class);
 
     @Mapping(target = "path", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "bindings", "headers" })
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "headers" })
     @Override
     MessageTraitDescriptor toDescriptor(MessageTrait message, @Context Scanner scanner);
 

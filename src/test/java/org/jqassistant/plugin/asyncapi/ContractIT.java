@@ -13,6 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ContractIT extends AbstractPluginIT {
 
     @Test
+    @TestStore(type = TestStore.Type.REMOTE)
     void contractTest() {
         File file = new File(getClassesDirectory(ContractIT.class), "testAsyncApi/contractTest.yml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/contractTest.yml", AsyncApiScope.CONTRACT);

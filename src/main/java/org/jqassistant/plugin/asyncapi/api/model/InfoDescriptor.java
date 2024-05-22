@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 @Label("Info")
-public interface InfoDescriptor extends ReferenceableDescriptor {
+public interface InfoDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getTitle();
 
@@ -37,7 +37,7 @@ public interface InfoDescriptor extends ReferenceableDescriptor {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);

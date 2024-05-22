@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
 
 @Label("Server")
-public interface ServerDescriptor extends ReferenceableDescriptor{
+public interface ServerDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
     String getTitle();
 
     void setTitle(String title);
@@ -37,15 +37,15 @@ public interface ServerDescriptor extends ReferenceableDescriptor{
 
     void setPathName(String pathName);
 
-    @Relation("HAS_SERVER_VARIABLE")
+    @Relation("DEFINES_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getVariables();
 
-    @Relation("HAS_SECURITY_SCHEME")
+    @Relation("DEFINES_SECURITY_SCHEME")
     SecuritySchemeDescriptor getSecurity();
 
     void setSecurity(SecuritySchemeDescriptor security);
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
@@ -53,7 +53,7 @@ public interface ServerDescriptor extends ReferenceableDescriptor{
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("HAS_SERVER_BINDING")
+    @Relation("DEFINES_SERVER_BINDING")
     ServerBindingsDescriptor getBindings();
 
     void setBindings(ServerBindingsDescriptor bindings);

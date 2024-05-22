@@ -8,7 +8,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
 
 @Label("Operation")
-public interface OperationDescriptor extends ReferenceableDescriptor {
+public interface OperationDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
     String getTitle();
 
     void setTitle(String title);
@@ -25,7 +25,7 @@ public interface OperationDescriptor extends ReferenceableDescriptor {
 
     void setAction(String action);
 
-    @Relation("HAS_EXTERNAL_DOCUMENTATION")
+    @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();
 
     void setExternalDocs(ExternalDocsDescriptor externalDocs);
@@ -33,27 +33,27 @@ public interface OperationDescriptor extends ReferenceableDescriptor {
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("DEFINES_CHANNEL")
+    @Relation("ON_CHANNEL")
     List<ChannelDescriptor> getChannel();
     //only ReferenceObject
 
-    @Relation("HAS_BINDINGS")
+    @Relation("SUPPORTS_BINDINGS")
     OperationBindingsDescriptor getBindings();
 
     void setBindings(OperationBindingsDescriptor bindings);
 
-    @Relation("USES_MESSAGE")
+    @Relation("USING_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("HAS_OPERATION_TRAIT")
+    @Relation("DEFINES_APPLICABLE_TRAIT")
     List<OperationTraitDescriptor> getOperationTraits();
 
-    @Relation("USES_REPLY")
+    @Relation("USING_REPLY")
     OperationReplyDescriptor getOperationReply();
 
     void setOperationReply(OperationReplyDescriptor operationReply);
 
-    @Relation("HAS_SECURITY_SCHEME")
+    @Relation("USING_SECURITY_SCHEME")
     SecuritySchemeDescriptor getSecurityScheme();
 
     void setSecurityScheme(SecuritySchemeDescriptor scheme);
