@@ -1,4 +1,7 @@
 asyncapi: 3.0.0
+channels:
+  waterlooChannel:
+    description: This channel should be referenced.
 operations:
   receive_WaterlooOperation:
     action: receive

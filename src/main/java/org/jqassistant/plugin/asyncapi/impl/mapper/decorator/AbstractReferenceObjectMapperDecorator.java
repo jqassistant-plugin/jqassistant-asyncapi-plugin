@@ -1,18 +1,18 @@
 package org.jqassistant.plugin.asyncapi.impl.mapper.decorator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
-
+import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public abstract class AbstractReferenceObjectMapperDecorator<T extends ReferenceObject, D extends ReferenceableDescriptor>
         implements ReferenceableObjectMapper<T, D>, TreeNodeMapper {
@@ -102,13 +102,16 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
             MappingPath mappingPath = scanner.getContext()
                     .peek(MappingPath.class);
             descriptor.setPath(mappingPath.getPath());
+            ContractDescriptor contract = scanner.getContext().peek(ContractDescriptor.class);
+            contract.getAll().add(descriptor);
         }
+
         return descriptor;
     }
 
-     /**
-      * retrieves an ReferenceDescriptor with the given reference
-      **/
+    /**
+     * retrieves an ReferenceDescriptor with the given reference
+     **/
     private D resolveReference(String reference, Scanner scanner) {
         ReferenceDescriptor referenceDescriptor = scanner.getContext()
                 .getStore()

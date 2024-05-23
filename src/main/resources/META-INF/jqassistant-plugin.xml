@@ -57,4 +57,9 @@
     <scanner>
         <class>org.jqassistant.plugin.asyncapi.impl.AsyncAPIScannerPlugin</class>
     </scanner>
+
+    <rules>
+        <resource>asyncapi.xml</resource>
+    </rules>
+
 </jqassistant-plugin>

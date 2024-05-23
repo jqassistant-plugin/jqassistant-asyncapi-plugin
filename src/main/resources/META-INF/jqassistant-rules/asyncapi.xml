@@ -1,0 +1,23 @@
+<jqassistant-rules xmlns="http://schema.jqassistant.org/rule/v1.10"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 https://schema.jqassistant.org/plugin/jqassistant-rule-v1.10.xsd">
+
+
+    <concept id="asyncapi:References">
+        <description>Merges ReferenceDescriptors to their referenced target descriptor.
+        </description>
+        <cypher><![CDATA[
+                MATCH
+                    (contract:AsyncAPI:Contract),
+                    (contract)-[:DEFINES_REFERENCEABLE]->(reference:AsyncAPI:Reference),
+                    (contract)-[:DEFINES_REFERENCEABLE]->(target:AsyncAPI{path:reference.reference})
+                MERGE
+                    (reference)-[:REFERENCES]->(target)
+                RETURN
+                    count (*) as References
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+</jqassistant-rules>

@@ -39,4 +39,9 @@ public interface ContractDescriptor extends AsyncApiDescriptor, Descriptor {
     @Relation("DEFINES_SERVER")
     List<ServerDescriptor> getServers();
 
+    @Relation("DEFINES_REFERENCEABLE")
+    List<ReferenceableDescriptor> getAll();
+
+
+
 }
