@@ -45,7 +45,7 @@ public interface OperationDescriptor extends ReferenceableDescriptor, AsyncApiDe
     @Relation("USING_MESSAGE")
     List<MessageDescriptor> getMessages();
 
-    @Relation("DEFINES_APPLICABLE_TRAIT")
+    @Relation("DEFINES_TRAIT")
     List<OperationTraitDescriptor> getOperationTraits();
 
     @Relation("USING_REPLY")

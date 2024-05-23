@@ -60,7 +60,7 @@ public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDesc
 
     void setBindings(MessageBindingsDescriptor bindings);
 
-    @Relation("DEFINES_APPLICABLE_TRAIT")
+    @Relation("DEFINES_TRAIT")
     List<MessageTraitDescriptor> getTraits();
 
     void setTraits(List<MessageTraitDescriptor> traits);
