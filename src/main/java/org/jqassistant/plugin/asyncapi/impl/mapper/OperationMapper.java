@@ -22,11 +22,11 @@ public interface OperationMapper extends ReferenceableObjectMapper<Operation, Op
     OperationMapper INSTANCE = Mappers.getMapper(OperationMapper.class);
 
     @Mapping(target = "operationTraits", source = "traits")
-    @Mapping(target = "operationReply", ignore = true)
+    @Mapping(target = "operationReply", source="reply")
     @Mapping(target = "securityScheme", ignore = true)
     @Mapping(target = "path", ignore = true)
     @Mapping(target = "name", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "security",  "reply", "messages" })
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "security" })
     @Override
     OperationDescriptor toDescriptor(Operation operation, @Context Scanner scanner);
 

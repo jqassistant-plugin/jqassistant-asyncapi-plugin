@@ -22,8 +22,5 @@ class MessageIT extends AbstractPluginIT { /**tests the existence of messages at
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/messageTest.yml", AsyncApiScope.CONTRACT);
     }
 
-    @Test
-    void basic() {
 
-    }
 }

@@ -2,8 +2,8 @@ asyncapi: 3.0.0
 id: 'https://github.com/dalelane/my-first-asyncapi-v3-doc'
 operations:
   sendProcess:
-    title: User sign up
-    summary: Action to sign a user up.
+    title: Send101
+    summary: Action to send something.
     description: A longer description
     channel:
       $ref: '#/channels/userSignup'
@@ -36,3 +36,5 @@ operations:
         $ref: '#/channels/userSignupReply'
       messages:
         - $ref: '#/components/messages/userSignedUpReply'
+  anotherOperation:
+    title: woop

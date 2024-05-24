@@ -56,6 +56,7 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
                 Mappers.getMapper(AsyncApiMapper.class).toDescriptor(asyncApi, contractDescriptor, scanner);
             } finally {
                 scanner.getContext().pop(MappingPath.class);
+                scanner.getContext().pop(ContractDescriptor.class);
             }
         }
         return contractDescriptor;
