@@ -22,7 +22,6 @@ class ResolveAsyncApisIT extends AbstractPluginIT {
         File file2 = new File(getClassesDirectory(ResolveAsyncApisIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
         ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
-        applyConcept("asyncapi:References");
         Result<Concept> result = applyConcept("asyncapi:Channels");
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
         Column<?> channels = result.getRows().get(0).getColumns().get("Channels");
@@ -39,7 +38,6 @@ class ResolveAsyncApisIT extends AbstractPluginIT {
         File file2 = new File(getClassesDirectory(ResolveAsyncApisIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
         ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
-        applyConcept("asyncapi:References");
         applyConcept("asyncapi:Channels");
         Result<Concept> result = applyConcept("asyncapi:Operations");
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
@@ -57,8 +55,6 @@ class ResolveAsyncApisIT extends AbstractPluginIT {
         File file2 = new File(getClassesDirectory(ResolveAsyncApisIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
         ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
-        Result<Concept> result2 = applyConcept("asyncapi:References");
-        assertThat(result2.getStatus()).isEqualTo(SUCCESS);
         Result<Concept> result = applyConcept("asyncapi:Channels");
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
         Result<Concept> result3 = applyConcept("asyncapi:Operations");
@@ -74,24 +70,5 @@ class ResolveAsyncApisIT extends AbstractPluginIT {
         assertThat(contract.getAsyncApiVersion()).isEqualTo("3.0.0");
         store.commitTransaction();
     }
-
-
-    @Test
-    void deleteReferenceableRelation() throws RuleException {
-        File file = new File(getClassesDirectory(ResolveAsyncApisIT.class), "testAsyncApi/resolveChannelAddressTest.yml");
-        File file2 = new File(getClassesDirectory(ResolveAsyncApisIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
-        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
-        ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
-        Result<Concept> result = applyConcept("asyncapi:Referenceables");
-        assertThat(result.getStatus()).isEqualTo(SUCCESS);
-        Column<?> nodes = result.getRows().get(0).getColumns().get("Nodes");
-        assertThat(nodes).isNotNull();
-        assertThat(nodes.getValue()).isEqualTo(20L);
-        store.beginTransaction();
-        assertThat(contract.getAsyncApiVersion()).isEqualTo("3.0.0");
-        store.commitTransaction();
-    }
-
-
 
 }

@@ -12,9 +12,13 @@ operations:
   send_WaterlooOperation:
     action: send
     channel:
-      $ref: '#/channels/waterlooChannel'
+      $ref: '#/components/channels/waterlooChannel'
     messages:
       - $ref: '#/channels/waterlooChannel/messages/Waterloo'
+components:
+  channels:
+    waterlooChannel:
+      $ref: '#/channels/waterlooChannel'
 
 
 
