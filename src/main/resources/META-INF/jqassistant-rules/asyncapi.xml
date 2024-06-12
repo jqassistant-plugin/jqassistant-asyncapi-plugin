@@ -2,6 +2,17 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 https://schema.jqassistant.org/plugin/jqassistant-rule-v1.10.xsd">
 
+    <group id="asyncapi:Default">
+        <includeConstraint refId="asyncapi:References"/>
+        <includeConstraint refId="asyncapi:Channels"/>
+        <includeConstraint refId="asyncapi:Operations"/>
+        <includeConstraint refId="asyncapi:ChannelReferences"/>
+        <includeConstraint refId="asyncapi:MessageReferences"/>
+    </group>
+
+    <group id="asyncapi:Referenceables-Delete">
+        <includeConstraint refId="asyncapi:*"/>
+    </group>
 
     <concept id="asyncapi:References">
         <description>Merges ReferenceDescriptors to their referenced target descriptor.
@@ -20,4 +31,70 @@
             <aggregation/>
         </verify>
     </concept>
+    <concept id="asyncapi:Channels">
+        <description>Merges channel descriptors with the same address (e.q. in different files).
+        </description>
+        <cypher><![CDATA[
+                MATCH (c1:Channel),(c2:Channel)
+                WHERE c1.address=c2.address AND c1<>c2
+                MERGE (c1)-[:RESOLVES_TO]->(c2)
+                RETURN count(*) as Channels
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+    <concept id="asyncapi:Operations">
+        <description>Merges sending operations to the receiving operation.
+        </description>
+        <cypher><![CDATA[
+               MATCH (operationSend:Operation{action:"send"})-[:ON_CHANNEL]->(:Channel)-[:REFERENCES]->(:Channel)-[:RESOLVES_TO]->(:Channel)<-[:REFERENCES]-(:Channel)<-[:ON_CHANNEL]-(operationReceive:Operation)
+               MERGE (operationSend)-[:SENDS_TO]->(operationReceive)
+               RETURN count(*) as Operations
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+    <concept id="asyncapi:ChannelReferences">
+        <description>Deletes reference descriptor between operation and the actual channel.
+        </description>
+        <cypher><![CDATA[
+               MATCH (contract:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(operation:Operation)-[r1:ON_CHANNEL]->(reference:Channel)-[r2:REFERENCES]->(channel:Channel), (contract)-[r3:DEFINES_REFERENCEABLE]->(reference)
+               MERGE (operation)-[:ON_CHANNEL]->(channel)
+               NODETACH  DELETE r1,r2,r3
+               DELETE reference
+               RETURN count(*) as Channels
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+    <concept id="asyncapi:MessageReferences">
+        <description>Deletes reference descriptor between operation and the actual message.
+        </description>
+        <cypher><![CDATA[
+               MATCH (operation:Operation)-[r1:USING_MESSAGE]->(reference:Message)-[r2:REFERENCES]->(message:Message), (contract)-[r3:DEFINES_REFERENCEABLE]->(reference)
+               MERGE (operation)-[:USING_MESSAGE]->(message)
+               NODETACH  DELETE r1,r2,r3
+               DELETE reference
+               RETURN count(*) as Messages
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+    <concept id="asyncapi:Referenceables">
+        <description>Deletes all "DEFINES_REFERENCEABLE" - relations
+        </description>
+        <cypher><![CDATA[
+                MATCH (contract:AsyncAPI:Contract)-[r:DEFINES_REFERENCEABLE]->(n:AsyncAPI)
+                NODETACH  DELETE r
+                RETURN count(*) as Nodes
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
 </jqassistant-rules>
+

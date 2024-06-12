@@ -1,0 +1,20 @@
+asyncapi: 3.0.0
+info:
+  title: second-channel-resolving-test-file
+  version: 1.0.0
+channels:
+  waterlooChannel:
+    address: '{deployment_config}_waterlooChannel'
+    messages:
+      Waterloo:
+        $ref: '#/components/messages/PearPartyMessage'
+operations:
+  send_WaterlooOperation:
+    action: send
+    channel:
+      $ref: '#/channels/waterlooChannel'
+    messages:
+      - $ref: '#/channels/waterlooChannel/messages/Waterloo'
+
+
+

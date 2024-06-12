@@ -26,10 +26,8 @@ public class Operation extends ReferenceObject {
 
     @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     @JsonProperty(value = "channel")
-    private List<ChannelObject> channel;
-    /*TODO: This single ChannelObject should actually not be converted to a List. This workaround comes with the current state of the ReferenceMapper.class,
-            that checks objects for being a reference to not override their attributes (Method mapValueAttributes()) before mapping. In the case an Object being
-            a single object and not a form of collection, the mapping would not take place at all.  */
+    private ChannelObject channel;
+    /*TODO: This is actually a Reference Object.  */
 
     @JsonProperty(value = "title")
     private String title;
@@ -57,6 +55,7 @@ public class Operation extends ReferenceObject {
 
     @JsonProperty(value = "messages")
     private List<MessageObject> messages;
+    /*TODO: This should actually be a list of reference objects.  */
 
     @JsonProperty(value = "reply")
     private OperationReply reply;

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
+import org.jqassistant.plugin.asyncapi.api.model.ChannelDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.AsyncAPI;
 import org.jqassistant.plugin.asyncapi.impl.mapper.AsyncApiMapper;
@@ -19,8 +20,11 @@ import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 @Requires(FileDescriptor.class)
 public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, ContractDescriptor> {
@@ -47,6 +51,7 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
         final Store store = scanner.getContext().getStore();
         final FileDescriptor fileDescriptor = scanner.getContext().getCurrentDescriptor();
         final ContractDescriptor contractDescriptor = store.addDescriptorType(fileDescriptor, ContractDescriptor.class);
+        List<ChannelDescriptor> receivingChannels = new ArrayList<>();
 
         try (InputStream inputStream = fileResource.createStream()) {
             AsyncAPI asyncApi = mapper.readValue(inputStream, AsyncAPI.class);
@@ -54,6 +59,7 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
             scanner.getContext().push(MappingPath.class, new MappingPath());
             try {
                 Mappers.getMapper(AsyncApiMapper.class).toDescriptor(asyncApi, contractDescriptor, scanner);
+
             } finally {
                 scanner.getContext().pop(MappingPath.class);
                 scanner.getContext().pop(ContractDescriptor.class);

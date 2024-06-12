@@ -34,7 +34,8 @@ public interface OperationDescriptor extends ReferenceableDescriptor, AsyncApiDe
     List<TagDescriptor> getTags();
 
     @Relation("ON_CHANNEL")
-    List<ChannelDescriptor> getChannel();
+    ChannelDescriptor getChannel();
+    void setChannel(ChannelDescriptor channel);
     //only ReferenceObject
 
     @Relation("SUPPORTS_BINDINGS")
