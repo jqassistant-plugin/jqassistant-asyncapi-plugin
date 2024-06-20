@@ -2,17 +2,6 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 https://schema.jqassistant.org/plugin/jqassistant-rule-v1.10.xsd">
 
-    <group id="asyncapi:Default">
-        <includeConstraint refId="asyncapi:Channels"/>
-        <includeConstraint refId="asyncapi:Operations"/>
-        <includeConstraint refId="asyncapi:ChannelReferences"/>
-        <includeConstraint refId="asyncapi:MessageReferences"/>
-    </group>
-
-    <group id="asyncapi:Referenceables-Delete">
-        <includeConstraint refId="asyncapi:*"/>
-    </group>
-
     <concept id="asyncapi:Channels">
         <description>Merges channel descriptors with the same address (e.q. in different files).
         </description>
@@ -38,33 +27,17 @@
             <aggregation/>
         </verify>
     </concept>
-    <concept id="asyncapi:ChannelReferences">
-        <description>Deletes reference descriptor between operation and the actual channel.
+    <concept id="asyncapi:resolveReferences">
+        <description>-
         </description>
         <cypher><![CDATA[
-               MATCH (contract:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(operation:Operation)-[r1:ON_CHANNEL]->(reference:Channel)-[r2:REFERENCES]->(channel:Channel)
-               MERGE (operation)-[:ON_CHANNEL]->(channel)
-               NODETACH  DELETE r1,r2
-               DELETE reference
-               RETURN count(*) as Channels
-        ]]></cypher>
-        <verify>
-            <aggregation/>
-        </verify>
-    </concept>
-    <concept id="asyncapi:MessageReferences">
-        <description>Deletes reference descriptor between operation and the actual message.
-        </description>
-        <cypher><![CDATA[
-               MATCH (operation:Operation)-[r1:USING_MESSAGE]->(reference:Message)-[r2:REFERENCES]->(message:Message)
-               MERGE (operation)-[:USING_MESSAGE]->(message)
-               NODETACH  DELETE r1,r2
-               DELETE reference
-               RETURN count(*) as Messages
+               MATCH (node:AsyncAPI)-[r]->(source:Reference:AsyncAPI)-[:REFERENCES*1..2]->(target:AsyncAPI)
+               WHERE NOT (target)-[:REFERENCES]->(:AsyncAPI) AND NOT (node)-[:REFERENCES]->(source)
+               MERGE (source)-[:RESOLVES_TO]->(target)
+               RETURN count(source) as Source, count(node) as Node
         ]]></cypher>
         <verify>
             <aggregation/>
         </verify>
     </concept>
 </jqassistant-rules>
-

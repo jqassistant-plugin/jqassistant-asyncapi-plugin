@@ -20,6 +20,8 @@ public interface MessageExampleMapper extends ReferenceableObjectMapper<MessageE
     MessageExampleMapper INSTANCE = Mappers.getMapper(MessageExampleMapper.class);
 
     @Mapping(target = "path", ignore = true)
+    @Mapping(target = "headers", ignore = true)
+    @Mapping(target = "payload", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "headers", "payload" })
     @Override
     MessageExampleDescriptor toDescriptor(MessageExample message, @Context Scanner scanner);

@@ -21,10 +21,8 @@ public interface MessagesMapper extends ReferenceableObjectMapper<MessageObject,
 
     MessagesMapper INSTANCE = Mappers.getMapper(MessagesMapper.class);
 
-    @Mapping(target = "externalDocumentation", source = "externalDocs")
-    @Mapping(target = "correlationID", source = "correlationId")
     @Mapping(target = "path", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference",  "messageId", "headers", "payload" })
+    @BeanMapping(ignoreUnmappedSourceProperties = { "reference",  "messageId", "payload", "headers" })
     @Override
     MessageDescriptor toDescriptor(MessageObject message, @Context Scanner scanner);
 

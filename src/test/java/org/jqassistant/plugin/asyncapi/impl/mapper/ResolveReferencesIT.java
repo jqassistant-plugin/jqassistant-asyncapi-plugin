@@ -27,7 +27,7 @@ class ResolveReferencesIT extends AbstractPluginIT {
         assertThat(result2.getColumns().get("Relations")).hasSize(1);
 
         TestResult result3 = query("MATCH (:AsyncAPI)-[r:REFERENCES]->(:AsyncAPI) RETURN count(r) as allRelations");
-        assertThat(result3.getColumns().get("allRelations").get(0)).isEqualTo(8L);
+        assertThat(result3.getColumns().get("allRelations").get(0)).isEqualTo(7L);
         store.commitTransaction();
     }
 }

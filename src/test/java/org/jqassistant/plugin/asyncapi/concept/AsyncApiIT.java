@@ -6,9 +6,13 @@ import com.buschmais.jqassistant.core.rule.api.model.Concept;
 import com.buschmais.jqassistant.core.rule.api.model.RuleException;
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
+import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.MessageDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.util.List;
 
 import static com.buschmais.jqassistant.core.report.api.model.Result.Status.SUCCESS;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -16,13 +20,47 @@ import static org.assertj.core.api.Assertions.assertThat;
 class AsyncApiIT extends AbstractPluginIT {
 
     @Test
-    void resolveReferences() throws RuleException {
-        File file = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/channelsTest.yml");
-        getScanner().scan(file, "testAsyncApi/channelsTest.yml", AsyncApiScope.CONTRACT);
-        Result<Concept> result = applyConcept("asyncapi:References");
+    void resolveChannelsAndOperations() throws RuleException {
+        File file = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest.yml");
+        File file2 = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
+        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
+        ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
+        Result<Concept> result = applyConcept("asyncapi:Channels");
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
-        Column<?> references = result.getRows().get(0).getColumns().get("References");
-        assertThat(references).isNotNull();
-        assertThat(references.getValue()).isEqualTo(1L);
+        Column<?> channels = result.getRows().get(0).getColumns().get("Channels");
+        assertThat(channels).isNotNull();
+        Result<Concept> result2 = applyConcept("asyncapi:Operations");
+        assertThat(result2.getStatus()).isEqualTo(SUCCESS);
+        Column<?> operations = result2.getRows().get(0).getColumns().get("Operations");
+        assertThat(operations).isNotNull();
+        assertThat(operations.getValue()).isEqualTo(1L);
+        store.beginTransaction();
+        assertThat(contract.getAsyncApiVersion()).isEqualTo("3.0.0");
+        store.commitTransaction();
+    }
+
+    @Test
+    void resolveReferences() throws RuleException {
+        File file = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest.yml");
+        File file2 = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
+        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
+        ContractDescriptor contract2 = getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
+        Result<Concept> result = applyConcept("asyncapi:resolveReferences");
+        assertThat(result.getStatus()).isEqualTo(SUCCESS);
+        Column<?> nodes = result.getRows().get(0).getColumns().get("Node");
+        assertThat(nodes).isNotNull();
+        assertThat(nodes.getValue()).isEqualTo(7L);
+        Column<?> sources = result.getRows().get(0).getColumns().get("Source");
+        assertThat(sources).isNotNull();
+        assertThat(sources.getValue()).isEqualTo(7L);
+        store.beginTransaction();
+        assertThat(contract.getAsyncApiVersion()).isEqualTo("3.0.0");
+        List<ReferenceDescriptor> reference =
+                query("MATCH (:Operation{name:'send_WaterlooOperation'})-[:ON_CHANNEL]->(a:Reference)-[:REFERENCES]->(:Reference)-[:REFERENCES]->(b:Channel), (a)-[:RESOLVES_TO]->(b) return a").getColumn("a");
+        assertThat(reference.size()).isEqualTo(1);
+        List<MessageDescriptor> allTargetMessage =
+                query("MATCH (:Operation)-[:USING_MESSAGE]-(:Message)-[:RESOLVES_TO*0..1]->(target:Message) return target").getColumn("target");
+        assertThat(allTargetMessage.size()).isEqualTo(2);
+        store.commitTransaction();
     }
 }

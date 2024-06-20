@@ -11,15 +11,15 @@ channels:
   waterlooChannel:
     address: '{deployment_config}_waterlooChannel'
     messages:
-      Waterloo:
-        $ref: '#/components/messages/PearPartyMessage'
+      AppleCommand:
+        $ref: '#/components/messages/AppleCommand'
 operations:
   receive_WaterlooOperation:
     action: receive
     channel:
       $ref: '#/channels/waterlooChannel'
-    messages:
-      - $ref: '#/channels/waterlooChannel/messages/Waterloo'
+    message:
+      $ref: '#/channels/waterlooChannel/messages/AppleCommand'
   send_ElbaOperation:
     action: send
     channel:
@@ -33,6 +33,10 @@ components:
       title: bananaCommand
       summary: Bananas are in the air.
       contentType: application/json
+    AppleCommand:
+      name: appleCommand
+      title: appleCommand
+      summary: Apples are all around
   parameters:
     deployment_config:
       description: deployment ID

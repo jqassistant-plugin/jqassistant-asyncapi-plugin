@@ -5,16 +5,11 @@ info:
 channels:
   waterlooChannel:
     address: '{deployment_config}_waterlooChannel'
-    messages:
-      Waterloo:
-        $ref: '#/components/messages/PearPartyMessage'
 operations:
   send_WaterlooOperation:
     action: send
     channel:
       $ref: '#/components/channels/waterlooChannel'
-    messages:
-      - $ref: '#/channels/waterlooChannel/messages/Waterloo'
 components:
   channels:
     waterlooChannel:

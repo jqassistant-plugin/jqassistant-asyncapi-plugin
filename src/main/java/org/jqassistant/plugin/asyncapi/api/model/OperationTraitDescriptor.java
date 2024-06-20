@@ -1,12 +1,12 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
-@Label("OperationTrait")
-public interface OperationTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
+import java.util.List;
+
+@Label("Operation_Trait")
+public interface OperationTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getTitle();
 
