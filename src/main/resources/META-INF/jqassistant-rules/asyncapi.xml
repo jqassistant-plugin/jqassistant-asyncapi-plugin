@@ -8,7 +8,7 @@
         <cypher><![CDATA[
                 MATCH (c1:Channel),(c2:Channel)
                 WHERE c1.address=c2.address AND c1<>c2
-                MERGE (c1)-[:RESOLVES_TO]->(c2)
+                MERGE (c1)-[:MAPS_TO]->(c2)
                 RETURN count(*) as Channels
         ]]></cypher>
         <verify>
@@ -16,10 +16,11 @@
         </verify>
     </concept>
     <concept id="asyncapi:Operations">
+        <requiresConcept refId="asyncapi:Channels" />
         <description>Merges sending operations to the receiving operation.
         </description>
         <cypher><![CDATA[
-               MATCH (operationSend:Operation{action:"send"})-[:ON_CHANNEL]->(:Channel)-[*]->(:Channel)-[:RESOLVES_TO]->(:Channel)<-[*]-(:Channel)<-[:ON_CHANNEL]-(operationReceive:Operation)
+               MATCH (operationSend:Operation{action:"send"})-[:ON_CHANNEL]->(:Channel)-[*]->(:Channel)-[:MAPS_TO]->(:Channel)<-[*]-(:Channel)<-[:ON_CHANNEL]-(operationReceive:Operation)
                MERGE (operationSend)-[:SENDS_TO]->(operationReceive)
                RETURN count(*) as Operations
         ]]></cypher>
@@ -28,7 +29,7 @@
         </verify>
     </concept>
     <concept id="asyncapi:resolveReferences">
-        <description>-
+        <description>Sets a "RESOLVES_TO"-relation between a reference object and the actual referenced object. Covers a chain of 2 references as well.
         </description>
         <cypher><![CDATA[
                MATCH (node:AsyncAPI)-[r]->(source:Reference:AsyncAPI)-[:REFERENCES*1..2]->(target:AsyncAPI)
