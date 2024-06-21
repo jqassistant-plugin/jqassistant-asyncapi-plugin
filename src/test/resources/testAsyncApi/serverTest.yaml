@@ -1,0 +1,37 @@
+asyncapi: 3.0.0
+id: 'https://github.com/dalelane/my-first-asyncapi-v3-doc'
+servers:
+  kafka:
+    host: localhost:4747
+    protocol: kafka
+    protocolVersion: '3.3.0'
+    title: Event Streams Kafka cluster
+    pathname: This/Is/A/Path/To/A/Resource/In/The/Host
+    description: A Kafka cluster running in **OpenShift**.
+    tags:
+      - name: example
+      - name: openshift
+        description: Servers that are running in OpenShift
+      - $ref: '#/components/tags/kafka'
+    externalDocs:
+      description: More info about Kafka
+      url: https://www.ibm.com/docs/en/dsm?topic=options-apache-kafka-protocol-configuration
+    variables:
+      host:
+        default: apps.dale-lane.cp.fyre.ibm.com
+        description: hostname for the OpenShift cluster
+        examples:
+          - apps.dale-lane.cp.fyre.ibm.com
+          - apps.dalelane-neptune.cp.fyre.ibm.com
+        enum:
+          - production
+          - staging
+      port:
+        default: 443
+    security:
+      - $ref: '#/components/securitySchemes/kafkaEventStreams'
+    bindings:
+      kafka:
+        schemaRegistryUrl: https://my-apicurio-schema-registry.com
+        schemaRegistryVendor: apicurio
+        bindingVersion: '0.4.0'

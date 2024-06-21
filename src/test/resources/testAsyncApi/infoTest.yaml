@@ -16,7 +16,7 @@ info:
     - name: first tag
       description: Things that are used as examples of the spec
       externalDocs:
-        $ref: "#/components/I'm a external reference"
+        $ref: "#/components/tags/I'm an external reference"
     - name: second tag
       description: I'm the second tag of this info.
       externalDocs:

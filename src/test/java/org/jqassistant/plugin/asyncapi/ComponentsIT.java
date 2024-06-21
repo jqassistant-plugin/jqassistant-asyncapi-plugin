@@ -75,12 +75,12 @@ class ComponentsIT extends AbstractPluginIT {
 
         //operation traits
         List<OperationTraitDescriptor> operationTraits =
-                query("MATCH (:Components)-[:DEFINES_OPERATION_TRAIT]->(operationTraits:OperationTrait) return operationTraits").getColumn("operationTraits");
+                query("MATCH (:Components)-[:DEFINES_OPERATION_TRAIT]->(operationTraits:Operation_Trait) return operationTraits").getColumn("operationTraits");
         assertThat(operationTraits.size()).isEqualTo(1);
 
         //message traits
         List<OperationTraitDescriptor> messageTraits =
-                query("MATCH (:Components)-[:DEFINES_MESSAGE_TRAIT]->(messageTraits:MessageTrait) return messageTraits").getColumn("messageTraits");
+                query("MATCH (:Components)-[:DEFINES_MESSAGE_TRAIT]->(messageTraits:Message_Trait) return messageTraits").getColumn("messageTraits");
         assertThat(messageTraits.size()).isEqualTo(1);
         store.commitTransaction();
         }

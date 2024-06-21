@@ -6,7 +6,6 @@ import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.*;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaOperationBindingsDescriptor;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -16,21 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class OperationsIT extends AbstractPluginIT {
     /**
-     * tests an operation descriptor for its simple attributes and special properites (operation traits, operation bindings and operation reply
+     * tests an operation descriptor for its simple attributes and special properites (operation traits, operation bindings and operation reply)
      **/
 
-    InfoDescriptor info;
-
-    @BeforeEach
-    public void init() {
+    @Test
+    public void test() {
         File file = new File(getClassesDirectory(OperationsIT.class), "testAsyncApi/operationsTest.yaml");
         ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/operationsTest.yaml", AsyncApiScope.CONTRACT);
-
-    }
-
-    @Test
-    void simpleAttributes() {
-        //simple attributes
         store.beginTransaction();
         List<OperationDescriptor> operations =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(operations:Operation ) return operations").getColumn("operations");
@@ -48,22 +39,26 @@ class OperationsIT extends AbstractPluginIT {
         assertThat(operationDescriptor.getDescription()).isEqualTo("A longer description");
         assertThat(operationDescriptor.getAction()).isEqualTo("send");
 
+        //channel in operation
         List<ChannelDescriptor> channels =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:ON_CHANNEL]->(channel:Channel) return channel").getColumn("channel");
         assertThat(channels.size()).isEqualTo(1);
 
         //to add: security
 
+        //tags
         List<TagDescriptor> tags =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:HAS_TAG]->(tag:Tag) return tag").getColumn("tag");
         assertThat(tags.size()).isEqualTo(3);
 
+        //operation binding
         Query.Result<Query.Result.CompositeRowObject> bindings = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:SUPPORTS_BINDINGS]->(bindings:Operation_Binding) return bindings");
         assertThat(bindings.hasResult()).isTrue();
         OperationBindingsDescriptor operationBindings = bindings.getSingleResult()
                 .get("bindings", OperationBindingsDescriptor.class);
         assertThat(operationBindings).isNotNull();
 
+        //operation binding: kafka
         Query.Result<Query.Result.CompositeRowObject> kafka = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:SUPPORTS_BINDINGS]->(:Operation_Binding)-[:DEFINES_KAFKA_BINDING]->(kafka:Kafka_Operation) return kafka");
         assertThat(kafka.hasResult()).isTrue();
         KafkaOperationBindingsDescriptor kafkaBinding = kafka.getSingleResult()
@@ -71,30 +66,32 @@ class OperationsIT extends AbstractPluginIT {
         assertThat(kafkaBinding).isNotNull();
         assertThat(kafkaBinding.getBindingVersion()).isEqualTo("0.5.0");
 
-
+        //message traits
         List<MessageDescriptor> traits =
-                query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:DEFINES_TRAIT]->(trait:OperationTrait) return trait").getColumn("trait");
+                query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:DEFINES_TRAIT]->(trait:Operation_Trait) return trait").getColumn("trait");
         assertThat(traits.size()).isEqualTo(1);
 
-
-        Query.Result<Query.Result.CompositeRowObject> reply = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(reply:OperationReply) return reply");
+        //operation reply
+        Query.Result<Query.Result.CompositeRowObject> reply = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(reply:Operation_Reply) return reply");
         assertThat(reply.hasResult()).isTrue();
         OperationReplyDescriptor operationReply = reply.getSingleResult()
                 .get("reply", OperationReplyDescriptor.class);
         assertThat(operationReply).isNotNull();
 
+        //channel in reply
         List<ChannelDescriptor> replyChannel =
-                query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(:OperationReply)-[:ON_CHANNEL]->(channel:Channel) return channel").getColumn("channel");
+                query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(:Operation_Reply)-[:ON_CHANNEL]->(channel:Channel) return channel").getColumn("channel");
         assertThat(replyChannel.size()).isEqualTo(1);
 
-
-        Query.Result<Query.Result.CompositeRowObject> address = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(reply:OperationReply)-[:HAS_ADDRESS]->(address:OperationReplyAddress) return address");
+        //operation reply address
+        Query.Result<Query.Result.CompositeRowObject> address = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_REPLY]->(reply:Operation_Reply)-[:HAS_ADDRESS]->(address:Operation_Reply_Address) return address");
         assertThat(address.hasResult()).isTrue();
         OperationReplyAddressDescriptor operationAddress = address.getSingleResult()
                 .get("address", OperationReplyAddressDescriptor.class);
         assertThat(operationAddress).isNotNull();
         assertThat(operationAddress.getLocation()).isEqualTo("$message.header#/replyTo");
 
+        //messages
         List<MessageDescriptor> messages =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {name:'sendProcess'})-[:USING_MESSAGE]->(message:Message) return message").getColumn("message");
         assertThat(messages.size()).isEqualTo(1);

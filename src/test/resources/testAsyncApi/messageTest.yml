@@ -8,7 +8,7 @@ channels:
         name: UserSignup
         title: User signup
         summary: Action to sign a user up.
-        description: A longer description
+        description: A longer description for a specific message.
         contentType: application/json
         tags:
           - name: user
@@ -34,7 +34,13 @@ channels:
           description: Default Correlation ID
           location: $message.header#/correlationId
         traits:
-          - $ref: "#/components/messageTraits/commonHeaders"
+         - kafkaHeaders:
+            headers:
+              type: object
+              properties:
+                someCustomHeader:
+                  description: A common header included for all Kafka messages
+                  type: string
         examples:
           - name: SimpleSignup
             summary: A simple UserSignup example message

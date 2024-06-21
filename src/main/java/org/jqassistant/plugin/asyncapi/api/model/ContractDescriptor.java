@@ -1,10 +1,10 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.jqassistant.core.store.api.model.Descriptor;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
+
+import java.util.List;
 
 @Label("Contract")
 public interface ContractDescriptor extends AsyncApiDescriptor, Descriptor {
@@ -38,10 +38,5 @@ public interface ContractDescriptor extends AsyncApiDescriptor, Descriptor {
 
     @Relation("DEFINES_SERVER")
     List<ServerDescriptor> getServers();
-
-    @Relation("DEFINES_REFERENCEABLE")
-    List<ReferenceableDescriptor> getAll();
-
-
 
 }

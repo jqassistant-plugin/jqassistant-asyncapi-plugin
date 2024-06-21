@@ -1,11 +1,10 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
-
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
+
+import java.util.List;
 
 @Label("Server")
 public interface ServerDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
@@ -41,9 +40,8 @@ public interface ServerDescriptor extends ReferenceableDescriptor, AsyncApiDescr
     List<ServerVariableDescriptor> getVariables();
 
     @Relation("DEFINES_SECURITY_SCHEME")
-    SecuritySchemeDescriptor getSecurity();
+    List<SecuritySchemeDescriptor> getSecurity();
 
-    void setSecurity(SecuritySchemeDescriptor security);
 
     @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();

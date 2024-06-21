@@ -19,7 +19,7 @@ import org.jqassistant.plugin.asyncapi.impl.json.model.channel.CorrelationID;
 public class MessageTrait extends ReferenceObject {
 
     @JsonProperty(value = "headers")
-    private MessageHeaders headers;
+    private Object headers; //messageHeaders
 
     @JsonProperty(value = "correlationId")
     private CorrelationID correlationId;

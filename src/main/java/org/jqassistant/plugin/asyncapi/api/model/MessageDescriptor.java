@@ -1,14 +1,13 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
-
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
+import java.util.List;
+
 @Label("Message")
-public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
+public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
   /*  @Relation("USES_HEADERS")
     Object getHeaders();
@@ -20,10 +19,10 @@ public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDesc
     Object getPayload();
     void setPayload(Object payload);*/
 
-    @Relation("HAS_CorrelationID")
-    CorrelationIDDescriptor getCorrelationID();
+    @Relation("HAS_CORRELATION_ID")
+    CorrelationIDDescriptor getCorrelationId();
 
-    void setCorrelationID(CorrelationIDDescriptor correlationId);
+    void setCorrelationId(CorrelationIDDescriptor correlationId);
 
     String getTitle();
 
@@ -51,9 +50,9 @@ public interface MessageDescriptor extends ReferenceableDescriptor, AsyncApiDesc
     void setTags(List<TagDescriptor> tags);
 
     @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
-    ExternalDocsDescriptor getExternalDocumentation();
+    ExternalDocsDescriptor getExternalDocs();
 
-    void setExternalDocumentation(ExternalDocsDescriptor externalDocumentation);
+    void setExternalDocs(ExternalDocsDescriptor externalDocs);
 
     @Relation("DEFINES_BINDINGS")
     MessageBindingsDescriptor getBindings();
