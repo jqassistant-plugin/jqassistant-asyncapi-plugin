@@ -53,7 +53,6 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
 
         try (InputStream inputStream = fileResource.createStream()) {
             AsyncAPI asyncApi = mapper.readValue(inputStream, AsyncAPI.class);
-            scanner.getContext().push(ContractDescriptor.class, contractDescriptor);
             AsyncApiContext asyncContext = new AsyncApiContext();
             scanner.getContext().push(AsyncApiContext.class, asyncContext);
             try {

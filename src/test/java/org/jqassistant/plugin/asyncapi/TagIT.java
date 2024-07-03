@@ -3,7 +3,6 @@ package org.jqassistant.plugin.asyncapi;
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
 import com.buschmais.xo.api.Query;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
-import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.TagDescriptor;
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +17,9 @@ class TagIT extends AbstractPluginIT {
      **/
 
     @Test
-    public void init() {
+    public void test() {
         File file = new File(getClassesDirectory(TagIT.class), "testAsyncApi/tagsTest.yml");
-        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/tagsTest.yml", AsyncApiScope.CONTRACT);
-        store.beginTransaction();
-        assertThat(contract).isNotNull();
+        getScanner().scan(file, "testAsyncApi/tagsTest.yml", AsyncApiScope.CONTRACT);
 
         List<TagDescriptor> tags =
                 query("MATCH (:Contract)-[:DEFINES_INFO]->(:Info)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
@@ -43,6 +40,5 @@ class TagIT extends AbstractPluginIT {
         assertThat(secondTag.getName()).isEqualTo("Diffs");
         assertThat(secondTag.getExternalDocs().getDescription()).isEqualTo("Modo Jeans use of Kafka");
         assertThat(secondTag.getExternalDocs().getUrl()).isEqualTo("https://modojeans.com/intranet/kafka");
-        store.commitTransaction();
     }
 }
