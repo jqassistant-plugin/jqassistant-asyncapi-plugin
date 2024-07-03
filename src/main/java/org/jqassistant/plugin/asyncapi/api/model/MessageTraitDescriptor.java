@@ -6,16 +6,15 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescrip
 
 import java.util.List;
 
-@Label("Message_Trait")
+@Label("MessageTrait")
 public interface MessageTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
    /* @Relation("USES_HEADERS")
     Object getHeaders();
 
-    void setHeaders(Object headers); /*ein ParentObject fuer Schema und Multi Format Schema?
-    auch referenceable siehe messageDescriptor*/
+    void setHeaders(Object headers);*/
 
-    @Relation("HAS_CorrelationID")
+    @Relation("HAS_CORRELATION_ID")
     CorrelationIDDescriptor getCorrelationId();
 
     void setCorrelationId(CorrelationIDDescriptor correlationId);

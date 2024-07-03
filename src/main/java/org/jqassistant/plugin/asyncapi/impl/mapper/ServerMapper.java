@@ -17,9 +17,8 @@ import java.util.Map;
 @DecoratedWith(ServerMapperDecorator.class)
 public interface ServerMapper extends ReferenceableObjectMapper<Server, ServerDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
 
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = {"reference"})
     @Override
     ServerDescriptor toDescriptor(Server server, @Context Scanner scanner);

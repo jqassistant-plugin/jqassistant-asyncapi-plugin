@@ -5,7 +5,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("Kafka_Server")
+@Label("KafkaServer")
 public interface KafkaServerBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getSchemaRegistryUrl();

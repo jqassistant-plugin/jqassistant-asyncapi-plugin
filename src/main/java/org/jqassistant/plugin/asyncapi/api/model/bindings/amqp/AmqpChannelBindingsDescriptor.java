@@ -7,7 +7,7 @@ import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.amqp.AMQPChannelExchange;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.amqp.AMQPChannelQueue;
 
-@Label("AMQP_Channel")
+@Label("AMQPChannel")
 public interface AmqpChannelBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getIs();

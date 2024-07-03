@@ -17,7 +17,6 @@ import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.AsyncAPI;
 import org.jqassistant.plugin.asyncapi.impl.mapper.AsyncApiMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.AsyncApiContext;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +54,6 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
         try (InputStream inputStream = fileResource.createStream()) {
             AsyncAPI asyncApi = mapper.readValue(inputStream, AsyncAPI.class);
             scanner.getContext().push(ContractDescriptor.class, contractDescriptor);
-            scanner.getContext().push(MappingPath.class, new MappingPath());
             AsyncApiContext asyncContext = new AsyncApiContext();
             scanner.getContext().push(AsyncApiContext.class, asyncContext);
             try {
@@ -63,8 +61,6 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
                 resolve(scanner);
 
             } finally {
-                scanner.getContext().pop(MappingPath.class);
-                scanner.getContext().pop(ContractDescriptor.class);
                 scanner.getContext().pop(AsyncApiContext.class);
             }
         }
@@ -85,11 +81,6 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
 
     private ReferenceableDescriptor findReferenceable(String reference, Scanner scanner) {
         Map<String, ReferenceableDescriptor> referenceables = scanner.getContext().peek(AsyncApiContext.class).getReferenceables();
-        for (String path : referenceables.keySet()) {
-            if (path.equals(reference)) {
-                return referenceables.get(path);
-            }
-        }
-        return null;
+        return referenceables.get(reference);
     }
 }

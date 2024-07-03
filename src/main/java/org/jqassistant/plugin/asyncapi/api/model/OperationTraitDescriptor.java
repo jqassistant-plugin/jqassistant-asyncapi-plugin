@@ -5,16 +5,12 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 
 import java.util.List;
 
-@Label("Operation_Trait")
+@Label("OperationTrait")
 public interface OperationTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getTitle();
 
     void setTitle(String title);
-
-    String getName();
-
-    void setName(String name);
 
     String getDescription();
 

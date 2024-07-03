@@ -20,7 +20,7 @@ public interface SecuritySchemesMapper extends ReferenceableObjectMapper<Securit
     SecuritySchemesMapper INSTANCE = Mappers.getMapper(SecuritySchemesMapper.class);
 
     @Mapping(target = "OAuthFlows", source = "flows")
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "flows" })
     @Override
     SecuritySchemeDescriptor toDescriptor(SecurityScheme scheme, @Context Scanner scanner);

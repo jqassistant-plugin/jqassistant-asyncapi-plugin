@@ -2,7 +2,7 @@ package org.jqassistant.plugin.asyncapi.api.model;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-@Label("Operation_Reply_Address")
+@Label("OperationReplyAddress")
 public interface OperationReplyAddressDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getDescription();

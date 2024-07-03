@@ -6,7 +6,6 @@ import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.AsyncApiContext;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 
@@ -54,7 +53,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
                 enterTreeNode(name, scanner);
                 D descriptor = this.basicToDescriptor(value, scanner);
                 if (descriptor != null) {
-                    descriptor.setName(entry.getKey());
+                    descriptor.setReferenceableKey(entry.getKey());
                 }
                 descriptors.add(descriptor);
                 leaveTreeNode(scanner);
@@ -77,7 +76,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
                 D descriptor = this.basicToDescriptor(value, scanner);
                 if (descriptor != null) {
                     descriptor.setPath(scanner.getContext()
-                            .peek(MappingPath.class)
+                            .peek(AsyncApiContext.class)
                             .getPath());
                 }
                 leaveTreeNode(scanner);
@@ -101,12 +100,11 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
             descriptor = mapper.toDescriptor(object, scanner);
         }
         if (descriptor != null) {
-            MappingPath mappingPath = scanner.getContext()
-                    .peek(MappingPath.class);
-            descriptor.setPath(mappingPath.getPath());
-            scanner.getContext().peek(AsyncApiContext.class).addReferenceable(mappingPath.getPath(), descriptor);
+            AsyncApiContext context = scanner.getContext().peek(AsyncApiContext.class);
+            descriptor.setPath(context.getPath());
+            context.addReferenceable(context.getPath(), descriptor);
             if (isReference) {
-                scanner.getContext().peek(AsyncApiContext.class).addReference(mappingPath.getPath(), (ReferenceDescriptor) descriptor);
+                context.addReference(context.getPath(), (ReferenceDescriptor) descriptor);
             }
         }
         return descriptor;

@@ -19,7 +19,7 @@ public interface MessageExampleMapper extends ReferenceableObjectMapper<MessageE
 
     MessageExampleMapper INSTANCE = Mappers.getMapper(MessageExampleMapper.class);
 
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "headers", ignore = true)
     @Mapping(target = "payload", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "headers", "payload" })

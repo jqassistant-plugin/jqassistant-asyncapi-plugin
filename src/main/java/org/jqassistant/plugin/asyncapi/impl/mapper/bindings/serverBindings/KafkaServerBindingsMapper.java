@@ -5,6 +5,7 @@ import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaServerBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.kafka.KafkaServerBinding;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.TopicConfigurationMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.server.KafkaServerBindingsMapperDecorator;
 import org.mapstruct.*;
@@ -16,8 +17,7 @@ public interface KafkaServerBindingsMapper extends DescriptorMapper<KafkaServerB
 
     KafkaServerBindingsMapper INSTANCE = Mappers.getMapper(KafkaServerBindingsMapper.class);
 
-    @Mapping(target = "path", ignore = true)
-    @Mapping(target = "name", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     KafkaServerBindingsDescriptor toDescriptor(KafkaServerBinding kafka, @Context Scanner scanner);

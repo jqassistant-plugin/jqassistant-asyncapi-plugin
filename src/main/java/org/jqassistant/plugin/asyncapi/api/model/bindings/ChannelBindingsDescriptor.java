@@ -9,7 +9,7 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsChannelBindings
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaChannelBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.websockets.WsChannelBindingsDescriptor;
 
-@Label("Channel_Bindings")
+@Label("ChannelBindings")
 public interface ChannelBindingsDescriptor
         extends ReferenceableDescriptor { //unter Annahme, dass bindings je protocol type nur einmal ja channel deklariert werden
 

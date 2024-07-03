@@ -3,7 +3,6 @@ package org.jqassistant.plugin.asyncapi;
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
 import com.buschmais.xo.api.Query;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
-import org.jqassistant.plugin.asyncapi.api.model.ComponentsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.TagDescriptor;
 import org.junit.jupiter.api.Test;
@@ -45,5 +44,5 @@ class TagIT extends AbstractPluginIT {
         assertThat(secondTag.getExternalDocs().getDescription()).isEqualTo("Modo Jeans use of Kafka");
         assertThat(secondTag.getExternalDocs().getUrl()).isEqualTo("https://modojeans.com/intranet/kafka");
         store.commitTransaction();
-    } /** test fails due too changing order of scanning - problem for resolving tag references **/
+    }
 }

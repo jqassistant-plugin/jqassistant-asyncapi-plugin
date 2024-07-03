@@ -6,7 +6,7 @@ import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor;
 
-@Label("Kafka_Message")
+@Label("KafkaMessage")
 public interface KafkaMessageBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     //can be SchemaObject, Reference Object OR AVRO Schema Object

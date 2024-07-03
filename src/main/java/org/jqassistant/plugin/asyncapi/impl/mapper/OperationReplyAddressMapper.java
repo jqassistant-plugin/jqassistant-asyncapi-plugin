@@ -16,8 +16,7 @@ import org.mapstruct.*;
 @DecoratedWith(OperationReplyAddressMapperDecorator.class)
 public interface OperationReplyAddressMapper extends ReferenceableObjectMapper<OperationReplyAddress, OperationReplyAddressDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     OperationReplyAddressDescriptor toDescriptor(OperationReplyAddress replyAddress, @Context Scanner scanner);

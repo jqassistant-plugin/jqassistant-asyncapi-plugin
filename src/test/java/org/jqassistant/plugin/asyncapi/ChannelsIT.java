@@ -1,65 +1,57 @@
 package org.jqassistant.plugin.asyncapi;
 
-import java.io.File;
-import java.util.List;
-
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
 import com.buschmais.xo.api.Query;
-
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ChannelsIT extends AbstractPluginIT {
 
-
-    InfoDescriptor info;
-
     @BeforeEach
     public void init() {
         File file = new File(getClassesDirectory(ChannelsIT.class), "testAsyncApi/channelsTest.yml");
-        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/channelsTest.yml", AsyncApiScope.CONTRACT);
+        getScanner().scan(file, "testAsyncApi/channelsTest.yml", AsyncApiScope.CONTRACT);
     }
 
     @Test
     void channels() {
-        store.beginTransaction();
-        //contract
-        Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (contract:Contract) RETURN contract");
-        assertThat(result.hasResult()).isTrue();
-        ContractDescriptor contract = result.getSingleResult()
-                .get("contract", ContractDescriptor.class);
-        assertThat(contract).isNotNull();
-
-        //simple attributes
-        Query.Result<Query.Result.CompositeRowObject> resultC = store.executeQuery("MATCH (:Components)-[:DEFINES_CHANNEL]->(channel:Channel {name:'secondChannel'}) return channel");
+        Query.Result<Query.Result.CompositeRowObject> resultC = store.executeQuery("MATCH (:Components)-[:DEFINES_CHANNEL]->(channel:Channel {referenceableKey:'secondChannel'}) return channel");
         assertThat(resultC.hasResult()).isTrue();
         ChannelDescriptor channel = resultC.getSingleResult()
                 .get("channel", ChannelDescriptor.class);
         assertThat(channel).isNotNull();
         assertThat(channel.getAddress()).isEqualTo("users.{userId}");
-        assertThat(channel.getName()).isEqualTo("secondChannel");
+        assertThat(channel.getReferenceableKey()).isEqualTo("secondChannel");
         assertThat(channel.getDescription()).isEqualTo("This channel is used to exchange messages about user events.");
+    }
 
-        //messages in channels
+    @Test
+    void messages() {
         List<MessageDescriptor> messages =
-                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:SUPPORTS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:SUPPORTS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
         assertThat(messages.size()).isEqualTo(2);
+    }
 
-        //parameters in channels
+    @Test
+    void parameters() {
         List<ParametersDescriptor> parameters =
-                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:INCLUDES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:INCLUDES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
+    }
 
-        //parameters in channels
+    @Test
+    void servers() {
         List<ServerDescriptor> servers =
-                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {name:'secondChannel'})-[:IN_SERVER]->(servers:Server) return servers").getColumn("servers");
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:IN_SERVER]->(servers:Server) return servers").getColumn("servers");
         assertThat(servers.size()).isEqualTo(2);
 
-        store.commitTransaction();
 
     }
 

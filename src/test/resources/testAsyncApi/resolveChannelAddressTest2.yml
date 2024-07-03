@@ -1,7 +1,4 @@
 asyncapi: 3.0.0
-info:
-  title: second-channel-resolving-test-file
-  version: 1.0.0
 channels:
   waterlooChannel:
     address: '{deployment_config}_waterlooChannel'

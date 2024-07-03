@@ -14,7 +14,7 @@ import org.mapstruct.*;
 public interface ContactMapper extends DescriptorMapper<Contact, ContactDescriptor> {
 
 
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     ContactDescriptor toDescriptor(Contact contact, @Context Scanner scanner);

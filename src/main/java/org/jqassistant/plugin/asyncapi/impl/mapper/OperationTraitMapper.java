@@ -19,8 +19,7 @@ public interface OperationTraitMapper extends ReferenceableObjectMapper<Operatio
 
     OperationTraitMapper INSTANCE = Mappers.getMapper(OperationTraitMapper.class);
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "bindings", "security" })
     @Override
     OperationTraitDescriptor toDescriptor(OperationTraits traits, @Context Scanner scanner);

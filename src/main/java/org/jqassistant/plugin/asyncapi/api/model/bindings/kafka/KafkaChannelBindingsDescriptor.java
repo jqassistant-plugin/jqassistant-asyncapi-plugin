@@ -6,7 +6,7 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("Kafka_Channel")
+@Label("KafkaChannel")
 public interface KafkaChannelBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getTopic();

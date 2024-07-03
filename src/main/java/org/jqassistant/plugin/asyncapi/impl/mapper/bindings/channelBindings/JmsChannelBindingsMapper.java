@@ -5,6 +5,7 @@ import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsChannelBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.jms.JMSChannelBinding;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.channel.JmsChannelBindingsMapperDecorator;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
@@ -15,8 +16,7 @@ public interface JmsChannelBindingsMapper extends DescriptorMapper<JMSChannelBin
 
     JmsChannelBindingsMapper INSTANCE = Mappers.getMapper(JmsChannelBindingsMapper.class);
 
-    @Mapping(target = "path", ignore = true)
-    @Mapping(target = "name", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     JmsChannelBindingsDescriptor toDescriptor(JMSChannelBinding binding, @Context Scanner scanner);

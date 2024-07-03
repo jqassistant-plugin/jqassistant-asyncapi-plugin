@@ -5,7 +5,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("AMQP_Channel_Exchange")
+@Label("AMQPChannelExchange")
 public interface AmqpExchangeDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getName();

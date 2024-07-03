@@ -8,6 +8,7 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.ChannelBindings;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.JmsChannelBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.KafkaChannelBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.channelBindings.WsChannelBindingsMapper;
@@ -19,8 +20,7 @@ import org.mapstruct.*;
 @DecoratedWith(ChannelBindingsMapperDecorator.class)
 public interface ChannelBindingsMapper extends ReferenceableObjectMapper<ChannelBindings, ChannelBindingsDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "amqp", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "amqp" })
     @Override

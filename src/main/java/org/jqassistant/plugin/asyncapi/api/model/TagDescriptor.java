@@ -6,6 +6,9 @@ import com.buschmais.xo.neo4j.api.annotation.Relation;
 @Label("Tag")
 public interface TagDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
+    String getName();
+    void setName(String name);
+
     String getDescription();
 
     void setDescription(String description);

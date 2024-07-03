@@ -6,7 +6,7 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescrip
 
 import java.util.List;
 
-@Label("Security_Scheme")
+@Label("SecurityScheme")
 public interface SecuritySchemeDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getType();

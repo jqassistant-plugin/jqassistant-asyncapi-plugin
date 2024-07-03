@@ -5,6 +5,7 @@ import com.buschmais.xo.api.Query;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.*;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -17,13 +18,14 @@ class ServerIT extends AbstractPluginIT {
      * tests server for simple attributes and properties
      **/
 
-    @Test
-    public void testServer() {
+    @BeforeEach
+    public void init() {
         File file = new File(getClassesDirectory(TagIT.class), "testAsyncApi/serverTest.yaml");
-        ContractDescriptor contract = getScanner().scan(file, "testAsyncApi/serverTest.yaml", AsyncApiScope.CONTRACT);
-        store.beginTransaction();
-        assertThat(contract).isNotNull();
+        getScanner().scan(file, "testAsyncApi/serverTest.yaml", AsyncApiScope.CONTRACT);
+    }
 
+    @Test
+    public void simpleAttributes() {
         Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery(
                 "MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server) return server");
         assertThat(result.hasResult()).isTrue();
@@ -35,13 +37,18 @@ class ServerIT extends AbstractPluginIT {
         assertThat(server.getDescription()).isEqualTo("A Kafka cluster running in **OpenShift**.");
         assertThat(server.getHost()).isEqualTo("localhost:4747");
         assertThat(server.getPathName()).isEqualTo("This/Is/A/Path/To/A/Resource/In/The/Host");
+    }
 
-        //tags in server
+    @Test
+    public void tags() {
         List<TagDescriptor> tags =
                 query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags.size()).isEqualTo(3);
 
-        //external documentations
+    }
+
+    @Test
+    public void externalDocs() {
         Query.Result<Query.Result.CompositeRowObject> result2 = store.executeQuery(
                 "MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:REFERS_TO_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
         assertThat(result2.hasResult()).isTrue();
@@ -50,31 +57,37 @@ class ServerIT extends AbstractPluginIT {
         assertThat(externalDoc).isNotNull();
         assertThat(externalDoc.getDescription()).isEqualTo("More info about Kafka");
         assertThat(externalDoc.getUrl()).isEqualTo("https://www.ibm.com/docs/en/dsm?topic=options-apache-kafka-protocol-configuration");
+    }
 
-        //server variables
+    @Test
+    public void serverVariables() {
         List<ServerVariableDescriptor> variables =
-                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_VARIABLE]->(var:Server_Variable) return var").getColumn("var");
+                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_VARIABLE]->(var:ServerVariable) return var").getColumn("var");
         assertThat(variables.size()).isEqualTo(2);
         ServerVariableDescriptor var = variables.get(0);
-        assertThat(var.getName()).isEqualTo("host");
+        assertThat(var.getReferenceableKey()).isEqualTo("host");
         assertThat(var.getDefaultValue()).isEqualTo("apps.dale-lane.cp.fyre.ibm.com");
         assertThat(var.getDescription()).isEqualTo("hostname for the OpenShift cluster");
         assertThat(var.getExamples()).isEqualTo("[apps.dale-lane.cp.fyre.ibm.com, apps.dalelane-neptune.cp.fyre.ibm.com]");
         assertThat(var.getEnumValues()).isEqualTo("[production, staging]");
+    }
 
+    @Test
+    public void securityScheme() {
         //security scheme TODO: extended test
         List<SecuritySchemeDescriptor> security =
-                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SECURITY_SCHEME]->(securitySchemes:Security_Scheme) return securitySchemes").getColumn("securitySchemes");
+                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SECURITY_SCHEME]->(securitySchemes:SecurityScheme) return securitySchemes").getColumn("securitySchemes");
         assertThat(security.get(0)).isNotNull();
         assertThat(security.size()).isEqualTo(1);
+    }
 
-
+    @Test
+    public void bindings() {
         List<ServerBindingsDescriptor> bindings =
-                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_BINDING]->(binding:Server_Binding) return binding").getColumn("binding");
+                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_BINDING]->(binding:ServerBinding) return binding").getColumn("binding");
         assertThat(bindings.get(0)).isNotNull();
         assertThat(bindings.size()).isEqualTo(1);
 
-        store.commitTransaction();
-
     }
+
 }

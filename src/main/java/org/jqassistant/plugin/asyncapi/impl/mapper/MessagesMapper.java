@@ -14,15 +14,15 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageTraitMapper.class,
-        MessageExampleMapper.class, MessageBindingsMapper.class }, config = DescriptorMapperConfig.class)
+@Mapper(uses = {CorrelationIdMapper.class, TagMapper.class, ExternalDocsMapper.class, MessageTraitMapper.class,
+        MessageExampleMapper.class, MessageBindingsMapper.class}, config = DescriptorMapperConfig.class)
 @DecoratedWith(MessagesMapperDecorator.class)
 public interface MessagesMapper extends ReferenceableObjectMapper<MessageObject, MessageDescriptor> {
 
     MessagesMapper INSTANCE = Mappers.getMapper(MessagesMapper.class);
 
-    @Mapping(target = "path", ignore = true)
-    @BeanMapping(ignoreUnmappedSourceProperties = { "reference",  "messageId", "payload", "headers" })
+    @ReferenceableObjectMapping
+    @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "messageId", "payload", "headers"})
     @Override
     MessageDescriptor toDescriptor(MessageObject message, @Context Scanner scanner);
 

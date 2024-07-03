@@ -13,8 +13,7 @@ import org.mapstruct.*;
 @DecoratedWith(InfoMapperDecorator.class)
 public interface InfoMapper extends DescriptorMapper<Info, InfoDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference"})
     @Override
     InfoDescriptor toDescriptor(Info info, @Context Scanner scanner);
