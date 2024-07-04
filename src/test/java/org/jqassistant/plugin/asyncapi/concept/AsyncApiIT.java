@@ -27,15 +27,16 @@ class AsyncApiIT extends AbstractPluginIT {
         File file2 = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
         getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
         getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
-        store.beginTransaction();
     }
 
     @Test
     void channelMapsToChannelInSeparateContracts() throws RuleException {
         applyConcept("jqassistant-plugin-asyncapi:ChannelMapsToChannel");
+        store.beginTransaction();
 
         Query.Result<Query.Result.CompositeRowObject> result =
-                store.executeQuery("MATCH (a:Contract:AsyncAPI)-[:DEFINES_CHANNEL]->(c1:Channel), (b:Contract:AsyncAPI)-[:DEFINES_CHANNEL]->(c2:Channel), (c1)-[:MAPS_TO]->(c2) RETURN c1.referenceableKey as key1");
+                store.executeQuery("MATCH (a:Contract:AsyncAPI)-[:DEFINES_CHANNEL]->(c1:Channel), (b:Contract:AsyncAPI)-[:DEFINES_CHANNEL]->(c2:Channel), (c1)-[:MAPS_TO]->(c2) RETURN c1.referenceableKey AS key1");
+
         ResultIterator<Query.Result.CompositeRowObject> iterator = result.iterator();
         String name = iterator.next().get("key1", String.class);
         String name2 = iterator.next().get("key1", String.class);
@@ -48,6 +49,7 @@ class AsyncApiIT extends AbstractPluginIT {
     void resolveReferences() throws RuleException {
         Result<Concept> result =  applyConcept("jqassistant-plugin-asyncapi:ReferenceResolvesToTarget");
 
+        store.beginTransaction();
         assertThat(result.getRows().size()).isEqualTo(1);
 
         List<ChannelDescriptor> singleReferenceChannel =
@@ -62,13 +64,13 @@ class AsyncApiIT extends AbstractPluginIT {
                 query("MATCH (a:Contract:AsyncAPI)-[:DEFINES_MESSAGE]->(c1:Reference:Message)-[:REFERENCES*2..]->(c2:Message), (c1)-[:RESOLVES_TO]->(c2) WHERE NOT (c2:Reference)  return count(c1) as Sources").getColumn("Sources");
         assertThat(multipleReferenceMessage.size()).isEqualTo(1);
         store.commitTransaction();
-
     }
 
     @Test
     void operationSendsToOperation() throws RuleException {
         Result<Concept> result = applyConcept("jqassistant-plugin-asyncapi:OperationSendsToOperation");
 
+        store.beginTransaction();
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
         Column<?> operations = result.getRows().get(0).getColumns().get("Operations");
         assertThat(operations).isNotNull();
