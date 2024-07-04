@@ -27,6 +27,7 @@ class AsyncApiIT extends AbstractPluginIT {
         File file2 = new File(getClassesDirectory(AsyncApiIT.class), "testAsyncApi/resolveChannelAddressTest2.yml");
         getScanner().scan(file, "testAsyncApi/resolveChannelAddressTest.yml", AsyncApiScope.CONTRACT);
         getScanner().scan(file2, "testAsyncApi/resolveChannelAddressTest2.yml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -39,6 +40,7 @@ class AsyncApiIT extends AbstractPluginIT {
         String name = iterator.next().get("key1", String.class);
         String name2 = iterator.next().get("key1", String.class);
         assertThat(name).isEqualTo(name2);
+        store.commitTransaction();
 
     }
 
@@ -59,6 +61,7 @@ class AsyncApiIT extends AbstractPluginIT {
         List<MessageDescriptor> multipleReferenceMessage =
                 query("MATCH (a:Contract:AsyncAPI)-[:DEFINES_MESSAGE]->(c1:Reference:Message)-[:REFERENCES*2..]->(c2:Message), (c1)-[:RESOLVES_TO]->(c2) WHERE NOT (c2:Reference)  return count(c1) as Sources").getColumn("Sources");
         assertThat(multipleReferenceMessage.size()).isEqualTo(1);
+        store.commitTransaction();
 
     }
 
@@ -76,6 +79,7 @@ class AsyncApiIT extends AbstractPluginIT {
         String name2 = testResult.getColumn("key2").get(0).toString();
         assertThat(name).isEqualTo("send_WaterlooOperation");
         assertThat(name2).isEqualTo("receive_WaterlooOperation");
+        store.commitTransaction();
 
     }
 }

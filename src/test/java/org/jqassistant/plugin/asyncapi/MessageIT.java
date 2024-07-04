@@ -21,6 +21,7 @@ class MessageIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(MessageIT.class), "testAsyncApi/messageTest.yml");
         getScanner().scan(file, "testAsyncApi/messageTest.yml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -35,6 +36,7 @@ class MessageIT extends AbstractPluginIT {
         assertThat(message.getSummary()).isEqualTo("Action to sign a user up.");
         assertThat(message.getDescription()).isEqualTo("A longer description for a specific message.");
         assertThat(message.getContentType()).isEqualTo("application/json");
+        store.commitTransaction();
     }
 
     @Test
@@ -44,6 +46,7 @@ class MessageIT extends AbstractPluginIT {
         List<TagDescriptor> tags =
                 query("MATCH (:Channel)-[:SUPPORTS_MESSAGE]->(message:Message {referenceableKey:'oneMessage'})-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags.size()).isEqualTo(3);
+        store.commitTransaction();
     }
 
     @Test
@@ -53,6 +56,7 @@ class MessageIT extends AbstractPluginIT {
         CorrelationIDDescriptor correlationId = result.getSingleResult().get("correlationId", CorrelationIDDescriptor.class);
         assertThat(correlationId.getDescription()).isEqualTo("Default Correlation ID");
         assertThat(correlationId.getLocation()).isEqualTo("$message.header#/correlationId");
+        store.commitTransaction();
     }
 
     @Test
@@ -60,6 +64,7 @@ class MessageIT extends AbstractPluginIT {
         Query.Result<Query.Result.CompositeRowObject> result2 = store.executeQuery("MATCH (:Channel)-[:SUPPORTS_MESSAGE]->(message:Message {referenceableKey:'oneMessage'})-[:DEFINES_TRAIT]->(trait:MessageTrait) return trait");
         assertThat(result2.hasResult()).isTrue();
         assertThat(result2.getSingleResult().get("trait", MessageTraitDescriptor.class)).isNotNull();
+        store.commitTransaction();
     }
 
     @Test
@@ -70,6 +75,7 @@ class MessageIT extends AbstractPluginIT {
         assertThat(example).isNotNull();
         assertThat(example.getName()).isEqualTo("SimpleSignup");
         assertThat(example.getSummary()).isEqualTo("A simple UserSignup example message");
+        store.commitTransaction();
 
     }
 

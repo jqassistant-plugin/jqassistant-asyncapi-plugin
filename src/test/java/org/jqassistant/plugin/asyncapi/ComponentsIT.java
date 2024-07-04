@@ -21,6 +21,7 @@ class ComponentsIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(ComponentsIT.class), "testAsyncApi/componentsTest.yaml");
         getScanner().scan(file, "testAsyncApi/componentsTest.yaml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -36,6 +37,7 @@ class ComponentsIT extends AbstractPluginIT {
         assertThat(contract.getOperations()).isEmpty();
         assertThat(contract.getServers()).isEmpty();
         assertThat(contract.getInfo()).isNull();
+        store.commitTransaction();
     }
 
     @Test
@@ -43,6 +45,7 @@ class ComponentsIT extends AbstractPluginIT {
         List<TagDescriptor> tags =
                 query("MATCH (:Components)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags).hasSize(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -51,6 +54,7 @@ class ComponentsIT extends AbstractPluginIT {
                 query("MATCH (:Components)-[:DEFINES_CHANNEL]->(channels:Channel) return channels").getColumn("channels");
         assertThat(channels).isNotNull();
         assertThat(channels).hasSize(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -58,6 +62,7 @@ class ComponentsIT extends AbstractPluginIT {
         List<MessageDescriptor> messages =
                 query("MATCH (:Components)-[:DEFINES_MESSAGE]->(messages:Message) return messages").getColumn("messages");
         assertThat(messages.size()).isEqualTo(2);
+        store.commitTransaction();
     }
 
     @Test
@@ -65,6 +70,7 @@ class ComponentsIT extends AbstractPluginIT {
         List<ParametersDescriptor> parameters =
                 query("MATCH (:Components)-[:DEFINES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -74,6 +80,7 @@ class ComponentsIT extends AbstractPluginIT {
         ExternalDocsDescriptor externalDoc = result.getSingleResult()
                 .get("externalDocs", ExternalDocsDescriptor.class);
         assertThat(externalDoc).isNotNull();
+        store.commitTransaction();
     }
 
     @Test
@@ -81,6 +88,7 @@ class ComponentsIT extends AbstractPluginIT {
         List<OperationTraitDescriptor> operationTraits =
                 query("MATCH (:Components)-[:DEFINES_OPERATION_TRAIT]->(operationTraits:OperationTrait) return operationTraits").getColumn("operationTraits");
         assertThat(operationTraits.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -88,6 +96,7 @@ class ComponentsIT extends AbstractPluginIT {
         List<OperationTraitDescriptor> messageTraits =
                 query("MATCH (:Components)-[:DEFINES_MESSAGE_TRAIT]->(messageTraits:MessageTrait) return messageTraits").getColumn("messageTraits");
         assertThat(messageTraits.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
 

@@ -18,6 +18,7 @@ class TagIT extends AbstractPluginIT {
 
     @Test
     public void test() {
+        store.beginTransaction();
         File file = new File(getClassesDirectory(TagIT.class), "testAsyncApi/tagsTest.yml");
         getScanner().scan(file, "testAsyncApi/tagsTest.yml", AsyncApiScope.CONTRACT);
 
@@ -40,5 +41,6 @@ class TagIT extends AbstractPluginIT {
         assertThat(secondTag.getName()).isEqualTo("Diffs");
         assertThat(secondTag.getExternalDocs().getDescription()).isEqualTo("Modo Jeans use of Kafka");
         assertThat(secondTag.getExternalDocs().getUrl()).isEqualTo("https://modojeans.com/intranet/kafka");
+        store.commitTransaction();
     }
 }

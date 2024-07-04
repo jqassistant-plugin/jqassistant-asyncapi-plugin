@@ -18,6 +18,7 @@ class ChannelsIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(ChannelsIT.class), "testAsyncApi/channelsTest.yml");
         getScanner().scan(file, "testAsyncApi/channelsTest.yml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -30,6 +31,7 @@ class ChannelsIT extends AbstractPluginIT {
         assertThat(channel.getAddress()).isEqualTo("users.{userId}");
         assertThat(channel.getReferenceableKey()).isEqualTo("secondChannel");
         assertThat(channel.getDescription()).isEqualTo("This channel is used to exchange messages about user events.");
+        store.commitTransaction();
     }
 
     @Test
@@ -37,6 +39,7 @@ class ChannelsIT extends AbstractPluginIT {
         List<MessageDescriptor> messages =
                 query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:SUPPORTS_MESSAGE]->(messages:Message) return messages").getColumn("messages");
         assertThat(messages.size()).isEqualTo(2);
+        store.commitTransaction();
     }
 
     @Test
@@ -44,6 +47,7 @@ class ChannelsIT extends AbstractPluginIT {
         List<ParametersDescriptor> parameters =
                 query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:INCLUDES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -51,6 +55,7 @@ class ChannelsIT extends AbstractPluginIT {
         List<ServerDescriptor> servers =
                 query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:IN_SERVER]->(servers:Server) return servers").getColumn("servers");
         assertThat(servers.size()).isEqualTo(2);
+        store.commitTransaction();
 
 
     }

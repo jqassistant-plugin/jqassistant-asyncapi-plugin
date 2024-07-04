@@ -22,6 +22,7 @@ class ServerIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(TagIT.class), "testAsyncApi/serverTest.yaml");
         getScanner().scan(file, "testAsyncApi/serverTest.yaml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -37,6 +38,7 @@ class ServerIT extends AbstractPluginIT {
         assertThat(server.getDescription()).isEqualTo("A Kafka cluster running in **OpenShift**.");
         assertThat(server.getHost()).isEqualTo("localhost:4747");
         assertThat(server.getPathName()).isEqualTo("This/Is/A/Path/To/A/Resource/In/The/Host");
+        store.commitTransaction();
     }
 
     @Test
@@ -44,6 +46,7 @@ class ServerIT extends AbstractPluginIT {
         List<TagDescriptor> tags =
                 query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags.size()).isEqualTo(3);
+        store.commitTransaction();
 
     }
 
@@ -57,6 +60,7 @@ class ServerIT extends AbstractPluginIT {
         assertThat(externalDoc).isNotNull();
         assertThat(externalDoc.getDescription()).isEqualTo("More info about Kafka");
         assertThat(externalDoc.getUrl()).isEqualTo("https://www.ibm.com/docs/en/dsm?topic=options-apache-kafka-protocol-configuration");
+        store.commitTransaction();
     }
 
     @Test
@@ -70,6 +74,7 @@ class ServerIT extends AbstractPluginIT {
         assertThat(var.getDescription()).isEqualTo("hostname for the OpenShift cluster");
         assertThat(var.getExamples()).isEqualTo("[apps.dale-lane.cp.fyre.ibm.com, apps.dalelane-neptune.cp.fyre.ibm.com]");
         assertThat(var.getEnumValues()).isEqualTo("[production, staging]");
+        store.commitTransaction();
     }
 
     @Test
@@ -79,6 +84,7 @@ class ServerIT extends AbstractPluginIT {
                 query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SECURITY_SCHEME]->(securitySchemes:SecurityScheme) return securitySchemes").getColumn("securitySchemes");
         assertThat(security.get(0)).isNotNull();
         assertThat(security.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -87,6 +93,7 @@ class ServerIT extends AbstractPluginIT {
                 query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_BINDING]->(binding:ServerBinding) return binding").getColumn("binding");
         assertThat(bindings.get(0)).isNotNull();
         assertThat(bindings.size()).isEqualTo(1);
+        store.commitTransaction();
 
     }
 

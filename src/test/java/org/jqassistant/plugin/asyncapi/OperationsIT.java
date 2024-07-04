@@ -22,6 +22,7 @@ class OperationsIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(OperationsIT.class), "testAsyncApi/operationsTest.yaml");
         getScanner().scan(file, "testAsyncApi/operationsTest.yaml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
@@ -41,6 +42,7 @@ class OperationsIT extends AbstractPluginIT {
         assertThat(operationDescriptor.getSummary()).isEqualTo("Action to send something.");
         assertThat(operationDescriptor.getDescription()).isEqualTo("A longer description");
         assertThat(operationDescriptor.getAction()).isEqualTo("send");
+        store.commitTransaction();
     }
 
     @Test
@@ -48,6 +50,7 @@ class OperationsIT extends AbstractPluginIT {
         List<ChannelDescriptor> channels =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:ON_CHANNEL]->(channel:Channel) return channel").getColumn("channel");
         assertThat(channels.size()).isEqualTo(1);
+        store.commitTransaction();
     }
     //to add: security
 
@@ -56,6 +59,7 @@ class OperationsIT extends AbstractPluginIT {
         List<TagDescriptor> tags =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:HAS_TAG]->(tag:Tag) return tag").getColumn("tag");
         assertThat(tags.size()).isEqualTo(3);
+        store.commitTransaction();
     }
 
     @Test
@@ -74,6 +78,7 @@ class OperationsIT extends AbstractPluginIT {
                 .get("kafka", KafkaOperationBindingsDescriptor.class);
         assertThat(kafkaBinding).isNotNull();
         assertThat(kafkaBinding.getBindingVersion()).isEqualTo("0.5.0");
+        store.commitTransaction();
     }
 
     @Test
@@ -81,6 +86,7 @@ class OperationsIT extends AbstractPluginIT {
         List<OperationTraitDescriptor> traits =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:DEFINES_TRAIT]->(trait:OperationTrait) return trait").getColumn("trait");
         assertThat(traits.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -96,6 +102,7 @@ class OperationsIT extends AbstractPluginIT {
         List<ChannelDescriptor> replyChannel =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:USING_REPLY]->(:OperationReply)-[:ON_CHANNEL]->(channel:Channel) return channel").getColumn("channel");
         assertThat(replyChannel.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
     @Test
@@ -107,6 +114,7 @@ class OperationsIT extends AbstractPluginIT {
                 .get("address", OperationReplyAddressDescriptor.class);
         assertThat(operationAddress).isNotNull();
         assertThat(operationAddress.getLocation()).isEqualTo("$message.header#/replyTo");
+        store.commitTransaction();
     }
 
     @Test
@@ -115,6 +123,7 @@ class OperationsIT extends AbstractPluginIT {
         List<MessageDescriptor> messages =
                 query("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:USING_MESSAGE]->(message:Message) return message").getColumn("message");
         assertThat(messages.size()).isEqualTo(1);
+        store.commitTransaction();
     }
 
 }
