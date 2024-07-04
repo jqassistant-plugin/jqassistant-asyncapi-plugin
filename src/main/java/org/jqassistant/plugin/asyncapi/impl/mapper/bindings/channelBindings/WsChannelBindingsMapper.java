@@ -10,6 +10,7 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.channel.Ws
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
+@Mapper
 @DecoratedWith(WsChannelBindingsMapperDecorator.class)
 public interface WsChannelBindingsMapper extends DescriptorMapper<WebSocketChannelBinding, WsChannelBindingsDescriptor> {
 

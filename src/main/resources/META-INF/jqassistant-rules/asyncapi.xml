@@ -35,7 +35,7 @@
         </description>
         <cypher><![CDATA[
                MATCH
-                  (node:AsyncAPI)-[r]->(source:Reference:AsyncAPI)-[:REFERENCES*]->(target:AsyncAPI)
+                  (source:Reference:AsyncAPI)-[:REFERENCES*]->(target:AsyncAPI)
                WHERE NOT
                   (target:Reference)
                MERGE
