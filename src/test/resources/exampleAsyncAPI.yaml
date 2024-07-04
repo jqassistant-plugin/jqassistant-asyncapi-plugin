@@ -24,11 +24,10 @@ info:
     url: https://www.asyncapi.com/docs/reference/specification/v3.0.0-next-major-spec.8
 servers:
   eventstreams:
-    #  url: es-kafka-bootstrap-eventstreams.{host}:{port}
-    protocol: kafka-secure
+    protocol: kafka
     protocolVersion: '3.3.0'
     title: Event Streams Kafka cluster
-    description: A secure Kafka cluster running in **OpenShift**.
+    description: A  Kafka cluster running in **OpenShift**.
     tags:
       - name: example
       - name: openshift

@@ -5,6 +5,7 @@ import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsServerBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.jms.JMSServerBinding;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.server.JmsServerBindingsMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ListMapToStringMapper;
 import org.mapstruct.*;
@@ -16,8 +17,7 @@ public interface JmsServerBindingsMapper extends DescriptorMapper<JMSServerBindi
 
     JmsServerBindingsMapper INSTANCE = Mappers.getMapper(JmsServerBindingsMapper.class);
 
-    @Mapping(target = "path", ignore = true)
-    @Mapping(target = "name", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     JmsServerBindingsDescriptor toDescriptor(JMSServerBinding kafka, @Context Scanner scanner);

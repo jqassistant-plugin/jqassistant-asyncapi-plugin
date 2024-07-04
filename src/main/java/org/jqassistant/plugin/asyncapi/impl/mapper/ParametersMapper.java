@@ -20,10 +20,9 @@ public interface ParametersMapper extends ReferenceableObjectMapper<ChannelParam
 
     ParametersMapper INSTANCE = Mappers.getMapper(ParametersMapper.class);
 
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "enum", source = "enumValues")
     @Mapping(target = "default", source = "defaultValue")
-    @Mapping(target = "name", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     ParametersDescriptor toDescriptor(ChannelParameter parameters, @Context Scanner scanner);

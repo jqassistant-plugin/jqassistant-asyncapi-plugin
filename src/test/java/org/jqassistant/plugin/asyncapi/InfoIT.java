@@ -19,12 +19,11 @@ class InfoIT extends AbstractPluginIT {
     public void init() {
         File file = new File(getClassesDirectory(InfoIT.class), "testAsyncApi/infoTest.yaml");
         getScanner().scan(file, "testAsyncApi/infoTest.yaml", AsyncApiScope.CONTRACT);
+        store.beginTransaction();
     }
 
     @Test
     void basic() {
-        store.beginTransaction();
-
         Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (contract:Contract) RETURN contract");
         assertThat(result.hasResult()).isTrue();
         ContractDescriptor contract = result.getSingleResult()
@@ -39,7 +38,6 @@ class InfoIT extends AbstractPluginIT {
 
     @Test
     void simpleAttributes() {
-        store.beginTransaction();
         Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery("MATCH (:Contract)-[:DEFINES_INFO]->(info:Info) RETURN info");
         assertThat(result.hasResult()).isTrue();
         InfoDescriptor info = result.getSingleResult()
@@ -60,7 +58,6 @@ class InfoIT extends AbstractPluginIT {
 
     @Test
     void infoTags() {
-        store.beginTransaction();
         List<TagDescriptor> tags = query("MATCH (:Contract)-[:DEFINES_INFO]->(info:Info)-[:HAS_TAG]->(tags:Tag) return tags").getColumn("tags");
         assertThat(tags).hasSize(3);
         for (TagDescriptor tag : tags) {
@@ -79,7 +76,6 @@ class InfoIT extends AbstractPluginIT {
 
     @Test
     void externalDocsOfInfo() {
-        store.beginTransaction();
         Query.Result<Query.Result.CompositeRowObject> result = store.executeQuery(
                 "MATCH (:Info)-[:REFERS_TO_EXTERNAL_DOCUMENTATION]->(externalDocs:ExternalDocumentation) return externalDocs");
         assertThat(result.hasResult()).isTrue();

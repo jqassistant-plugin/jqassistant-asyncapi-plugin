@@ -1,0 +1,20 @@
+asyncapi: 3.0.0
+channels:
+  waterlooChannelSend:
+    address: '{deployment_config}_waterlooChannel'
+  waterlooChannelReceive:
+    address: '{deployment_config}_waterlooChannel'
+operations:
+  receive_WaterlooOperation:
+    action: receive
+    channel:
+      $ref: '#/channels/waterlooChannelReceive'
+  send_WaterlooOperation:
+    action: send
+    channel:
+      $ref: '#/channels/waterlooChannelSend'
+
+
+
+
+

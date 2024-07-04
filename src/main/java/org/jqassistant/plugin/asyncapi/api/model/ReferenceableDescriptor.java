@@ -8,9 +8,9 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 @Abstract
 public interface ReferenceableDescriptor extends Descriptor {
 
-    String getName();
+    String getReferenceableKey();
 
-    void setName(String name);
+    void setReferenceableKey(String referenceableKey);
 
     String getPath();
 

@@ -6,7 +6,7 @@ import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor;
 
-@Label("Kafka_Operation")
+@Label("KafkaOperation")
 public interface KafkaOperationBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     SchemaDescriptor getGroupId();

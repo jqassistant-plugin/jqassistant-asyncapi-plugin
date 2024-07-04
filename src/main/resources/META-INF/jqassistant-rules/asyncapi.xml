@@ -2,19 +2,64 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 https://schema.jqassistant.org/plugin/jqassistant-rule-v1.10.xsd">
 
+    <constraint id="jqassistant-plugin-asyncapi:ReferenceChainsMustBeLimited">
+        <description>Reference chains must not contain more than one reference. Therefore, references must not reference other references.
+        </description>
+        <cypher><![CDATA[
+            MATCH
+              (source:Reference:AsyncAPI)-[:REFERENCES]->(:Reference:AsyncAPI)-[:REFERENCES]->(:AsyncAPI)
+            RETURN
+              source
+        ]]></cypher>
+    </constraint>
 
-    <concept id="asyncapi:References">
-        <description>Merges ReferenceDescriptors to their referenced target descriptor.
+    <concept id="jqassistant-plugin-asyncapi:ChannelMapsToChannel">
+        <description>Merges channel descriptors with the same address (e.q. in different files).
         </description>
         <cypher><![CDATA[
                 MATCH
-                    (contract:AsyncAPI:Contract),
-                    (contract)-[:DEFINES_REFERENCEABLE]->(reference:AsyncAPI:Reference),
-                    (contract)-[:DEFINES_REFERENCEABLE]->(target:AsyncAPI{path:reference.reference})
+                   (c1:Channel:AsyncAPI),(c2:Channel:AsyncAPI)
+                WHERE
+                    c1.address=c2.address AND c1<>c2
                 MERGE
-                    (reference)-[:REFERENCES]->(target)
+                    (c1)-[:MAPS_TO]->(c2)
                 RETURN
-                    count (*) as References
+                    count(*) as Channels
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+    <concept id="jqassistant-plugin-asyncapi:ReferenceResolvesToTarget">
+        <description>Sets a "RESOLVES_TO"-relation between a reference object and the actual referenced object. Covers a chain of 2 references as well.
+        </description>
+        <cypher><![CDATA[
+               MATCH
+                  (source:Reference:AsyncAPI)-[:REFERENCES*]->(target:AsyncAPI)
+               WHERE NOT
+                  (target:Reference)
+               MERGE
+                  (source)-[:RESOLVES_TO]->(target)
+               RETURN
+                  count(*) as ResolvedReferences
+        ]]></cypher>
+        <verify>
+            <aggregation/>
+        </verify>
+    </concept>
+
+    <concept id="jqassistant-plugin-asyncapi:OperationSendsToOperation">
+        <requiresConcept refId="jqassistant-plugin-asyncapi:ChannelMapsToChannel" />
+        <requiresConcept refId="jqassistant-plugin-asyncapi:ReferenceResolvesToTarget" />
+        <description>Merges sending operations to the receiving operation.
+        </description>
+        <cypher><![CDATA[
+               MATCH
+                 (operationSend:Operation:AsyncAPI{action:"send"})-[:ON_CHANNEL|RESOLVES_TO*]->(:Channel:AsyncAPI)-[:MAPS_TO*0..1]->(:Channel:AsyncAPI)-[:RESOLVES_TO|ON_CHANNEL*]-(operationReceive:Operation:AsyncAPI)
+               MERGE
+                  (operationSend)-[:SENDS_TO]->(operationReceive)
+               RETURN
+                  count(*) as Operations
         ]]></cypher>
         <verify>
             <aggregation/>

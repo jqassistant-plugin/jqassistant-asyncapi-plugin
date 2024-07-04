@@ -8,6 +8,7 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.OperationBindings;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.operationBindings.KafkaOperationBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.OperationBindingsMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
@@ -17,8 +18,7 @@ import org.mapstruct.*;
 @DecoratedWith(OperationBindingsMapperDecorator.class)
 public interface OperationBindingsMapper extends ReferenceableObjectMapper<OperationBindings, OperationBindingsDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "amqp", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "amqp" })
     @Override

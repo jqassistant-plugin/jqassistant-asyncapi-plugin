@@ -18,8 +18,7 @@ public interface ComponentsMapper extends DescriptorMapper<Components, Component
 
     ComponentsMapper INSTANCE = Mappers.getMapper(ComponentsMapper.class);
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "operationReplyAddresses", source = "replyAddresses")
     @Mapping(target = "operationReplies", source = "replies")
     @BeanMapping(ignoreUnmappedSourceProperties = {"reference", "schemas",  "serverBindings",  "operationBindings",

@@ -6,7 +6,7 @@ import org.jqassistant.plugin.asyncapi.api.model.AsyncApiDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor;
 
-@Label("Jms_Message")
+@Label("JmsMessage")
 public interface JmsMessageBindingsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     //can be SchemaObject, Reference Object OR AVRO Schema Object

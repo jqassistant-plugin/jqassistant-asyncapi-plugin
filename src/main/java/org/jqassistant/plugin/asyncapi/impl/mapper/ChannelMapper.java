@@ -21,9 +21,8 @@ public interface ChannelMapper extends ReferenceableObjectMapper<ChannelObject, 
 
     ChannelMapper INSTANCE = Mappers.getMapper(ChannelMapper.class);
 
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "bindings", ignore = true)
-    @Mapping(target = "name", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "bindings" })
     @Override
     ChannelDescriptor toDescriptor(ChannelObject channel, @Context Scanner scanner);

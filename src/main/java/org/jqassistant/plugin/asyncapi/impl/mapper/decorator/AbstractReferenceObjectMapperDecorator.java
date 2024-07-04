@@ -2,11 +2,10 @@ package org.jqassistant.plugin.asyncapi.impl.mapper.decorator;
 
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 import com.buschmais.jqassistant.plugin.common.api.mapper.DescriptorMapper;
-import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
+import org.jqassistant.plugin.asyncapi.impl.mapper.service.AsyncApiContext;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.TreeNodeMapper;
 
@@ -54,7 +53,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
                 enterTreeNode(name, scanner);
                 D descriptor = this.basicToDescriptor(value, scanner);
                 if (descriptor != null) {
-                    descriptor.setName(entry.getKey());
+                    descriptor.setReferenceableKey(entry.getKey());
                 }
                 descriptors.add(descriptor);
                 leaveTreeNode(scanner);
@@ -77,7 +76,7 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
                 D descriptor = this.basicToDescriptor(value, scanner);
                 if (descriptor != null) {
                     descriptor.setPath(scanner.getContext()
-                            .peek(MappingPath.class)
+                            .peek(AsyncApiContext.class)
                             .getPath());
                 }
                 leaveTreeNode(scanner);
@@ -93,19 +92,21 @@ public abstract class AbstractReferenceObjectMapperDecorator<T extends Reference
      **/
     private D basicToDescriptor(T object, Scanner scanner) {
         D descriptor;
+        boolean isReference = false;
         if (object != null && object.getReference() != null) {
             descriptor = resolveReference(object.getReference(), scanner);
+            isReference = true;
         } else {
             descriptor = mapper.toDescriptor(object, scanner);
         }
         if (descriptor != null) {
-            MappingPath mappingPath = scanner.getContext()
-                    .peek(MappingPath.class);
-            descriptor.setPath(mappingPath.getPath());
-            ContractDescriptor contract = scanner.getContext().peek(ContractDescriptor.class);
-            contract.getAll().add(descriptor);
+            AsyncApiContext context = scanner.getContext().peek(AsyncApiContext.class);
+            descriptor.setPath(context.getPath());
+            context.addReferenceable(context.getPath(), descriptor);
+            if (isReference) {
+                context.addReference(context.getPath(), (ReferenceDescriptor) descriptor);
+            }
         }
-
         return descriptor;
     }
 

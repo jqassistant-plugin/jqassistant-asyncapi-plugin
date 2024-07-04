@@ -13,7 +13,8 @@ import org.mapstruct.*;
 @DecoratedWith(LicenseMapperDecorator.class)
 
 public interface LicenseMapper extends DescriptorMapper<License, LicenseDescriptor> {
-    @Mapping(target = "path", ignore = true)
+
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     LicenseDescriptor toDescriptor(License license, @Context Scanner scanner);

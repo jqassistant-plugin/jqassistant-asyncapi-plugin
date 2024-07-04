@@ -20,8 +20,7 @@ public interface ExternalDocsMapper extends ReferenceableObjectMapper<ExternalDo
 
     ExternalDocsMapper INSTANCE = Mappers.getMapper(ExternalDocsMapper.class);
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
     ExternalDocsDescriptor toDescriptor(ExternalDocumentation externalDocs, @Context Scanner scanner);

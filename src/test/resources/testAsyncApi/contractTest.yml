@@ -1,6 +1,6 @@
 asyncapi: 3.0.0
 info:
-  title: Short info Async API File
+  title: Short Async API File
   version: '0.0.1'
   description: 'This short API File is for test purposes only. It includes nothing but the info with its properties.'
   termsOfService: https://infotest.co.uk/asyncapi/terms-of-service

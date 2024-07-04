@@ -19,10 +19,9 @@ public interface FlowsMapper extends ReferenceableObjectMapper<OAuthFlows, OAuth
 
     FlowsMapper INSTANCE = Mappers.getMapper(FlowsMapper.class);
 
+    @ReferenceableObjectMapping
     @Mapping(target = "passwordFlow", source = "password")
     @Mapping(target = "implicitFlow", source = "implicit")
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference" })
     @Override
     OAuthFlowsDescriptor toDescriptor(OAuthFlows flows, @Context Scanner scanner);

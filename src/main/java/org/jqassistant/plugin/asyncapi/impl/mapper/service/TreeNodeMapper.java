@@ -8,13 +8,13 @@ public interface TreeNodeMapper {
 
     default void enterTreeNode(String name, @Context Scanner scanner) {
         scanner.getContext()
-                .peek(MappingPath.class)
+                .peek(AsyncApiContext.class)
                 .enter(name);
     }
 
     default void leaveTreeNode(@Context Scanner scanner) {
         scanner.getContext()
-                .peek(MappingPath.class)
+                .peek(AsyncApiContext.class)
                 .leave();
     }
 

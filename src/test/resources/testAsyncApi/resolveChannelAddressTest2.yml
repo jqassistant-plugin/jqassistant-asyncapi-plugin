@@ -1,0 +1,16 @@
+asyncapi: 3.0.0
+channels:
+  waterlooChannel:
+    address: '{deployment_config}_waterlooChannel'
+operations:
+  send_WaterlooOperation:
+    action: send
+    channel:
+      $ref: '#/components/channels/waterlooChannel'
+components:
+  channels:
+    waterlooChannel:
+      $ref: '#/channels/waterlooChannel'
+
+
+

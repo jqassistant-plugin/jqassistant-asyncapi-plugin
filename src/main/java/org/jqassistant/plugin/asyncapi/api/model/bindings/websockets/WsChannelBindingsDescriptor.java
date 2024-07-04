@@ -4,7 +4,7 @@ import com.buschmais.xo.neo4j.api.annotation.Label;
 
 import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 
-@Label("Websockets_Channel")
+@Label("WebsocketsChannel")
 public interface WsChannelBindingsDescriptor extends ReferenceableDescriptor {
 
     String getMethod();

@@ -1,0 +1,21 @@
+asyncapi: 3.0.0
+info:
+  title: Short Tag Async API File
+  version: '0.0.1'
+  tags:
+    - $ref: "#/components/tags/kafka"
+    - name: Diffs
+      description: Diff summary of changes in the API
+      externalDocs:
+        description: Modo Jeans use of Kafka
+        url: https://modojeans.com/intranet/kafka
+    - name: Ping
+      description: Check the API status
+    - name: Previews
+      description: Preview changes to an API Documentation
+    - name: Versions
+      description: Deploy your API contracts
+    - name: Validations
+      description: Check & validate your API contracts
+    - name: Hubs
+      description: Interact with your Hubs

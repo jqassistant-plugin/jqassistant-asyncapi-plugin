@@ -1,14 +1,13 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
-
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
+import java.util.List;
+
 @Label("SecurityScheme")
-public interface SecuritySchemeDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
+public interface SecuritySchemeDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getType();
 

@@ -12,15 +12,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.AsyncAPI;
 import org.jqassistant.plugin.asyncapi.impl.mapper.AsyncApiMapper;
-import org.jqassistant.plugin.asyncapi.impl.mapper.service.MappingPath;
+import org.jqassistant.plugin.asyncapi.impl.mapper.service.AsyncApiContext;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 
 @Requires(FileDescriptor.class)
 public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, ContractDescriptor> {
@@ -50,15 +53,33 @@ public class AsyncAPIScannerPlugin extends AbstractScannerPlugin<FileResource, C
 
         try (InputStream inputStream = fileResource.createStream()) {
             AsyncAPI asyncApi = mapper.readValue(inputStream, AsyncAPI.class);
-            scanner.getContext().push(ContractDescriptor.class, contractDescriptor);
-            scanner.getContext().push(MappingPath.class, new MappingPath());
+            AsyncApiContext asyncContext = new AsyncApiContext();
+            scanner.getContext().push(AsyncApiContext.class, asyncContext);
             try {
                 Mappers.getMapper(AsyncApiMapper.class).toDescriptor(asyncApi, contractDescriptor, scanner);
+                resolve(scanner);
+
             } finally {
-                scanner.getContext().pop(MappingPath.class);
-                scanner.getContext().pop(ContractDescriptor.class);
+                scanner.getContext().pop(AsyncApiContext.class);
             }
         }
         return contractDescriptor;
+    }
+
+    private void resolve(Scanner scanner) {
+        Map<String, ReferenceDescriptor> references = scanner.getContext().peek(AsyncApiContext.class).getReferences();
+        for (Map.Entry<String, ReferenceDescriptor> referenceEntry : references.entrySet()) {
+            ReferenceDescriptor referenceDescriptor = referenceEntry.getValue();
+            String reference = referenceDescriptor.getReference();
+            ReferenceableDescriptor referencedDescriptor = findReferenceable(reference, scanner);
+            if (referencedDescriptor != null) {
+                referenceDescriptor.setTargetReferenceable(referencedDescriptor);
+            }
+        }
+    }
+
+    private ReferenceableDescriptor findReferenceable(String reference, Scanner scanner) {
+        Map<String, ReferenceableDescriptor> referenceables = scanner.getContext().peek(AsyncApiContext.class).getReferenceables();
+        return referenceables.get(reference);
     }
 }

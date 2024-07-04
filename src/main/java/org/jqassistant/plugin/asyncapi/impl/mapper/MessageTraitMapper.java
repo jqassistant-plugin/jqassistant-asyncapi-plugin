@@ -20,7 +20,7 @@ public interface MessageTraitMapper extends ReferenceableObjectMapper<MessageTra
 
     MessageTraitMapper INSTANCE = Mappers.getMapper(MessageTraitMapper.class);
 
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "headers" })
     @Override
     MessageTraitDescriptor toDescriptor(MessageTrait message, @Context Scanner scanner);

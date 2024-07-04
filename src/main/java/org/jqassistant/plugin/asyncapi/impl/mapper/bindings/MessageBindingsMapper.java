@@ -8,6 +8,7 @@ import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.bindings.MessageBindings;
+import org.jqassistant.plugin.asyncapi.impl.mapper.ReferenceableObjectMapping;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.messageBindings.JmsMessageBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.bindings.messageBindings.KafkaMessageBindingsMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.bindings.MessageBindingsMapperDecorator;
@@ -18,8 +19,7 @@ import org.mapstruct.*;
 @DecoratedWith(MessageBindingsMapperDecorator.class)
 public interface MessageBindingsMapper extends ReferenceableObjectMapper<MessageBindings, MessageBindingsDescriptor> {
 
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
+    @ReferenceableObjectMapping
     @Mapping(target = "amqp", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "amqp" })
     @Override

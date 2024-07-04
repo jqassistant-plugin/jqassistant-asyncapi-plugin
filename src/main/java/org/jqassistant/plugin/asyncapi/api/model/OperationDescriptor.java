@@ -34,7 +34,8 @@ public interface OperationDescriptor extends ReferenceableDescriptor, AsyncApiDe
     List<TagDescriptor> getTags();
 
     @Relation("ON_CHANNEL")
-    List<ChannelDescriptor> getChannel();
+    ChannelDescriptor getChannel();
+    void setChannel(ChannelDescriptor channel);
     //only ReferenceObject
 
     @Relation("SUPPORTS_BINDINGS")
@@ -46,16 +47,16 @@ public interface OperationDescriptor extends ReferenceableDescriptor, AsyncApiDe
     List<MessageDescriptor> getMessages();
 
     @Relation("DEFINES_TRAIT")
-    List<OperationTraitDescriptor> getOperationTraits();
+    List<OperationTraitDescriptor> getTraits();
 
     @Relation("USING_REPLY")
-    OperationReplyDescriptor getOperationReply();
+    OperationReplyDescriptor getReply();
 
-    void setOperationReply(OperationReplyDescriptor operationReply);
+    void setReply(OperationReplyDescriptor reply);
 
     @Relation("USING_SECURITY_SCHEME")
-    SecuritySchemeDescriptor getSecurityScheme();
+    SecuritySchemeDescriptor getSecurity();
 
-    void setSecurityScheme(SecuritySchemeDescriptor scheme);
+    void setSecurity(SecuritySchemeDescriptor scheme);
 
 }

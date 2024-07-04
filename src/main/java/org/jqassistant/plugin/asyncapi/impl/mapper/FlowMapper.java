@@ -13,15 +13,14 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMa
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = {}, config = DescriptorMapperConfig.class)
+@Mapper( config = DescriptorMapperConfig.class)
 @DecoratedWith(FlowMapperDecorator.class)
 public interface FlowMapper extends ReferenceableObjectMapper<OAuthFlow, OAuthFlowDescriptor> {
 
     FlowMapper INSTANCE = Mappers.getMapper(FlowMapper.class);
 
+    @ReferenceableObjectMapping
     @Mapping(target = "availableScopes", ignore = true)
-    @Mapping(target = "name", ignore = true)
-    @Mapping(target = "path", ignore = true)
     @BeanMapping(ignoreUnmappedSourceProperties = { "reference", "availableScopes" })
     @Override
     OAuthFlowDescriptor toDescriptor(OAuthFlow flow, @Context Scanner scanner);

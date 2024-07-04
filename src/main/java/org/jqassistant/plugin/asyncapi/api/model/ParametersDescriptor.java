@@ -25,8 +25,4 @@ public interface ParametersDescriptor extends ReferenceableDescriptor, AsyncApiD
 
     void setLocation(String location);
 
-    String getName();
-
-    void setName(String name);
-
 }

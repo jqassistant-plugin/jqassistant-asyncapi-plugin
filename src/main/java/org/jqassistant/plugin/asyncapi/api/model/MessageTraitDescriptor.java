@@ -1,20 +1,20 @@
 package org.jqassistant.plugin.asyncapi.api.model;
 
-import java.util.List;
-
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor;
 
+import java.util.List;
+
 @Label("MessageTrait")
-public interface MessageTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
+public interface MessageTraitDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
-    /*  @Relation("USES_HEADERS")
+   /* @Relation("USES_HEADERS")
     Object getHeaders();
-    void setHeaders(Object headers); ein ParentObject fuer Schema und Multi Format Schema?
-    auch referenceable siehe messageDescriptor*/
 
-    @Relation("HAS_CorrelationID")
+    void setHeaders(Object headers);*/
+
+    @Relation("HAS_CORRELATION_ID")
     CorrelationIDDescriptor getCorrelationId();
 
     void setCorrelationId(CorrelationIDDescriptor correlationId);
@@ -50,6 +50,7 @@ public interface MessageTraitDescriptor extends ReferenceableDescriptor, AsyncAp
 
     @Relation("DEFINES_BINDINGS")
     MessageBindingsDescriptor getBindings();
+
     void setBindings(MessageBindingsDescriptor bindings);
 
     @Relation("HAS_EXAMPLE")
