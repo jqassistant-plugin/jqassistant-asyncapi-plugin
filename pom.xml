@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>jqassistant-asyncapi-plugin</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0-M2</version>
 
     <name>jQAssistant AsyncAPI Plugin</name>
     <description>The jQAssistant plugin providing scanners for AsyncAPI contracts.</description>
@@ -48,7 +48,7 @@
         <connection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin.git</developerConnection>
         <url>https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin</url>
-        <tag>HEAD</tag>
+        <tag>1.0.0-M2</tag>
     </scm>
 
     <properties>
