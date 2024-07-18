@@ -24,14 +24,11 @@
                 MERGE
                     (c1)-[:MAPS_TO]->(c2)
                 RETURN
-                    count(*) as Channels
+                    c1 AS Channel1, c2 AS Channel2
         ]]></cypher>
-        <verify>
-            <aggregation/>
-        </verify>
     </concept>
     <concept id="jqassistant-plugin-asyncapi:ReferenceResolvesToTarget">
-        <description>Sets a "RESOLVES_TO"-relation between a reference object and the actual referenced object. Covers a chain of 2 references as well.
+        <description>Sets a "RESOLVES_TO"-relation between a reference object and the actual, referenced object (which is not a Reference itself) over any path length.
         </description>
         <cypher><![CDATA[
                MATCH
@@ -41,11 +38,8 @@
                MERGE
                   (source)-[:RESOLVES_TO]->(target)
                RETURN
-                  count(*) as ResolvedReferences
+                  source AS ReferencingObject, target AS ReferencedObject
         ]]></cypher>
-        <verify>
-            <aggregation/>
-        </verify>
     </concept>
 
     <concept id="jqassistant-plugin-asyncapi:OperationSendsToOperation">
@@ -59,10 +53,7 @@
                MERGE
                   (operationSend)-[:SENDS_TO]->(operationReceive)
                RETURN
-                  count(*) as Operations
+                  operationSend AS SendOperation, operationReceive AS ReceiveOperation
         ]]></cypher>
-        <verify>
-            <aggregation/>
-        </verify>
     </concept>
 </jqassistant-rules>

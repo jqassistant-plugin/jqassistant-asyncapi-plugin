@@ -1,7 +1,7 @@
 package org.jqassistant.plugin.asyncapi.concept;
 
-import com.buschmais.jqassistant.core.report.api.model.Column;
 import com.buschmais.jqassistant.core.report.api.model.Result;
+import com.buschmais.jqassistant.core.report.api.model.Row;
 import com.buschmais.jqassistant.core.rule.api.model.Concept;
 import com.buschmais.jqassistant.core.rule.api.model.RuleException;
 import com.buschmais.jqassistant.core.test.plugin.AbstractPluginIT;
@@ -10,6 +10,7 @@ import com.buschmais.xo.api.ResultIterator;
 import org.jqassistant.plugin.asyncapi.api.AsyncApiScope;
 import org.jqassistant.plugin.asyncapi.api.model.ChannelDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.MessageDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.OperationDescriptor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +51,7 @@ class AsyncApiIT extends AbstractPluginIT {
         Result<Concept> result =  applyConcept("jqassistant-plugin-asyncapi:ReferenceResolvesToTarget");
 
         store.beginTransaction();
-        assertThat(result.getRows().size()).isEqualTo(1);
+        assertThat(result.getRows().size()).isEqualTo(7);
 
         List<ChannelDescriptor> singleReferenceChannel =
                 query("MATCH (a:Contract:AsyncAPI)-[:DEFINES_CHANNEL]->(c1:Reference:Channel)-[:REFERENCES]->(c2:Channel), (c1)-[:RESOLVES_TO]->(c2) WHERE NOT (c2)-[:REFERENCES]->(:AsyncAPI) RETURN count(c1) as Sources").getColumn("Sources");
@@ -72,9 +73,16 @@ class AsyncApiIT extends AbstractPluginIT {
 
         store.beginTransaction();
         assertThat(result.getStatus()).isEqualTo(SUCCESS);
-        Column<?> operations = result.getRows().get(0).getColumns().get("Operations");
-        assertThat(operations).isNotNull();
-        assertThat(operations.getValue()).isEqualTo(1L);
+        assertThat(result.getRows().size()).isEqualTo(1);
+        Row row = result.getRows().get(0);
+        Object sendOperation = row.getColumns().get("SendOperation").getValue();
+        assertThat(sendOperation).isInstanceOf(OperationDescriptor.class);
+        assertThat(((OperationDescriptor) sendOperation).getPath()).isEqualTo("#/operations/send_WaterlooOperation");
+        assertThat(((OperationDescriptor) sendOperation).getAction()).isEqualTo("send");
+        Object receiveOperation = row.getColumns().get("ReceiveOperation").getValue();
+        assertThat(receiveOperation).isInstanceOf(OperationDescriptor.class);
+        assertThat(((OperationDescriptor) receiveOperation).getPath()).isEqualTo("#/operations/receive_WaterlooOperation");
+        assertThat(((OperationDescriptor) receiveOperation).getAction()).isEqualTo("receive");
 
         TestResult testResult = query("MATCH (a:Contract:AsyncAPI)-[:DEFINES_OPERATION]-(o1:Operation {action: 'send'}), (b:Contract:AsyncAPI)-[:DEFINES_OPERATION]-(o2:Operation {action: 'receive'}), (o1)-[:SENDS_TO]->(o2) RETURN o1.referenceableKey as key1, o2.referenceableKey as key2");
         String name = testResult.getColumn("key1").get(0).toString();

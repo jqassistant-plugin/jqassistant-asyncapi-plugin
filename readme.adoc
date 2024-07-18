@@ -23,7 +23,7 @@ jqassistant:
   scan:
     include:
       files:
-        -asyncapi:contract::${project.basedir}/path/to/api.yml <2>
+        - asyncapi:contract::${project.basedir}/path/to/api.yml <2>
 ----
 <1> Dependency to the AsyncAPI plugin
 <2> Scan include of the AsyncAPI contract
