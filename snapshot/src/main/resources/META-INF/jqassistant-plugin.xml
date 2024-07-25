@@ -1,0 +1,65 @@
+<jqassistant-plugin xmlns="http://schema.jqassistant.org/plugin/v2.2"
+                    id="jqa.plugin.asyncapi"
+                    name="jQAssistant AsyncApi Plugin"
+                    version="${project.version}">
+    <description>Provides a scanner for OpenAPI files.</description>
+    <model>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ChannelDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ComponentsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ContactDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ContractDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.CorrelationIDDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ExternalDocsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.InfoDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.LicenseDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.MessageDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.MessageExampleDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.MessageTraitDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.MultiFormatSchemaDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OAuthFlowDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OAuthFlowsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OperationDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OperationReplyAddressDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OperationReplyDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.OperationTraitDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ParametersDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ServerDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ServerVariableDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.SecuritySchemeDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.TagDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.TopicConfigurationDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaMessageBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaOperationBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaServerBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpExchangeDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpMessageBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpOperationBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsServerBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsMessageBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.websockets.WsChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.OperationBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor</class>
+
+
+    </model>
+    <scope>
+        <class>org.jqassistant.plugin.asyncapi.api.AsyncApiScope</class>
+    </scope>
+    <scanner>
+        <class>org.jqassistant.plugin.asyncapi.impl.AsyncAPIScannerPlugin</class>
+    </scanner>
+
+    <rules>
+        <resource>asyncapi.xml</resource>
+    </rules>
+
+</jqassistant-plugin>

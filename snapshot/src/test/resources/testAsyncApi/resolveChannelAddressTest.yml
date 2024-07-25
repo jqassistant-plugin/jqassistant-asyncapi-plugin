@@ -1,0 +1,38 @@
+asyncapi: 3.0.0
+channels:
+  cheeseChannel:
+    address: 'food.cheeseChannel'
+    messages:
+      BananaCommand:
+        $ref: '#/components/messages/BananaCommand'
+  waterlooChannel:
+    address: '{deployment_config}_waterlooChannel'
+    messages:
+      AppleCommand:
+        $ref: '#/components/messages/AppleCommand'
+operations:
+  receive_WaterlooOperation:
+    action: receive
+    channel:
+      $ref: '#/channels/waterlooChannel'
+    message:
+      $ref: '#/channels/waterlooChannel/messages/AppleCommand'
+  send_ElbaOperation:
+    action: send
+    channel:
+      $ref: '#/channels/cheeseChannel'
+    messages:
+      - $ref: '#/channels/cheeseChannel/messages/BananaCommand'
+components:
+  messages:
+    BananaCommand:
+      name: bananaCommand
+      title: bananaCommand
+      summary: Bananas are in the air.
+      contentType: application/json
+    AppleCommand:
+      name: appleCommand
+      title: appleCommand
+      summary: Apples are all around
+
+

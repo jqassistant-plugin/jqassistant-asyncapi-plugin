@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: Apache-2.0
+package org.jqassistant.plugin.asyncapi.impl.json.bindings.kafka;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.jqassistant.plugin.asyncapi.impl.json.model.ReferenceObject;
+
+@Getter
+@Setter
+@ToString
+public class KafkaMessageBinding extends ReferenceObject {
+
+  /*  @JsonProperty(value = "key")
+    private SchemaObject key; */ //temporary solution
+
+    @JsonProperty(value = "schemaIdLocation")
+    private String schemaIdLocation;
+
+    @JsonProperty(value = "schemaIdPayloadEncoding")
+    private String schemaIdPayloadEncoding;
+
+    @JsonProperty(value = "schemaLookupStrategy")
+    private String schemaLookupStrategy;
+
+    @JsonProperty(value = "bindingVersion", defaultValue = "0.5.0")
+    private String bindingVersion;
+}

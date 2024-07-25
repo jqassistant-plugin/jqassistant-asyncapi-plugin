@@ -1,0 +1,41 @@
+asyncapi: 3.0.0
+channels:
+  waterlooChannel:
+    description: This channel should be referenced.
+operations:
+  receive_WaterlooOperation:
+    action: receive
+    channel:
+      $ref: '#/channels/waterlooChannel'
+components:
+  channels:
+    oneFantasticChannel:
+      subscribe:
+        message:
+          $ref: "#/components/messages/FantasticChannel"
+    secondChannel:
+      address: 'users.{userId}'
+      title: Users channel
+      description: This channel is used to exchange messages about user events.
+      messages:
+        userSignedUp:
+          $ref: '#/components/messages/userSignedUp'
+        userCompletedOrder:
+          $ref: '#/components/messages/userCompletedOrder'
+      parameters:
+        userId:
+          $ref: '#/components/parameters/userId'
+      servers:
+        - $ref: '#/servers/rabbitmqInProd'
+        - $ref: '#/servers/rabbitmqInStaging'
+      bindings:
+        amqp:
+          is: queue
+          queue:
+            exclusive: true
+      tags:
+        - name: user
+          description: User-related messages
+      externalDocs:
+        description: 'Find more info here'
+        url: 'https://example.com'

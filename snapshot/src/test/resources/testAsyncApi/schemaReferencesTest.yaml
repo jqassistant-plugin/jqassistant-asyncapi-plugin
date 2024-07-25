@@ -1,0 +1,77 @@
+asyncapi: 3.0.0
+id: 'https://github.com/dalelane/my-first-asyncapi-v3-doc'
+components: # 2 messages, 3 schemas + 1 parameters
+  messages:
+    SomethingDoing:
+      name: somethingDoing
+      title: Something Progress
+      summary: >-
+       notification with something progress information
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SomethingDoingPayload'
+    TimeMessage:
+      name: timeMessage
+      title: Time Message
+      summary: >-
+        Message with information about the time.
+      payload:
+        $ref: '#/components/schemas/TimeMessagePayload'
+  schemas:
+    SomethingDoingPayload:
+      allOf:
+        - $ref: '#/components/schemas/SimpleBody'
+        - type: object
+          required:
+            - raId
+            - notes
+          properties:
+            raName:
+              type: string
+            raId:
+              type: string
+            notes:
+              type: object
+              $ref: '#/components/schemas/SomethingDoingNotes'
+            hamburgerMessage:
+              type: object
+              $ref: '#/components/schemas/HamburgerMessage'
+    HamburgerMessage:
+      type: object
+      required:
+        - cheese
+        - lettuce
+      properties:
+        email:
+          type: string
+        lettuce:
+          type: vegetable
+        cheese:
+          type: dairy
+          format: rectangle
+        variables:
+          $ref: '#/components/schemas/SimpleBody'
+        hamburger:
+          type: food
+          items:
+            - $ref: '#/components/schemas/HamburgerMessage'
+    SimpleBody:
+      type: object
+      required:
+        - notificationType
+      properties:
+        newsType:
+          type: string
+          enum:
+            - 'SomethingDoing'
+            - 'TimeMessage'
+            - 'LettuceLeft'
+        lettuceStatus:
+          type: string
+          enum:
+            - 'OLD'
+        lettuceId:
+          type: string
+  parameters:
+    configuration_stuff:
+      description: parameters for configuration of lettuce

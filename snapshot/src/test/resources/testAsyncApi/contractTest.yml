@@ -1,0 +1,109 @@
+asyncapi: 3.0.0
+info:
+  title: Short Async API File
+  version: '0.0.1'
+  description: 'This short API File is for test purposes only. It includes nothing but the info with its properties.'
+  termsOfService: https://infotest.co.uk/asyncapi/terms-of-service
+  contact:
+    name: Dale Lane
+    url: https://dalelane.co.uk
+    email: test@info.de
+  license:
+    name: TestLicense 1.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  tags:
+    - name: first tag
+      description: Things that are used as examples of the spec
+      externalDocs:
+        $ref: "#/components/I'm a external reference"
+    - name: second tag
+      description: I'm the second tag of this info.
+      externalDocs:
+        description: Modo Jeans use of Kafka
+        url: https://modojeans.com/intranet/kafka
+    - $ref: "#/components/tags/kafka"
+  externalDocs:
+    description: Background about the spec
+    url: https://www.asyncapi.com/docs/reference/specification/v3.0.0-next-major-spec.8
+channels:
+  oneChannel:
+    address: 'one_Channel'
+    messages:
+      userSignupMessage:
+        bindings:
+          amqp:
+            contentEncoding: gzip
+            messageType: 'user.signup'
+            bindingVersion: 0.3.0
+servers:
+  oneServer:
+    bindings:
+      pulsar:
+        tenant: contoso
+        bindingVersion: '0.1.0'
+operations:
+  sendProcess:
+    title: User sign up
+    summary: Action to sign a user up.
+    description: A longer description
+    channel:
+      $ref: '#/channels/userSignup'
+    action: send
+    security:
+      - petstore_auth:
+          - write:pets
+          - read:pets
+    tags:
+      - name: user
+      - name: signup
+      - name: register
+    bindings:
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'myGroupId' ]
+        clientId:
+          type: string
+          enum: [ 'myClientId' ]
+        bindingVersion: '0.5.0'
+    traits:
+      - $ref: "#/components/operationTraits/kafka"
+    messages:
+      - $ref: '#/components/messages/userSignedUp'
+    reply:
+      address:
+        location: '$message.header#/replyTo'
+      channel:
+        $ref: '#/channels/userSignupReply'
+      messages:
+        - $ref: '#/components/messages/userSignedUpReply'
+components:
+  channels:
+    oneFantasticChannel:
+      bindings:
+        amqp:
+          is: queue
+          queue:
+            exclusive: true
+        kafka:
+          topic: 'my-specific-topic-name'
+          partitions: 20
+          replicas: 3
+          topicConfiguration:
+            cleanup.policy: [ "delete", "compact" ]
+            retention.ms: 604800000
+            retention.bytes: 1000000000
+            delete.retention.ms: 86400000
+            max.message.bytes: 1048588
+          bindingVersion: '0.4.0'
+  messages:
+    SomethingDoing:
+      name: anotherName
+      title: Something Progress
+      summary: >-
+        notification with something progress information
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/SomethingDoingPayload'
+    AnotherMessage:
+      name: message2

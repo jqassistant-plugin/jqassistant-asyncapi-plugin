@@ -1,0 +1,108 @@
+asyncapi: 3.0.0
+channels:
+  oneChannel:
+    address: 'one_Channel'
+    messages:
+      userSignupMessage:
+        bindings:
+          amqp:
+            contentEncoding: gzip
+            messageType: 'user.signup'
+            bindingVersion: 0.3.0
+          kafka:
+            key:
+              type: string
+              enum: [ 'myKey' ]
+            schemaIdLocation: 'payload'
+            schemaIdPayloadEncoding: '4'
+            schemaLookupStrategy: strategyClass
+            bindingVersion: '0.5.0'
+          jms:
+            headers:
+              # JMS protocol specific message headers
+              required:
+                - JMSMessageID
+            properties:
+              JMSMessageID:
+                name: JMSMessageID
+                description: A unique message identifier. This may be set by your JMS Provider on your behalf.
+                type: string
+              JMSReplyTo:
+                name: JMSReplyTo
+                description: The queue or topic that the message sender expects replies to.
+                type: string
+            bindingVersion: '0.3.2'
+servers:
+  oneServer:
+    bindings:
+      pulsar:
+        tenant: contoso
+        bindingVersion: '0.1.0'
+      kafka:
+        schemaRegistryUrl: 'https://my-schema-registry.com'
+        schemaRegistryVendor: 'confluent'
+        bindingVersion: '0.7.0'
+      jms:
+        jmsConnectionFactory: org.apache.activemq.ActiveMQConnectionFactory
+        properties:
+          - name: disableTimeStampsByDefault
+            value: false
+        clientID: my-application-1
+        bindingVersion: '0.5.0'
+operations:
+  oneOperation:
+    bindings:
+      mqtt:
+        qos: 2
+        retain: true
+        bindingVersion: 0.2.0
+      kafka:
+        groupId:
+          type: string
+          enum: [ 'myGroupId' ]
+        clientId:
+          type: string
+          enum: [ 'myClientId' ]
+        bindingVersion: '0.5.3'
+components:
+  channels:
+    oneFantasticChannel:
+      bindings:
+        amqp:
+          is: queue
+          queue:
+            exclusive: true
+        kafka:
+          topic: 'my-specific-topic-name'
+          partitions: 20
+          replicas: 3
+          topicConfiguration:
+            cleanup.policy: [ "delete", "compact" ]
+            retention.ms: 604800000
+            retention.bytes: 1000000000
+            delete.retention.ms: 86400000
+            max.message.bytes: 1048588
+            confluent.key.schema.validation: true
+            confluent.key.subject.name.strategy: "TopicNameStrategy"
+            confluent.value.schema.validation: false
+            confluent.value.subject.name.strategy: "TopicNameStrategy"
+          bindingVersion: '0.4.0'
+        jms:
+          destination: user-sign-up
+          destinationType: fifo-queue
+          bindingVersion: '0.0.1'
+        ws:
+          method: specificMethod
+          query:
+            type: object
+            description: Tokens are produced in the WebSocket URL generated from the [apps.connections.open](https://api.slack.com/methods/apps.connections.open) method from Slack’s API
+            properties:
+              ticket:
+                type: string
+                description: Temporary token generated when connection is initiated
+                const: '13748dac-b866-4ea7-b98e-4fb7895c0a7f'
+              app_id:
+                type: string
+                description: Unique identifier assigned to the Slack app
+                const: 'fe684dfa62159c6ac646beeac31c8f4ef415e4f39c626c2dbd1530e3a690892f'
+          bindingVersion: '0.2.0'
