@@ -1,0 +1,26 @@
+# `:AsyncAPI:Channel` Node
+
+-> represents a communication channel
+
+## Properties
+
+| Name          | Description                           |
+|---------------|---------------------------------------|
+| `address`     | address of the channel                |
+| `title`       | title of the channel (human-friendly) |
+| `summary`     | short summary of the channel          |
+| `description` | detailed description of the channel   |
+
+## Relations
+
+| Name                               | Target Label(s)                                                            | Cardinality | Description                                                                                                      |
+|------------------------------------|----------------------------------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------|
+| `HAS_TAG`                          | [[Node - AsyncAPI Tag\|:AsyncAPI:Tag]]                                     | 0..*        | tags for grouping of tags                                                                                        |
+| `INCLUDES_PARAMETERS`              | [[Node - AsyncAPI Parameters\|:AsyncAPI:Parameters]]                       | 0..*        | set of parameters included in the channel address - only present if address contains channel address expressions |
+| `REFERS_TO_EXTERNAL_DOCUMENTATION` | [[Node - AsyncAPI ExternalDocumentation\|:AsyncAPI:ExternalDocumentation]] | 0..1        | property holding a link to an external documentation                                                             |
+| `DEFINES_BINDINGS`                 | [[Node - AsyncAPI ChannelBindings\|:AsyncAPI:ChannelBindings]]             | 0..1        | all specific definitions for each supported protocol                                                             |
+| `SUPPORTS_MESSAGE"`                | [[Node - AsyncAPI Message\|:AsyncAPI:Message]]                             | 0..*        | messages that can be sent to the channel                                                                         |
+| `IN_SERVER"`                       | [[Node - AsyncAPI Server\|:AsyncAPI:Server:Reference]]                     | 0..*        | reference to the server definition in which the channel is available                                             |
+
+
+

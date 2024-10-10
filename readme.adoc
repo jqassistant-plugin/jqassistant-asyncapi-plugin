@@ -28,4 +28,6 @@ jqassistant:
 <1> Dependency to the AsyncAPI plugin
 <2> Scan include of the AsyncAPI contract
 
+== References
 
+This project makes usage of the work of https://github.com/springwolf/springwolf-core[Springwolf]. Thanks!

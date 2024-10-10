@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin",
+  "pageTitle": "jQA AsyncAPI Plugin",
+  "footerLinks": {
+    "Maven": "https://mvnrepository.com/artifact/org.jqassistant.plugin/jqassistant-asyncapi-plugin",
+    "Source": "https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin",
+    "Issues": "https://github.com/jqassistant-plugin/jqassistant-asyncapi-plugin/issues",
+    "Sonar": "https://sonarcloud.io/project/overview?id=org.jqassistant.plugin%3Ajqassistant-asyncapi-plugin"
+  }
+}

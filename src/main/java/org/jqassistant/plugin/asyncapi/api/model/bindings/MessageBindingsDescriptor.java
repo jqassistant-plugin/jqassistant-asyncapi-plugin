@@ -8,7 +8,7 @@ import org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpMessageBindin
 import org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsMessageBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaMessageBindingsDescriptor;
 
-@Label("MessageBinding")
+@Label("MessageBindings")
 public interface MessageBindingsDescriptor extends ReferenceableDescriptor {
 
     @Relation("DEFINES_AMQP_BINDING")

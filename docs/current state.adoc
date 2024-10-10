@@ -17,3 +17,4 @@ _08-05-2024_
 OpenApi uses the only ExternalDocs Object as the async api examples do - ignore till encountering one?
 
 - mention Springwolf-AsyncApi (base of async api model classes)*
+- the Specification Extensions property is not suppoerted at the moment
