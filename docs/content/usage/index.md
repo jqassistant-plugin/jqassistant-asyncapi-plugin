@@ -1,23 +1,29 @@
 ---
-title: jQAssistant Example Plugin
+title: jQAssistant AsyncAPI  Plugin
 ---
 
-# jQAssistant Example Plugin
+# jQAssistant AsyncAPI Plugin
 
-This is the Example Plugin for [jQAssistant](https://jqassistant.org).
+This is the AsyncAPI Plugin for [jQAssistant](https://jqassistant.org).
 
 ## Installation
 
-Add the plugin to the `plugins` section of the `jqassistant.yml` configuration file:
+To be able to use the plugin, it must be specified as a plugin to jQAssistant.
+Additionally, it must be configured as a scan-include where jQAssistant can find the AsyncAPI-contracts.
 
 ```yaml
 jqassistant:
   plugins:
-    # Includes the jQAssistant Example plugin
-    - group-id: org.jqassistant.plugin
-      artifact-id: jqassistant-example-plugin
-      version: 1.0.0-SNAPSHOT
+    - group-id: org.jqassistant.plugin <1>
+      artifact-id: jqassistant-asyncapi-plugin
+      version: 1.0.0-M3
+  scan:
+    include:
+      files:
+        - asyncapi:contract::${project.basedir}/path/to/api.yml <2>
 ```
+1. Dependency to the AsyncAPI plugin
+2. Scan include of the AsyncAPI contract
 
 ## Usage
 
@@ -25,9 +31,6 @@ jqassistant:
 > List of links to notes that describe the various nodes, relations, properties, concepts, and constraints that the plugin provides.
 > This section may also link to additional usage guides, examples, etc. that may be relevant for developers *using* this plugin.
 > Notes that part of this section shall be placed in the `usage` directory
-
-> [!INFO]
-> You can use the Obsidian templates when creating new notes to have a consistent style across the documentation (shortcut `Ctrl-T`)
 
 ## Development
 
