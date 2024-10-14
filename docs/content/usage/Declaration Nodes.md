@@ -29,7 +29,7 @@
 | [[Node - AsyncAPI Tag\|Tag]]                                     |
 
 | Binding Nodes                                                          |
-| ---------------------------------------------------------------------- |
+|------------------------------------------------------------------------|
 | [[Node - AsyncAPI ChannelBindingAmqp\|ChannelBindingAmqp]]             |
 | [[Node - AsyncAPI ChannelBindingJms\|ChannelBindingJms]]               |
 | [[Node - AsyncAPI ChannelBindingKafka\|ChannelBindingKafka]]           |

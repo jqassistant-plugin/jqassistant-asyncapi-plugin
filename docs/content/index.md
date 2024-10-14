@@ -4,7 +4,7 @@ title: jQAssistant AsyncAPI  Plugin
 
 # jQAssistant AsyncAPI Plugin
 
-This is the AsyncAPI Plugin for [jQAssistant](https://jqassistant.org).
+This is the AsyncAPI Plugin for [jQAssistant](https://jqassistant.org). It provides a scanner for AsyncAPI 3.0.0 files.
 
 ## Installation
 
@@ -28,6 +28,7 @@ jqassistant:
 ## Usage
 
 [[Declaration Nodes]]
+[[Concepts & Constraints]]
 
 ## Development
 
