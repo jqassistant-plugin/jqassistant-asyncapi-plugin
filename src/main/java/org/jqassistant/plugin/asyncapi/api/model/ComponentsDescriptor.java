@@ -34,8 +34,8 @@ public interface ComponentsDescriptor extends ReferenceableDescriptor, AsyncApiD
     @Relation("DEFINES_SERVER_VARIABLE")
     List<ServerVariableDescriptor> getServerVariables();
 
-    @Relation("DEFINES_PARAMETERS")
-    List<ParametersDescriptor> getParameters();
+    @Relation("DEFINES_PARAMETER")
+    List<ParameterDescriptor> getParameter();
 
     @Relation("DEFINES_CORRELATION_ID")
     List<CorrelationIDDescriptor> getCorrelationIds();

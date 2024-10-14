@@ -1,4 +1,4 @@
-# `:AsyncAPI:Parameters` Node
+# `:AsyncAPI:Parameter` Node
 
 -> represents a parameter in the channel address
 

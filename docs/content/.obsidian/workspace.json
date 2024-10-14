@@ -148,6 +148,8 @@
   },
   "active": "c6d58a64a0535e85",
   "lastOpenFiles": [
+    "usage/Node - AsyncAPI Components.md~",
+    "usage/Node - AsyncAPI Parameter.md",
     "development/current state.adoc",
     "development/Codebase Layout.md",
     "index.md",
@@ -181,8 +183,6 @@
     "usage/Node - AsyncAPI Message.md",
     "usage/Node - AsyncAPI Info.md",
     "usage/Concept - ChannelMapsToChannel.md~",
-    "usage/Constraint - Re.md",
-    "usage/bindings/Node - AsyncAPI MessageBindingJms.md~",
-    "usage/bindings/Node - AsyncAPI ChannelBindingWebsockets.md~"
+    "usage/bindings/Node - AsyncAPI MessageBindingJms.md~"
   ]
 }

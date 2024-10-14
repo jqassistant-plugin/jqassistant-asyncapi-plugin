@@ -50,8 +50,8 @@ public class Components extends ReferenceObject {
     @JsonProperty(value = "serverVariables")
     private Map<String, ServerVariable> serverVariables;
 
-    @JsonProperty(value = "parameters")
-    private Map<String, ChannelParameter> parameters;
+    @JsonProperty(value = "parameter")
+    private Map<String, ChannelParameter> parameter;
 
     @JsonProperty(value = "correlationIds")
     private Map<String, CorrelationID> correlationIds;
