@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0f67cc349d584cc5",
+        "id": "7a5b45e80dcd63f9",
         "type": "tabs",
         "children": [
           {
-            "id": "9d514936a4266d00",
+            "id": "c6d58a64a0535e85",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md"
+                "file": "index.md"
               }
             }
           }
@@ -146,16 +146,24 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9d514936a4266d00",
+  "active": "c6d58a64a0535e85",
   "lastOpenFiles": [
+    "development/current state.adoc",
+    "development/Codebase Layout.md",
+    "index.md",
+    "usage/Declaration Nodes.md",
+    "index.md~",
+    "usage/Node - AsyncAPI Tag.md",
+    "development/Codebase Layout.md~",
+    "usage/Constraint - ReferenceChainsMustBeLimited.md",
+    "development",
+    "usage/Codebase Layout.md",
     "usage/Node - AsyncAPI Reference.md~",
     "usage/Concept - ReferenceResolvesToTarget.md",
     "usage/Concept - OperationSendsToOperation.md",
     "usage/Concept - ChannelMapsToChannel.md",
     "usage/Node - AsyncAPI MessageExample.md",
-    "usage/Declaration Nodes.md",
     "usage/bindings/Node - AsyncAPI OperationBindingAmqp.md",
-    "usage/Node - AsyncAPI Tag.md",
     "usage/Node - AsyncAPI Operation.md",
     "usage/Node - AsyncAPI CorrelationID.md",
     "usage/Node - AsyncAPI MessageTrait.md",
@@ -167,7 +175,6 @@
     "usage/Node - AsyncAPI Reference.md",
     "usage/Node - AsyncAPI OperationTrait.md",
     "usage/Node - AsyncAPI Parameters.md",
-    "usage/Constraint - ReferenceChainsMustBeLimited.md",
     "usage/bindings/Node - AsyncAPI TopicConfiguration.md~",
     "usage/bindings/Node - AsyncAPI TopicConfiguration.md",
     "usage/Node - AsyncAPI MessagePayload.md",
@@ -176,12 +183,6 @@
     "usage/Concept - ChannelMapsToChannel.md~",
     "usage/Constraint - Re.md",
     "usage/bindings/Node - AsyncAPI MessageBindingJms.md~",
-    "usage/bindings/Node - AsyncAPI ChannelBindingWebsockets.md~",
-    "usage/Node - AsyncAPI Tag.md~",
-    "usage/Node - AsyncAPI Server.md~",
-    "usage/Node - AsyncAPI OperationReply.md~",
-    "usage/Node - AsyncAPI Channel.md",
-    "usage/bindings/Node - AsyncAPI OperationBindingKafka.md",
-    "usage/bindings/Node - AsyncAPI ServerBindingkafka.md"
+    "usage/bindings/Node - AsyncAPI ChannelBindingWebsockets.md~"
   ]
 }

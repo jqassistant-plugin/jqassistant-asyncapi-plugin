@@ -1,13 +1,13 @@
 = jQAssistant AsyncAPI Plugin
 
 This is the AsyncAPI Plugin for https://jqassistant.org[jQAssistant].
-It provides a scanner for https://www.asyncapi.com//[AsyncAPI] Contract files.
+It provides a scanner for https://www.asyncapi.com/docs/reference/specification/v3.0.0[AsyncAPI] Contract files.
+
+**For more information, refer to the https://jqassistant-plugin.github.io/jqassistant-asyncapi-plugin[Documentation].**
 
 For more information on jQAssistant see https://jqassistant.org[^].
 
 == Usage
-
-NOTE: As this plugin is currently being developed there is no public release available yet. Please clone this repository and build it locally using "mvn install".
 
 To be able to use the plug-in, it must be specified as a plug-in to jQAssistant.
 Additionally, it must be configured as a scan-include where jQAssistant can find the AsyncAPI-contracts.
@@ -19,7 +19,7 @@ jqassistant:
   plugins:
     - group-id: org.jqassistant.plugin <1>
       artifact-id: jqassistant-asyncapi-plugin
-      version: 1.0.0-SNAPSHOT
+      version: 1.0.0-M3
   scan:
     include:
       files:

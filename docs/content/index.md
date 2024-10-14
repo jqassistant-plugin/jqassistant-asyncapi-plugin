@@ -27,9 +27,16 @@ jqassistant:
 
 ## Usage
 
-[Declaration Nodes](Declaration%20Nodes.md)
+[[Declaration Nodes]]
 
 ## Development
+
+[[Codebase Layout]]
+
+## Support
+
+This plugin supports AsyncAPI files of specification version 3.0.0.
+Due to this plugin still being in development, there is no support for json schema elements yet.
 
 ## References
 
