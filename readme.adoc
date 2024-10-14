@@ -30,4 +30,6 @@ jqassistant:
 
 == References
 
-This project makes usage of the work of https://github.com/springwolf/springwolf-core[Springwolf]. Thanks!
+This project utilizes usage of the work of https://github.com/springwolf/springwolf-core[Springwolf].
+This applies to most of the classes at src/main/java/org/jqassistant/plugin/asyncapi/impl/json, which have been modified for own purposes. *Thanks!*
+

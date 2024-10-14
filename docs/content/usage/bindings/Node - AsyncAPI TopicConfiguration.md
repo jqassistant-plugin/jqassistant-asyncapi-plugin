@@ -15,5 +15,5 @@
 | `maxMessageBytes`                   | see kafka documentation |
 | `confluentKeySchemaValidation`      | see kafka documentation |
 | `confluentKeySubjectNameStrategy`   | see kafka documentation |
-| `confluentValueSchemaValidation`    | see kafka documentation |
+| `confluentValueSchemaValidation`    | see kafka documentation | 
 | `confluentValueSubjectNameStrategy` | see kafka documentation |

@@ -16,10 +16,10 @@
 
 ## Relations
 
-| Name                               | Target Label(s)                                                            | Cardinality | Description                                                        |
-|------------------------------------|----------------------------------------------------------------------------|-------------|--------------------------------------------------------------------|
-| `DEFINES_SERVER_VARIABLE`          | [[Node - AsyncAPI ServerVariable\|:AsyncAPI:ServerVariable]]               | 0..*        | variables names and values for server`s host and pathname template |
-| `DEFINES_SECURITY_SCHEME`          | [[Node - AsyncAPI SecurityScheme\|:AsyncAPI:SecurityScheme]]               | 0..*        | list of usable security schemes                                    |
-| `REFERS_TO_EXTERNAL_DOCUMENTATION` | [[Node - AsyncAPI ExternalDocumentation\|:AsyncAPI:ExternalDocumentation]] | 0..1        | property holding a link to an external documentation               |
-| `HAS_TAG`                          | [[Node - AsyncAPI Tag\|:AsyncAPI:Tag]]                                     | 0..*        | tags for grouping/categorization of servers                        |
-| `DEFINES_SERVER_BINDING`           | [[Node - AsyncAPI ServerBindings\|:AsyncAPI:ServerBindings]]               | 0..1        | all specific definitions for each supported protocol               |
+| Name                               | Target Label(s)                                                                                                                                           | Cardinality | Description                                                                    |
+|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|--------------------------------------------------------------------------------|
+| `DEFINES_SERVER_VARIABLE`          | [[Node - AsyncAPI ServerVariable\|:AsyncAPI:ServerVariable]] <br/>/[[Node - AsyncAPI Reference\|:AsyncAPI:Reference:ServerVariable]]                      | 0..*        | variables names and values for server`s host and pathname template / reference |
+| `DEFINES_SECURITY_SCHEME`          | [[Node - AsyncAPI SecurityScheme\|:AsyncAPI:SecurityScheme]] <br/> [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:SecurityScheme]]                      | 0..*        | list of usable security schemes / reference                                    |
+| `REFERS_TO_EXTERNAL_DOCUMENTATION` | [[Node - AsyncAPI ExternalDocumentation\|:AsyncAPI:ExternalDocumentation]]<br/>/ [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:ExternalDocumentation]] | 0..1        | property holding a link to an external documentation / reference               |
+| `HAS_TAG`                          | [[Node - AsyncAPI Tag\|:AsyncAPI:Tag]]                                                                                                                    | 0..*        | tags for grouping/categorization of servers                                    |
+| `DEFINES_SERVER_BINDING`           | [[Node - AsyncAPI ServerBindings\|:AsyncAPI:ServerBindings]]<br/>/ [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:ServerBindings]]                      | 0..1        | all specific definitions for each supported protocol  / reference              |

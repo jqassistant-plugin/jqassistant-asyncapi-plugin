@@ -13,6 +13,6 @@
 
 ## Relations
 
-| Name      | Target Label(s)                                                                                        | Cardinality | Description |
-|-----------|--------------------------------------------------------------------------------------------------------|-------------|-------------|
-| `HAS_KEY` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Schema:Reference]] | 0..1        | message key |
+| Name      | Target Label(s)                                                                                        | Cardinality | Description                                   |
+|-----------|--------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------|
+| `HAS_KEY` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:Schema]] | 0..1        | message key / reference - `not yet supported` |

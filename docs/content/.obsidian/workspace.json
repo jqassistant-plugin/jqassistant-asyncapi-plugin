@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "31a47dcad06e78a6",
+        "id": "0f67cc349d584cc5",
         "type": "tabs",
         "children": [
           {
-            "id": "ee850887e40975fe",
+            "id": "9d514936a4266d00",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "usage/index.md",
+                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "usage/index.md",
+                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "usage/index.md",
+                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "usage/index.md"
+                "file": "usage/Constraint - ReferenceChainsMustBeLimited.md"
               }
             }
           }
@@ -146,33 +146,42 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ee850887e40975fe",
+  "active": "9d514936a4266d00",
   "lastOpenFiles": [
-    "usage/Nodes.md",
-    "usage/concepts.md",
-    "usage/index.md",
-    "usage/Node - AsyncAPI ChannelBindings.md",
-    "usage/indx.md",
-    "usage/Node - AsyncAPI Parameters.md",
-    "usage/Node - AsyncAPI ServerBindings.md",
-    "usage/bindings/Node - AsyncAPI ServerBindingJms.md",
-    "usage/bindings/Node - AsyncAPI ServerBindingkafka.md",
-    "usage/bindings/Node - AsyncAPI TopicConfiguration.md",
-    "usage/bindings/Node - AsyncAPI ChannelBindingKafka.md",
-    "usage/Node - AsyncAPI Message.md",
-    "usage/bindings/Node - AsyncAPI MessageBindingJms.md",
-    "usage/bindings/Node - AsyncAPI MessageBindingAmqp.md",
-    "usage/bindings/Node - AsyncAPI ChannelBindingJms.md",
-    "usage/bindings/Node - AsyncAPI ChannelBindingAmqp.md",
+    "usage/Node - AsyncAPI Reference.md~",
+    "usage/Concept - ReferenceResolvesToTarget.md",
+    "usage/Concept - OperationSendsToOperation.md",
+    "usage/Concept - ChannelMapsToChannel.md",
+    "usage/Node - AsyncAPI MessageExample.md",
+    "usage/Declaration Nodes.md",
     "usage/bindings/Node - AsyncAPI OperationBindingAmqp.md",
-    "usage/Node - AsyncAPI MessageBindings.md",
-    "usage/bindings/Node - AsyncAPI MessageBindings.md",
-    "usage/bindings/Node - AsyncAPI ChannelBindings.md",
+    "usage/Node - AsyncAPI Tag.md",
     "usage/Node - AsyncAPI Operation.md",
-    "usage/Node - AsyncAPI OperationBindings.md",
-    "usage/Node - AsyncAPI OAuthFlows.md",
-    "usage/Node - AsyncAPI OAuthFlow.md",
-    "usage/Node - AsyncAPI Schemas.md",
-    "usage/Node - AsyncAPI Tag.md"
+    "usage/Node - AsyncAPI CorrelationID.md",
+    "usage/Node - AsyncAPI MessageTrait.md",
+    "usage/Node - AsyncAPI License.md",
+    "usage/Node - AsyncAPI OperationReply.md",
+    "usage/index.md",
+    "usage/Nodes.md~",
+    "usage/index.md~",
+    "usage/Node - AsyncAPI Reference.md",
+    "usage/Node - AsyncAPI OperationTrait.md",
+    "usage/Node - AsyncAPI Parameters.md",
+    "usage/Constraint - ReferenceChainsMustBeLimited.md",
+    "usage/bindings/Node - AsyncAPI TopicConfiguration.md~",
+    "usage/bindings/Node - AsyncAPI TopicConfiguration.md",
+    "usage/Node - AsyncAPI MessagePayload.md",
+    "usage/Node - AsyncAPI Message.md",
+    "usage/Node - AsyncAPI Info.md",
+    "usage/Concept - ChannelMapsToChannel.md~",
+    "usage/Constraint - Re.md",
+    "usage/bindings/Node - AsyncAPI MessageBindingJms.md~",
+    "usage/bindings/Node - AsyncAPI ChannelBindingWebsockets.md~",
+    "usage/Node - AsyncAPI Tag.md~",
+    "usage/Node - AsyncAPI Server.md~",
+    "usage/Node - AsyncAPI OperationReply.md~",
+    "usage/Node - AsyncAPI Channel.md",
+    "usage/bindings/Node - AsyncAPI OperationBindingKafka.md",
+    "usage/bindings/Node - AsyncAPI ServerBindingkafka.md"
   ]
 }

@@ -27,13 +27,12 @@ jqassistant:
 
 ## Usage
 
-> [!INFO]
-> List of links to notes that describe the various nodes, relations, properties, concepts, and constraints that the plugin provides.
-> This section may also link to additional usage guides, examples, etc. that may be relevant for developers *using* this plugin.
-> Notes that part of this section shall be placed in the `usage` directory
+[Declaration Nodes](Declaration%20Nodes.md)
 
 ## Development
 
-> [!INFO]
-> This optional section may be used to link to notes describing the internal structure of the plugin. This may include any explanations that are relevant for (future) *developers of this plugin*.
-> Notes that part of this section shall be placed in the `development` directory
+## References
+
+This project utilizes usage of the work of [Springwolf](https://github.com/springwolf/springwolf-core).
+This applies to most of the classes at src/main/java/org/jqassistant/plugin/asyncapi/impl/json, 
+which have been modified for own purposes. ***Thanks!***

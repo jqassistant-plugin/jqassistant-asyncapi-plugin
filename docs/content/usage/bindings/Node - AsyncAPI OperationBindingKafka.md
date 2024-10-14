@@ -10,7 +10,7 @@
 
 ## Relations
 
-| Name            | Target Label(s)                                                                                        | Cardinality | Description |
-|-----------------|--------------------------------------------------------------------------------------------------------|-------------|-------------|
-| `HAS_GROUP_ID`  | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Schema:Reference]] | 0..1        | group id    |
-| `HAS_CLIENT_ID` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Schema:Reference]] | 0..1        | client id   |
+| Name            | Target Label(s)                                                                                        | Cardinality | Description           |
+|-----------------|--------------------------------------------------------------------------------------------------------|-------------|-----------------------|
+| `HAS_GROUP_ID`  | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:Schema]] | 0..1        | group id / reference  |
+| `HAS_CLIENT_ID` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:Schema]] | 0..1        | client id / reference |

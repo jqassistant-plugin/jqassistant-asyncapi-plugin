@@ -11,8 +11,8 @@
 
 ## Relations
 
-| Name         | Target Label(s)                                                                                          | Cardinality | Description                                              |
-|--------------|----------------------------------------------------------------------------------------------------------|-------------|----------------------------------------------------------|
-| `HAS_QUERY`  | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] / [[Node - AsyncAPI Reference\|:AsyncAPI:Schema:Reference]] | 0..1        | definitions for each query parameter `not yet supported` |
-| `HAS_HEADER` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] / [[Node - AsyncAPI Reference\|:AsyncAPI:Schema:Reference]] | 0..1        | definitions of the http headers      `not yet supported` |
+| Name         | Target Label(s)                                                                                          | Cardinality | Description                                                            |
+|--------------|----------------------------------------------------------------------------------------------------------|-------------|------------------------------------------------------------------------|
+| `HAS_QUERY`  | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] / [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:Schema]] | 0..1        | definitions for each query parameter / reference - `not yet supported` |
+| `HAS_HEADER` | [[Node - AsyncAPI Schema\|:AsyncAPI:Schema]] / [[Node - AsyncAPI Reference\|:AsyncAPI:Reference:Schema]] | 0..1        | definitions of the http headers / reference - `not yet supported`      |
 
