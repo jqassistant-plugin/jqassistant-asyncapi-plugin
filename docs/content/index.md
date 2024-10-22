@@ -27,12 +27,13 @@ jqassistant:
 
 ## Usage
 
-[[Declaration Nodes]]
-[[Concepts & Constraints]]
+- [[Declaration Nodes]]
+
+- [[Concepts & Constraints]]
 
 ## Development
 
-[[Codebase Layout]]
+- [[Codebase Layout]]
 
 ## Support
 
@@ -42,5 +43,6 @@ Due to this plugin still being in development, there is no support for json sche
 ## References
 
 This project utilizes usage of the work of [Springwolf](https://github.com/springwolf/springwolf-core).
-This applies to most of the classes at src/main/java/org/jqassistant/plugin/asyncapi/impl/json, 
-which have been modified for own purposes. ***Thanks!***
+
+This applies to most of the classes at src/main/java/org/jqassistant/plugin/asyncapi/impl/json,
+which have been modified for own purposes. ***Thanks!***ed for own purposes. ***Thanks!***

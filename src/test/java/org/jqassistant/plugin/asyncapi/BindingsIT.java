@@ -91,18 +91,18 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in channel
         Query.Result<Query.Result.CompositeRowObject> messageBindings = store.executeQuery(
-                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDING]->(bindings:MessageBindings) return bindings");
+                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDINGS]->(bindings:MessageBindings) return bindings");
         assertThat(messageBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> jmsBinding = store.executeQuery(
-                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDING]->(:MessageBindings)-[DEFINES_JMS_BINDING]->(jms:JmsMessage) return jms");
+                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDINGS]->(:MessageBindings)-[DEFINES_JMS_BINDING]->(jms:JmsMessage) return jms");
         assertThat(jmsBinding.hasResult()).isTrue();
         JmsMessageBindingsDescriptor jms = jmsBinding.getSingleResult()
                 .get("jms", JmsMessageBindingsDescriptor.class);
         assertThat(jms.getBindingVersion()).isEqualTo("0.3.2");
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDING]->(:MessageBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaMessage) return kafka");
+                "MATCH (:Message {referenceableKey:'userSignupMessage'})-[DEFINES_BINDINGS]->(:MessageBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaMessage) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaMessageBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaMessageBindingsDescriptor.class);
@@ -117,11 +117,11 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in server
         Query.Result<Query.Result.CompositeRowObject> serverBindings = store.executeQuery(
-                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDING]->(bindings:ServerBindings) return bindings");
+                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDINGS]->(bindings:ServerBindings) return bindings");
         assertThat(serverBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> jmsBinding = store.executeQuery(
-                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDING]->(:ServerBindings)-[DEFINES_JMS_BINDING]->(jms:JmsServer) return jms");
+                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDINGS]->(:ServerBindings)-[DEFINES_JMS_BINDING]->(jms:JmsServer) return jms");
         assertThat(jmsBinding.hasResult()).isTrue();
         JmsServerBindingsDescriptor jms = jmsBinding.getSingleResult()
                 .get("jms", JmsServerBindingsDescriptor.class);
@@ -130,7 +130,7 @@ class BindingsIT extends AbstractPluginIT {
         assertThat(jms.getClientId()).isEqualTo("my-application-1");
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDING]->(:ServerBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaServer) return kafka");
+                "MATCH (:Server {referenceableKey:'oneServer'})-[DEFINES_BINDINGS]->(:ServerBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaServer) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaServerBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaServerBindingsDescriptor.class);
@@ -145,11 +145,11 @@ class BindingsIT extends AbstractPluginIT {
         store.beginTransaction();
         //in operation
         Query.Result<Query.Result.CompositeRowObject> operationBindings = store.executeQuery(
-                "MATCH (:Operation {referenceableKey:'oneOperation'})-[DEFINES_BINDING]->(bindings:OperationBindings) return bindings");
+                "MATCH (:Operation {referenceableKey:'oneOperation'})-[DEFINES_BINDINGS]->(bindings:OperationBindings) return bindings");
         assertThat(operationBindings.hasResult()).isTrue();
 
         Query.Result<Query.Result.CompositeRowObject> kafkaBinding = store.executeQuery(
-                "MATCH (:Operation {referenceableKey:'oneOperation'})-[DEFINES_BINDING]->(:OperationBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaOperation) return kafka");
+                "MATCH (:Operation {referenceableKey:'oneOperation'})-[DEFINES_BINDINGS]->(:OperationBindings)-[DEFINES_KAFKA_BINDING]->(kafka:KafkaOperation) return kafka");
         assertThat(kafkaBinding.hasResult()).isTrue();
         KafkaOperationBindingsDescriptor kafka = kafkaBinding.getSingleResult()
                 .get("kafka", KafkaOperationBindingsDescriptor.class);
