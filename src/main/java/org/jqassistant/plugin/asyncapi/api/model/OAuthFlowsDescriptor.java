@@ -3,7 +3,7 @@ package org.jqassistant.plugin.asyncapi.api.model;
 import com.buschmais.xo.neo4j.api.annotation.Label;
 import com.buschmais.xo.neo4j.api.annotation.Relation;
 
-@Label("OAuthFlow")
+@Label("OAuthFlows")
 public interface OAuthFlowsDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     @Relation("IMPLICIT_FLOW")
