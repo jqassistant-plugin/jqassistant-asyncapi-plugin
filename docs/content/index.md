@@ -27,6 +27,10 @@ jqassistant:
 
 ## Usage
 
+**Graph Structure:**
+
+[[jqa-asyncapi-plugin-model.drawio.png]]
+
 - [[Declaration Nodes]]
 
 - [[Concepts & Constraints]]

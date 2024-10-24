@@ -90,7 +90,7 @@ class ServerIT extends AbstractPluginIT {
     @Test
     public void bindings() {
         List<ServerBindingsDescriptor> bindings =
-                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_SERVER_BINDING]->(binding:ServerBindings) return binding").getColumn("binding");
+                query("MATCH (:Contract)-[:DEFINES_SERVER]->(server:Server)-[:DEFINES_BINDINGS]->(binding:ServerBindings) return binding").getColumn("binding");
         assertThat(bindings.get(0)).isNotNull();
         assertThat(bindings.size()).isEqualTo(1);
         store.commitTransaction();
