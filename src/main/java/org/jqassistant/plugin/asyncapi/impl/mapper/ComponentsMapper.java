@@ -10,7 +10,7 @@ import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ComponentsMapperDec
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(uses = { TagMapper.class, ChannelsMapper.class, ChannelBindingsMapper.class, ExternalDocsMapper.class, MessagesMapper.class, ParametersMapper.class, OperationMapper.class,
+@Mapper(uses = { TagMapper.class, ChannelsMapper.class, ChannelBindingsMapper.class, ExternalDocsMapper.class, MessagesMapper.class, ParameterMapper.class, OperationMapper.class,
         ComponentsCorrelationIdMapper.class, ServerVariablesMapper.class, ServerMapper.class, ComponentsMessageTraitMapper.class, ComponentsOperationTraitMapper.class,
         OperationReplyAddressMapper.class, OperationReplyMapper.class, SecuritySchemesMapper.class })
 @DecoratedWith(ComponentsMapperDecorator.class)
