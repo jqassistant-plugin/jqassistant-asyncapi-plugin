@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-@Label("OAuthFlows")
+@Label("OAuthFlow")
 public interface OAuthFlowDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor  {
 
     String getAuthorizationUrl();

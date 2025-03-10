@@ -7,7 +7,7 @@ import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.amqp.AmqpOperationBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaOperationBindingsDescriptor;
 
-@Label("OperationBinding")
+@Label("OperationBindings")
 public interface OperationBindingsDescriptor extends ReferenceableDescriptor {
 
     @Relation("DEFINES_AMQP_BINDING")
