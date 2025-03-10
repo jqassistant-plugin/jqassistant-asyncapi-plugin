@@ -2,7 +2,7 @@
                     id="jqa.plugin.asyncapi"
                     name="jQAssistant AsyncApi Plugin"
                     version="${project.version}">
-    <description>Provides a scanner for OpenAPI files.</description>
+    <description>${project.description}</description>
     <model>
         <class>org.jqassistant.plugin.asyncapi.api.model.ChannelDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor</class>
@@ -48,7 +48,6 @@
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ChannelBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.MessageBindingsDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.bindings.ServerBindingsDescriptor</class>
-
 
     </model>
     <scope>

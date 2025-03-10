@@ -12,7 +12,7 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <name>jQAssistant AsyncAPI Plugin</name>
-    <description>The jQAssistant plugin providing scanners for AsyncAPI contracts.</description>
+    <description>The jQAssistant plugin providing a scanner for AsyncAPI contracts.</description>
     <url>https://jqassistant.org/</url>
 
     <organization>
