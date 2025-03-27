@@ -24,7 +24,7 @@
         <class>org.jqassistant.plugin.asyncapi.api.model.OperationReplyAddressDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.OperationReplyDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.OperationTraitDescriptor</class>
-        <class>org.jqassistant.plugin.asyncapi.api.model.ParametersDescriptor</class>
+        <class>org.jqassistant.plugin.asyncapi.api.model.ParameterDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.ReferenceDescriptor</class>
         <class>org.jqassistant.plugin.asyncapi.api.model.SchemaDescriptor</class>
