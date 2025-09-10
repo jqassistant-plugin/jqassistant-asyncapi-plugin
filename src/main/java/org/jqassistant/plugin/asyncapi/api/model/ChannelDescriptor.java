@@ -29,8 +29,8 @@ public interface ChannelDescriptor extends ReferenceableDescriptor, AsyncApiDesc
     @Relation("HAS_TAG")
     List<TagDescriptor> getTags();
 
-    @Relation("INCLUDES_PARAMETERS")
-    List<ParametersDescriptor> getParameters();
+    @Relation("INCLUDES_PARAMETER")
+    List<ParameterDescriptor> getParameter();
 
     @Relation("REFERS_TO_EXTERNAL_DOCUMENTATION")
     ExternalDocsDescriptor getExternalDocs();

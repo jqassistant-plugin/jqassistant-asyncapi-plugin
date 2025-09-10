@@ -37,7 +37,7 @@ public interface OperationTraitDescriptor extends ReferenceableDescriptor, Async
 
 
    /* @Relation("HAS_BINDINGS")
-    List<MessageBindingsDescriptor> setBindings();
-    void getBindings (List<MessageBindingsDescriptor> bindings);*/
+    List<OperationBindingsDescriptor> setBindings();
+    void getBindings (List<OperationBindingsDescriptor> bindings);*/
 
 }

@@ -65,14 +65,14 @@ class OperationsIT extends AbstractPluginIT {
     @Test
     public void bindings() {
         //operation binding
-        Query.Result<Query.Result.CompositeRowObject> bindings = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:SUPPORTS_BINDINGS]->(bindings:OperationBinding) return bindings");
+        Query.Result<Query.Result.CompositeRowObject> bindings = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:DEFINES_BINDINGS]->(bindings:OperationBindings) return bindings");
         assertThat(bindings.hasResult()).isTrue();
         OperationBindingsDescriptor operationBindings = bindings.getSingleResult()
                 .get("bindings", OperationBindingsDescriptor.class);
         assertThat(operationBindings).isNotNull();
 
         //operation binding: kafka
-        Query.Result<Query.Result.CompositeRowObject> kafka = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:SUPPORTS_BINDINGS]->(:OperationBinding)-[:DEFINES_KAFKA_BINDING]->(kafka:KafkaOperation) return kafka");
+        Query.Result<Query.Result.CompositeRowObject> kafka = store.executeQuery("MATCH (:AsyncAPI:Contract)-[:DEFINES_OPERATION]->(:Operation {referenceableKey:'sendProcess'})-[:DEFINES_BINDINGS]->(:OperationBindings)-[:DEFINES_KAFKA_BINDING]->(kafka:KafkaOperation) return kafka");
         assertThat(kafka.hasResult()).isTrue();
         KafkaOperationBindingsDescriptor kafkaBinding = kafka.getSingleResult()
                 .get("kafka", KafkaOperationBindingsDescriptor.class);

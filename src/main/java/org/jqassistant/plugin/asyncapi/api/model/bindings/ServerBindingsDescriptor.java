@@ -7,7 +7,7 @@ import org.jqassistant.plugin.asyncapi.api.model.ReferenceableDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.jms.JmsServerBindingsDescriptor;
 import org.jqassistant.plugin.asyncapi.api.model.bindings.kafka.KafkaServerBindingsDescriptor;
 
-@Label("ServerBinding")
+@Label("ServerBindings")
 public interface ServerBindingsDescriptor extends ReferenceableDescriptor {
 
     @Relation("DEFINES_KAFKA_BINDING")

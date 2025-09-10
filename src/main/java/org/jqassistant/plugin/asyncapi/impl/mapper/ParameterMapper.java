@@ -6,32 +6,32 @@ import java.util.Map;
 
 import com.buschmais.jqassistant.core.scanner.api.Scanner;
 
-import org.jqassistant.plugin.asyncapi.api.model.ParametersDescriptor;
+import org.jqassistant.plugin.asyncapi.api.model.ParameterDescriptor;
 import org.jqassistant.plugin.asyncapi.impl.json.model.channel.ChannelParameter;
-import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ParametersMapperDecorator;
+import org.jqassistant.plugin.asyncapi.impl.mapper.decorator.ParameterMapperDecorator;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ListToStringMapper;
 import org.jqassistant.plugin.asyncapi.impl.mapper.service.ReferenceableObjectMapper;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 @Mapper(uses = ListToStringMapper.class, config = DescriptorMapperConfig.class)
-@DecoratedWith(ParametersMapperDecorator.class)
-public interface ParametersMapper extends ReferenceableObjectMapper<ChannelParameter, ParametersDescriptor> {
+@DecoratedWith(ParameterMapperDecorator.class)
+public interface ParameterMapper extends ReferenceableObjectMapper<ChannelParameter, ParameterDescriptor> {
 
-    ParametersMapper INSTANCE = Mappers.getMapper(ParametersMapper.class);
+    ParameterMapper INSTANCE = Mappers.getMapper(ParameterMapper.class);
 
     @ReferenceableObjectMapping
     @Mapping(target = "enum", source = "enumValues")
     @Mapping(target = "default", source = "defaultValue")
     @BeanMapping(ignoreUnmappedSourceProperties = "reference")
     @Override
-    ParametersDescriptor toDescriptor(ChannelParameter parameters, @Context Scanner scanner);
+    ParameterDescriptor toDescriptor(ChannelParameter parameter, @Context Scanner scanner);
 
-    default List<ParametersDescriptor> toDescriptors(Map<String, ChannelParameter> parameters, @Context Scanner scanner) {
+    default List<ParameterDescriptor> toDescriptors(Map<String, ChannelParameter> parameter, @Context Scanner scanner) {
         return Collections.emptyList();
     }
 
-    default List<ParametersDescriptor> toDescriptors(List<ChannelParameter> parameters, @Context Scanner scanner) {
+    default List<ParameterDescriptor> toDescriptors(List<ChannelParameter> parameter, @Context Scanner scanner) {
         return Collections.emptyList();
     }
 }

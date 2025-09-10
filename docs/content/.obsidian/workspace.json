@@ -1,0 +1,188 @@
+{
+  "main": {
+    "id": "7f53ed6c1e6142f4",
+    "type": "split",
+    "children": [
+      {
+        "id": "7a5b45e80dcd63f9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6d58a64a0535e85",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "8a194e555b428569",
+    "type": "split",
+    "children": [
+      {
+        "id": "f9f0e5978e9a31e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2dbde86bc5da0d20",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "10594caff9387bad",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "33661d0782e5f790",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 364.5
+  },
+  "right": {
+    "id": "a085b33607f60213",
+    "type": "split",
+    "children": [
+      {
+        "id": "8213b53cf235a4a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c0ba606f2ceaef6b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "372c3e5724daeff4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "98be85a5a1a196fe",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "46f377131b7eaa3a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "index.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c6d58a64a0535e85",
+  "lastOpenFiles": [
+    "development/current state.adoc~",
+    "usage/Concepts & Constraints.md",
+    "usage/Concepts & Constraints.md~",
+    "usage/Concept - OperationSendsToOperation.md",
+    "usage/Node - AsyncAPI CorrelationID.md",
+    "usage/Declaration Nodes.md",
+    "index.md",
+    "usage/Concept - ReferenceResolvesToTarget.md",
+    "usage/Constraint - ReferenceChainsMustBeLimited.md",
+    "usage/Node - AsyncAPI ExternalDocumentation.md",
+    "usage/Concept - ChannelMapsToChannel.md",
+    "usage/bindings/Node - AsyncAPI OperationBindingKafka.md",
+    "usage/bindings/Node - AsyncAPI ChannelBindingKafka.md",
+    "usage/bindings/Node - AsyncAPI ChannelBindingWebsockets.md",
+    "usage/bindings/Node - AsyncAPI MessageBindingKafka.md",
+    "usage/bindings/Node - AsyncAPI OperationBindingAmqp.md",
+    "usage/bindings/Node - AsyncAPI ServerBindingJms.md",
+    "usage/bindings/Node - AsyncAPI MessageBindingJms.md",
+    "usage/Node - AsyncAPI Components.md",
+    "usage/bindings/Node - AsyncAPI ServerBindingkafka.md",
+    "usage/bindings/Node - AsyncAPI MessageBindingAmqp.md",
+    "usage/bindings/Node - AsyncAPI ChannelBindingAmqp.md",
+    "usage/Node - AsyncAPI Components.md~",
+    "usage/Node - AsyncAPI Parameter.md",
+    "development/current state.adoc",
+    "development/Codebase Layout.md",
+    "index.md~",
+    "usage/Node - AsyncAPI Tag.md",
+    "development/Codebase Layout.md~",
+    "development",
+    "usage/Codebase Layout.md",
+    "usage/Node - AsyncAPI Reference.md~",
+    "usage/Node - AsyncAPI MessageExample.md",
+    "usage/Nodes.md~",
+    "usage/index.md~",
+    "usage/bindings/Node - AsyncAPI TopicConfiguration.md~"
+  ]
+}
