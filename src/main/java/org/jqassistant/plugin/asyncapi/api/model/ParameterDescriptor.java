@@ -2,8 +2,8 @@ package org.jqassistant.plugin.asyncapi.api.model;
 
 import com.buschmais.xo.neo4j.api.annotation.Label;
 
-@Label("Parameters")
-public interface ParametersDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
+@Label("Parameter")
+public interface ParameterDescriptor extends ReferenceableDescriptor, AsyncApiDescriptor {
 
     String getEnum();
 
