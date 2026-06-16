@@ -3,12 +3,12 @@
   <context>
     <build>
       <name>jQAssistant AsyncAPI Plugin</name>
-      <timestamp>2026-05-27T06:16:12.802Z</timestamp>
+      <timestamp>2026-06-16T15:32:41.046Z</timestamp>
       <properties></properties>
     </build>
   </context>
-  <group id="jqassistant-plugin:Default" date="2026-05-27T06:17:16">
-    <group id="jqassistant-plugin-maven:Default" date="2026-05-27T06:17:16">
+  <group id="jqassistant-plugin:Default" date="2026-06-16T15:33:34">
+    <group id="jqassistant-plugin-maven:Default" date="2026-06-16T15:33:34">
       <constraint id="jqassistant-plugin-maven:GroupId">
         <description>The groupId for jQAssistant plugin Maven projects must follow the pattern 'org.jqassistant.plugin.&lt;project&gt;'.</description>
         <verificationResult>
@@ -17,7 +17,7 @@
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>103</duration>
+        <duration>106</duration>
       </constraint>
       <concept id="jqassistant-plugin-maven:ParentProject" abstract="false">
         <description>Labels all Maven projects which declare "org.jqassistant.plugin:parent" as parent module with "Parent".</description>
@@ -41,7 +41,7 @@
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>139</duration>
+        <duration>158</duration>
       </concept>
       <constraint id="jqassistant-plugin-maven:MavenModulesMustUseParentGroupId">
         <description>All Maven projects must define the same groupId as the parent of the plugin project.</description>
@@ -51,7 +51,7 @@
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>87</duration>
+        <duration>88</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status>success</status>
         </required-concept>
@@ -64,7 +64,7 @@
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>101</duration>
+        <duration>84</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status>success</status>
         </required-concept>
@@ -77,7 +77,7 @@
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>108</duration>
+        <duration>110</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status>success</status>
         </required-concept>
@@ -90,14 +90,14 @@
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>215</duration>
+        <duration>219</duration>
         <required-concept id="jqassistant-plugin-maven:ParentProject">
           <status>success</status>
         </required-concept>
       </constraint>
-      <duration>973</duration>
+      <duration>983</duration>
     </group>
-    <group id="jqassistant-plugin-test:Default" date="2026-05-27T06:17:17">
+    <group id="jqassistant-plugin-test:Default" date="2026-06-16T15:33:35">
       <concept id="junit5:ParameterizedTestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.ParameterizedTest") and
 labels them with "Test", "Parameterized", and "Junit5".</description>
@@ -107,7 +107,7 @@ labels them with "Test", "Parameterized", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>65</duration>
+        <duration>82</duration>
       </concept>
       <concept id="junit5:TestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.Test") and
@@ -117,51 +117,6 @@ labels them with "Test" and "Junit5".</description>
             <column>Test</column>
           </columns>
           <rows count="48">
-            <row key="8a5ec91c2629e9b595d6913c5f65011b97fe7346079c3683c69f0c82712b3cc0">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="72" endLine="94">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void operationSendsToOperation()</value>
-              </column>
-            </row>
-            <row key="21503906cb69959842ea800b7186a66ae8245dd959cb7f0919386f8b0e888473">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ContractIT.java" startLine="18" endLine="29">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void contractTest()</value>
-              </column>
-            </row>
-            <row key="eb6f032484c2230490ef4335f6ba2f45a5c7264d5b396ac3ecccaa233aa3257a">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="95" endLine="106">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void reply()</value>
-              </column>
-            </row>
-            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java" startLine="26" endLine="35">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void channels()</value>
-              </column>
-            </row>
-            <row key="1d892660006e43653f1c6dd4302a677f510d281b9cd99a5ac3fe9cdecc10f0a9">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="35" endLine="47">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void channelMapsToChannelInSeparateContracts()</value>
-              </column>
-            </row>
             <row key="80231aa75e0066b4fa15ce43c035260701ecaefb16b32c52143b82b053086202">
               <column name="Test">
                 <element language="Java">Method</element>
@@ -169,114 +124,6 @@ labels them with "Test" and "Junit5".</description>
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
                 <value>void examples()</value>
-              </column>
-            </row>
-            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="30" endLine="46">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void simpleAttributes()</value>
-              </column>
-            </row>
-            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="41" endLine="57">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void simpleAttributes()</value>
-              </column>
-            </row>
-            <row key="30c5900e6fbd9860910351f919563813fa4254b557b6172ce2d8534927b85619">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="92" endLine="98">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void bindings()</value>
-              </column>
-            </row>
-            <row key="1f4fb6373e8f51ecfc431d424b757959274de5874ec8d8fae6996560a763951b">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="29" endLine="41">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void basic()</value>
-              </column>
-            </row>
-            <row key="4fc64c9583cc27de2d5c110411f6bf5cd73be83f9db932548f816743580962a4">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/TagIT.java" startLine="21" endLine="45">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void test()</value>
-              </column>
-            </row>
-            <row key="46ef8cc92883c3649e0c5f7c345bdc86ed5ef0acf719110ddb1776b7b6e72f58">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/PathMappingTest.java" startLine="12" endLine="25">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void treeTraversal()</value>
-              </column>
-            </row>
-            <row key="f172b849beac54cb5bf04a1b55896354adda3dc126e688cc648681f791f14612">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="83" endLine="88">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void securityScheme()</value>
-              </column>
-            </row>
-            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="53" endLine="58">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void channels()</value>
-              </column>
-            </row>
-            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="50" endLine="54">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void channels()</value>
-              </column>
-            </row>
-            <row key="2af76646be72753f6714c507266247caaf8140c626243dfcb4fef352a99b2be3">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="88" endLine="92">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void operationTraits()</value>
-              </column>
-            </row>
-            <row key="892a58a756178185ed97399441256fd101ca4625945f534d7b731e9c8fe30b79">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/concept/LocalOperationMappingIT.java" startLine="16" endLine="31">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void sendsToOerationsInOneContract()</value>
-              </column>
-            </row>
-            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/SchemasIT.java" startLine="25" endLine="25">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void simpleAttributes()</value>
               </column>
             </row>
             <row key="cd62c0a63124a592647dfaa7ec539bdffcd56b8db3ab1d1d702db33a7a1f82ba">
@@ -288,6 +135,15 @@ labels them with "Test" and "Junit5".</description>
                 <value>void correlationId()</value>
               </column>
             </row>
+            <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="46" endLine="51">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void tags()</value>
+              </column>
+            </row>
             <row key="2bf88e39ee76d8d819180925cc8684d07f5fc4b46b33675d650fe2a2678eaa97">
               <column name="Test">
                 <element language="Java">Method</element>
@@ -297,31 +153,22 @@ labels them with "Test" and "Junit5".</description>
                 <value>void parameters()</value>
               </column>
             </row>
-            <row key="9abb4da668c59ea538a3c1e8135b0261314e31f895880c4b89d59d31f5faca6b">
+            <row key="4fc64c9583cc27de2d5c110411f6bf5cd73be83f9db932548f816743580962a4">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="61" endLine="75">
+                <source fileName="/org/jqassistant/plugin/asyncapi/TagIT.java" startLine="21" endLine="45">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void infoTags()</value>
+                <value>void test()</value>
               </column>
             </row>
-            <row key="525e3cb244c92eb5c0e7f1440f9d7feafb859f1f6a11b85f1d07e3a51212a3e7">
+            <row key="bdeb8b6a50b5d0909da18b68e997c24536577c1d9dfff0f216610c6180f782e6">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java" startLine="39" endLine="43">
+                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="117" endLine="141">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void messages()</value>
-              </column>
-            </row>
-            <row key="c5c49b545dcfdcc6c280906c3391e952fdc9dacbd76dd1275a26d340545ae302">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="96" endLine="100">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void messageTraits()</value>
+                <value>void serverBindings()</value>
               </column>
             </row>
             <row key="ddce5859d53b70eea72861bde71e16ea3c3cff69b25488904fcc09c657fbe9ae">
@@ -336,73 +183,28 @@ labels them with "Test" and "Junit5".</description>
             <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="59" endLine="63">
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="45" endLine="49">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
                 <value>void tags()</value>
               </column>
             </row>
-            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
+            <row key="eb6f032484c2230490ef4335f6ba2f45a5c7264d5b396ac3ecccaa233aa3257a">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="29" endLine="40">
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="95" endLine="106">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void simpleAttributes()</value>
+                <value>void reply()</value>
               </column>
             </row>
-            <row key="8f1f98e24cd2b3542b18e11ade0b32d3c951dfad60a0622fe7ad0c12e9f719b6">
+            <row key="8a5ec91c2629e9b595d6913c5f65011b97fe7346079c3683c69f0c82712b3cc0">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="111" endLine="118">
+                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="72" endLine="94">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void replyAddress()</value>
-              </column>
-            </row>
-            <row key="a3aa3669bbead6635398867a99dd4ad5af4aae059b70f3079407a69cfc9e5e9b">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="145" endLine="158">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void operationBindings()</value>
-              </column>
-            </row>
-            <row key="7b7c7888939dc04e20e135585013d2f5b051c143cf6f5efe850849b4a0b08481">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="91" endLine="113">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void messageBindings()</value>
-              </column>
-            </row>
-            <row key="68c3ce24206dce46fb10921c64d48deea2098df138ad30a9dbcfbf8f290dada1">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="51" endLine="68">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void resolveReferences()</value>
-              </column>
-            </row>
-            <row key="8ae861d2fcfa684b110bba098b39662d80699300f2fb26459afd770cc2c6f74f">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="79" endLine="88">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void externalDocsOfInfo()</value>
-              </column>
-            </row>
-            <row key="cd36d14acf7f4e823d6d40517da82d4ade4d03235db8bc53e88ca6d1e0610f9f">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="68" endLine="78">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void serverVariables()</value>
+                <value>void operationSendsToOperation()</value>
               </column>
             </row>
             <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
@@ -414,13 +216,67 @@ labels them with "Test" and "Junit5".</description>
                 <value>void simpleAttributes()</value>
               </column>
             </row>
-            <row key="bad0af6df9f99697760fae736f8a7acb1f3d6fdfaabf9b2a236a1b66e90271c9">
+            <row key="7b7c7888939dc04e20e135585013d2f5b051c143cf6f5efe850849b4a0b08481">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="78" endLine="84">
+                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="91" endLine="113">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void externalDocs()</value>
+                <value>void messageBindings()</value>
+              </column>
+            </row>
+            <row key="525e3cb244c92eb5c0e7f1440f9d7feafb859f1f6a11b85f1d07e3a51212a3e7">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java" startLine="39" endLine="43">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void messages()</value>
+              </column>
+            </row>
+            <row key="68c3ce24206dce46fb10921c64d48deea2098df138ad30a9dbcfbf8f290dada1">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="51" endLine="68">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void resolveReferences()</value>
+              </column>
+            </row>
+            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="30" endLine="46">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void simpleAttributes()</value>
+              </column>
+            </row>
+            <row key="30c5900e6fbd9860910351f919563813fa4254b557b6172ce2d8534927b85619">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="68" endLine="82">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void bindings()</value>
+              </column>
+            </row>
+            <row key="cd36d14acf7f4e823d6d40517da82d4ade4d03235db8bc53e88ca6d1e0610f9f">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="68" endLine="78">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void serverVariables()</value>
+              </column>
+            </row>
+            <row key="8ae861d2fcfa684b110bba098b39662d80699300f2fb26459afd770cc2c6f74f">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="79" endLine="88">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void externalDocsOfInfo()</value>
               </column>
             </row>
             <row key="6c71a43ecd122da5ede4377c621e0e19705475c41edaf82f9e1acc3ded795367">
@@ -432,10 +288,64 @@ labels them with "Test" and "Junit5".</description>
                 <value>void servers()</value>
               </column>
             </row>
+            <row key="bad0af6df9f99697760fae736f8a7acb1f3d6fdfaabf9b2a236a1b66e90271c9">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="78" endLine="84">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void externalDocs()</value>
+              </column>
+            </row>
+            <row key="2af76646be72753f6714c507266247caaf8140c626243dfcb4fef352a99b2be3">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="88" endLine="92">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void operationTraits()</value>
+              </column>
+            </row>
+            <row key="8f1f98e24cd2b3542b18e11ade0b32d3c951dfad60a0622fe7ad0c12e9f719b6">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="111" endLine="118">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void replyAddress()</value>
+              </column>
+            </row>
+            <row key="1d892660006e43653f1c6dd4302a677f510d281b9cd99a5ac3fe9cdecc10f0a9">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/concept/AsyncApiIT.java" startLine="35" endLine="47">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void channelMapsToChannelInSeparateContracts()</value>
+              </column>
+            </row>
+            <row key="30c5900e6fbd9860910351f919563813fa4254b557b6172ce2d8534927b85619">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="92" endLine="98">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void bindings()</value>
+              </column>
+            </row>
+            <row key="f172b849beac54cb5bf04a1b55896354adda3dc126e688cc648681f791f14612">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="83" endLine="88">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void securityScheme()</value>
+              </column>
+            </row>
             <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="45" endLine="49">
+                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="46" endLine="50">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
                 <value>void tags()</value>
@@ -450,31 +360,58 @@ labels them with "Test" and "Junit5".</description>
                 <value>void messages()</value>
               </column>
             </row>
-            <row key="1fcf9e281e2ad7f597fb8f5182ea2a3b5546da69cc365a3df6588e431adcdbb5">
+            <row key="c5c49b545dcfdcc6c280906c3391e952fdc9dacbd76dd1275a26d340545ae302">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/ResolveReferencesIT.java" startLine="17" endLine="32">
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="96" endLine="100">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void resolveChannels()</value>
+                <value>void messageTraits()</value>
               </column>
             </row>
-            <row key="2bf88e39ee76d8d819180925cc8684d07f5fc4b46b33675d650fe2a2678eaa97">
+            <row key="46ef8cc92883c3649e0c5f7c345bdc86ed5ef0acf719110ddb1776b7b6e72f58">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="70" endLine="74">
+                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/PathMappingTest.java" startLine="12" endLine="25">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void parameters()</value>
+                <value>void treeTraversal()</value>
               </column>
             </row>
-            <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
+            <row key="a3aa3669bbead6635398867a99dd4ad5af4aae059b70f3079407a69cfc9e5e9b">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ServerIT.java" startLine="46" endLine="51">
+                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="145" endLine="158">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void tags()</value>
+                <value>void operationBindings()</value>
+              </column>
+            </row>
+            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="29" endLine="40">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void simpleAttributes()</value>
+              </column>
+            </row>
+            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java" startLine="26" endLine="35">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void channels()</value>
+              </column>
+            </row>
+            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="41" endLine="57">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void simpleAttributes()</value>
               </column>
             </row>
             <row key="525e3cb244c92eb5c0e7f1440f9d7feafb859f1f6a11b85f1d07e3a51212a3e7">
@@ -486,22 +423,40 @@ labels them with "Test" and "Junit5".</description>
                 <value>void messages()</value>
               </column>
             </row>
-            <row key="30c5900e6fbd9860910351f919563813fa4254b557b6172ce2d8534927b85619">
+            <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="68" endLine="82">
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="59" endLine="63">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void bindings()</value>
+                <value>void tags()</value>
               </column>
             </row>
-            <row key="ddce5859d53b70eea72861bde71e16ea3c3cff69b25488904fcc09c657fbe9ae">
+            <row key="2bf88e39ee76d8d819180925cc8684d07f5fc4b46b33675d650fe2a2678eaa97">
               <column name="Test">
                 <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="64" endLine="68">
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="70" endLine="74">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>void traits()</value>
+                <value>void parameters()</value>
+              </column>
+            </row>
+            <row key="21503906cb69959842ea800b7186a66ae8245dd959cb7f0919386f8b0e888473">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ContractIT.java" startLine="18" endLine="29">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void contractTest()</value>
+              </column>
+            </row>
+            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="53" endLine="58">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void channels()</value>
               </column>
             </row>
             <row key="a8952752dd26ff7a0c690bd86f93b4cb6d21ca1d328756e5a4186d065c557de1">
@@ -513,6 +468,51 @@ labels them with "Test" and "Junit5".</description>
                 <value>void channelBindings()</value>
               </column>
             </row>
+            <row key="9abb4da668c59ea538a3c1e8135b0261314e31f895880c4b89d59d31f5faca6b">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java" startLine="61" endLine="75">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void infoTags()</value>
+              </column>
+            </row>
+            <row key="892a58a756178185ed97399441256fd101ca4625945f534d7b731e9c8fe30b79">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/concept/LocalOperationMappingIT.java" startLine="16" endLine="31">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void sendsToOerationsInOneContract()</value>
+              </column>
+            </row>
+            <row key="1f4fb6373e8f51ecfc431d424b757959274de5874ec8d8fae6996560a763951b">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java" startLine="29" endLine="41">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void basic()</value>
+              </column>
+            </row>
+            <row key="c9acda189aacccb32ce8e5ad609ca7f90ab1de231be02e9224044c1d318ee945">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/SchemasIT.java" startLine="25" endLine="25">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void simpleAttributes()</value>
+              </column>
+            </row>
+            <row key="ddce5859d53b70eea72861bde71e16ea3c3cff69b25488904fcc09c657fbe9ae">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="64" endLine="68">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void traits()</value>
+              </column>
+            </row>
             <row key="bad0af6df9f99697760fae736f8a7acb1f3d6fdfaabf9b2a236a1b66e90271c9">
               <column name="Test">
                 <element language="Java">Method</element>
@@ -520,24 +520,6 @@ labels them with "Test" and "Junit5".</description>
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
                 <value>void externalDocs()</value>
-              </column>
-            </row>
-            <row key="bdeb8b6a50b5d0909da18b68e997c24536577c1d9dfff0f216610c6180f782e6">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java" startLine="117" endLine="141">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void serverBindings()</value>
-              </column>
-            </row>
-            <row key="6432ed79236ccb6d6ff890b9d3ab4727010d4ce25029d9a4cbb8ad546a2eed70">
-              <column name="Test">
-                <element language="Java">Method</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java" startLine="46" endLine="50">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>void tags()</value>
               </column>
             </row>
             <row key="1f4fb6373e8f51ecfc431d424b757959274de5874ec8d8fae6996560a763951b">
@@ -549,6 +531,24 @@ labels them with "Test" and "Junit5".</description>
                 <value>void basic()</value>
               </column>
             </row>
+            <row key="b399c429461b09070baed92cfaefcc28ee09df1ca7c8a7717cdaae19c1342665">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java" startLine="50" endLine="54">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void channels()</value>
+              </column>
+            </row>
+            <row key="1fcf9e281e2ad7f597fb8f5182ea2a3b5546da69cc365a3df6588e431adcdbb5">
+              <column name="Test">
+                <element language="Java">Method</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/ResolveReferencesIT.java" startLine="17" endLine="32">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>void resolveChannels()</value>
+              </column>
+            </row>
           </rows>
         </result>
         <verificationResult>
@@ -557,7 +557,7 @@ labels them with "Test" and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>119</duration>
+        <duration>140</duration>
       </concept>
       <concept id="junit5:TestTemplateMethod" abstract="false">
         <description>Labels all methods annotated by "@org.junit.jupiter.api.TestTemplate"
@@ -568,7 +568,7 @@ with "Junit5", "Test" and "Template".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>93</duration>
+        <duration>75</duration>
       </concept>
       <concept id="junit5:RepeatedTestMethod" abstract="false">
         <description>Finds all test methods (i.e. annotated with "@org.junit.jupiter.api.RepeatedTest") and
@@ -579,7 +579,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>57</duration>
+        <duration>56</duration>
       </concept>
       <concept id="junit5:TestClass" abstract="false">
         <description>Labels all classes containing test methods with "Test" and "Junit5".</description>
@@ -589,42 +589,6 @@ labels them with "Test", "Repeated", and "Junit5".</description>
             <column>TestMethods</column>
           </columns>
           <rows count="14">
-            <row key="2e5e46efa13bdafbb5735c2336ed5668d98cef3ce6ddda25ba120b744a55d9f8">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.InfoIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void basic(), void simpleAttributes(), void infoTags(), void externalDocsOfInfo()</value>
-              </column>
-            </row>
-            <row key="638d5c4a3242d822da0b9a6bf8003fdcdba4355e32d6ece3f515a1df3f984827">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.ComponentsIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void basic(), void tags(), void channels(), void messages(), void parameters(), void externalDocs(), void operationTraits(), void messageTraits()</value>
-              </column>
-            </row>
-            <row key="a841bcaa67a0c983ea6eb64df6f17a484323ee832a53948b5f65f0b8c5d8efee">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/SchemasIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.SchemasIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void simpleAttributes()</value>
-              </column>
-            </row>
             <row key="20d3cd51418c3f5605d1da202ada78622ad1e7bf010e72c135ca91b50bcac269">
               <column name="TestClass">
                 <element language="Java">Type</element>
@@ -635,54 +599,6 @@ labels them with "Test", "Repeated", and "Junit5".</description>
               </column>
               <column name="TestMethods">
                 <value>void contractTest()</value>
-              </column>
-            </row>
-            <row key="2de3a30a3dbf2031fb04285e658ca955657560853a9cde167cf8cf983ebd6927">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.OperationsIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void simpleAttributes(), void channels(), void tags(), void bindings(), void traits(), void reply(), void replyAddress(), void messages()</value>
-              </column>
-            </row>
-            <row key="34dbddfb598009ad25cbce0070048698721cfd4834b325436d240c16b82beab4">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.MessageIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void simpleAttributes(), void tags(), void correlationId(), void traits(), void examples()</value>
-              </column>
-            </row>
-            <row key="43d88730f6f1149673843acab886b2addd3ff723ce9c69ff94e6ef2cde83b292">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/ResolveReferencesIT.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.impl.mapper.ResolveReferencesIT</value>
-              </column>
-              <column name="TestMethods">
-                <value>void resolveChannels()</value>
-              </column>
-            </row>
-            <row key="8734a159b5b2ebf2d97330fcfbc1e4f232efcc6106a2ac5d16f86f2cad4aaf62">
-              <column name="TestClass">
-                <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/PathMappingTest.java">
-                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
-                </source>
-                <value>org.jqassistant.plugin.asyncapi.impl.mapper.PathMappingTest</value>
-              </column>
-              <column name="TestMethods">
-                <value>void treeTraversal()</value>
               </column>
             </row>
             <row key="6b59451725f50c7ee338bea57469f17194dcc1127238801bece9c483d22b2f5d">
@@ -709,16 +625,28 @@ labels them with "Test", "Repeated", and "Junit5".</description>
                 <value>void sendsToOerationsInOneContract()</value>
               </column>
             </row>
-            <row key="3807cdd66817b922bb8bd001e101a18f5f6010cdfea9d73cb490bd46be1a7714">
+            <row key="c7460ec40f824093812312bc00bc71612432d6e477524674fbfb17172b046484">
               <column name="TestClass">
                 <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java">
+                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>org.jqassistant.plugin.asyncapi.ChannelsIT</value>
+                <value>org.jqassistant.plugin.asyncapi.BindingsIT</value>
               </column>
               <column name="TestMethods">
-                <value>void channels(), void messages(), void parameters(), void servers()</value>
+                <value>void channelBindings(), void messageBindings(), void serverBindings(), void operationBindings()</value>
+              </column>
+            </row>
+            <row key="638d5c4a3242d822da0b9a6bf8003fdcdba4355e32d6ece3f515a1df3f984827">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ComponentsIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.ComponentsIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void basic(), void tags(), void channels(), void messages(), void parameters(), void externalDocs(), void operationTraits(), void messageTraits()</value>
               </column>
             </row>
             <row key="027f41a91d3d2272d235f92f854a37d3793d0c3ea70f2971ddaa35d203bc7735">
@@ -733,16 +661,88 @@ labels them with "Test", "Repeated", and "Junit5".</description>
                 <value>void simpleAttributes(), void tags(), void externalDocs(), void serverVariables(), void securityScheme(), void bindings()</value>
               </column>
             </row>
-            <row key="c7460ec40f824093812312bc00bc71612432d6e477524674fbfb17172b046484">
+            <row key="a841bcaa67a0c983ea6eb64df6f17a484323ee832a53948b5f65f0b8c5d8efee">
               <column name="TestClass">
                 <element language="Java">Type</element>
-                <source fileName="/org/jqassistant/plugin/asyncapi/BindingsIT.java">
+                <source fileName="/org/jqassistant/plugin/asyncapi/SchemasIT.java">
                   <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
                 </source>
-                <value>org.jqassistant.plugin.asyncapi.BindingsIT</value>
+                <value>org.jqassistant.plugin.asyncapi.SchemasIT</value>
               </column>
               <column name="TestMethods">
-                <value>void channelBindings(), void messageBindings(), void serverBindings(), void operationBindings()</value>
+                <value>void simpleAttributes()</value>
+              </column>
+            </row>
+            <row key="3807cdd66817b922bb8bd001e101a18f5f6010cdfea9d73cb490bd46be1a7714">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/ChannelsIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.ChannelsIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void channels(), void messages(), void parameters(), void servers()</value>
+              </column>
+            </row>
+            <row key="2de3a30a3dbf2031fb04285e658ca955657560853a9cde167cf8cf983ebd6927">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/OperationsIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.OperationsIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void simpleAttributes(), void channels(), void tags(), void bindings(), void traits(), void reply(), void replyAddress(), void messages()</value>
+              </column>
+            </row>
+            <row key="43d88730f6f1149673843acab886b2addd3ff723ce9c69ff94e6ef2cde83b292">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/ResolveReferencesIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.impl.mapper.ResolveReferencesIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void resolveChannels()</value>
+              </column>
+            </row>
+            <row key="8734a159b5b2ebf2d97330fcfbc1e4f232efcc6106a2ac5d16f86f2cad4aaf62">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/impl/mapper/PathMappingTest.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.impl.mapper.PathMappingTest</value>
+              </column>
+              <column name="TestMethods">
+                <value>void treeTraversal()</value>
+              </column>
+            </row>
+            <row key="34dbddfb598009ad25cbce0070048698721cfd4834b325436d240c16b82beab4">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/MessageIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.MessageIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void simpleAttributes(), void tags(), void correlationId(), void traits(), void examples()</value>
+              </column>
+            </row>
+            <row key="2e5e46efa13bdafbb5735c2336ed5668d98cef3ce6ddda25ba120b744a55d9f8">
+              <column name="TestClass">
+                <element language="Java">Type</element>
+                <source fileName="/org/jqassistant/plugin/asyncapi/InfoIT.java">
+                  <parent fileName="/home/runner/.m2/repository/org/jqassistant/plugin/jqassistant-asyncapi-plugin/1.0.0-SNAPSHOT/jqassistant-asyncapi-plugin-1.0.0-SNAPSHOT-tests.test-jar" group="org.jqassistant.plugin" name="jqassistant-asyncapi-plugin" type="test-jar" version="1.0.0-SNAPSHOT" classifier="tests"></parent>
+                </source>
+                <value>org.jqassistant.plugin.asyncapi.InfoIT</value>
+              </column>
+              <column name="TestMethods">
+                <value>void basic(), void simpleAttributes(), void infoTags(), void externalDocsOfInfo()</value>
               </column>
             </row>
             <row key="6e8508eb290cf763d88d1b80db37e67aa9974d832ab75ce81caa641df9f34c97">
@@ -765,7 +765,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>100</duration>
+        <duration>94</duration>
         <required-concept id="junit5:ParameterizedTestMethod">
           <status>success</status>
         </required-concept>
@@ -787,7 +787,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>141</duration>
+        <duration>129</duration>
         <required-concept id="junit5:TestClass">
           <status>success</status>
         </required-concept>
@@ -800,14 +800,14 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>31</duration>
+        <duration>29</duration>
         <required-concept id="jqassistant-plugin-test:IT">
           <status>success</status>
         </required-concept>
       </constraint>
-      <duration>658</duration>
+      <duration>665</duration>
     </group>
-    <group id="jqassistant-plugin-plugin:Default" date="2026-05-27T06:17:18">
+    <group id="jqassistant-plugin-plugin:Default" date="2026-06-16T15:33:36">
       <concept id="neo4j:Procedure" abstract="false">
         <description>Labels all types annotated with "@org.neo4j.procedure.Procedure" with `Neo4j` and `Procedure`.</description>
         <verificationResult>
@@ -816,7 +816,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>58</duration>
+        <duration>56</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginDescriptor" abstract="false">
         <description>Labels jQAssistant plugin descriptor files with `jQAssistant` and `PluginDescriptor`.</description>
@@ -848,7 +848,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>60</duration>
+        <duration>56</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginRegistersProcedure" abstract="false">
         <description>Creates a `REGISTERS` relation between all procedure class elements of the jQAssistant plugin
@@ -859,7 +859,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>200</duration>
+        <duration>174</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status>success</status>
         </required-concept>
@@ -889,7 +889,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>52</duration>
+        <duration>53</duration>
       </concept>
       <concept id="jqassistant-plugin-plugin:PluginRegistersUserFunction" abstract="false">
         <description>Creates a `REGISTERS` relation between all function class elements of the jQAssistant plugin
@@ -900,7 +900,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="4">info</severity>
-        <duration>153</duration>
+        <duration>155</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status>success</status>
         </required-concept>
@@ -913,7 +913,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>45</duration>
+        <duration>59</duration>
         <required-concept id="neo4j:UserFunction">
           <status>success</status>
         </required-concept>
@@ -929,14 +929,14 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="3">minor</severity>
-        <duration>150</duration>
+        <duration>171</duration>
         <required-concept id="jqassistant-plugin-plugin:PluginDescriptor">
           <status>success</status>
         </required-concept>
       </constraint>
-      <duration>839</duration>
+      <duration>841</duration>
     </group>
-    <group id="jqassistant-plugin-package:Default" date="2026-05-27T06:17:19">
+    <group id="jqassistant-plugin-package:Default" date="2026-06-16T15:33:37">
       <concept id="java:GeneratedLombokType" abstract="false">
         <description>Labels types generated by Lombok as 'Generated' (requires 'lombok.addLombokGeneratedAnnotation=true' in 'lombok.config').</description>
         <result>
@@ -957,7 +957,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="3">minor</severity>
-        <duration>62</duration>
+        <duration>66</duration>
       </concept>
       <concept id="java:GeneratedType" abstract="false">
         <description>Reports the count of types labeled with `Generated`, grouped by containing artifact.</description>
@@ -967,7 +967,7 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="3">minor</severity>
-        <duration>0</duration>
+        <duration>1</duration>
         <providing-concept id="java:GeneratedLombokType">
           <status>success</status>
         </providing-concept>
@@ -980,13 +980,13 @@ labels them with "Test", "Repeated", and "Junit5".</description>
         </verificationResult>
         <status>success</status>
         <severity level="2">major</severity>
-        <duration>97</duration>
+        <duration>118</duration>
         <required-concept id="java:GeneratedType">
           <status>success</status>
         </required-concept>
       </constraint>
-      <duration>180</duration>
+      <duration>207</duration>
     </group>
-    <duration>181</duration>
+    <duration>209</duration>
   </group>
 </jqassistant-report>
