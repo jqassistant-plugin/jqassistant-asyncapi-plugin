@@ -192,7 +192,7 @@
             jQAssistant Report - jQAssistant AsyncAPI Plugin</h1>
         <h5>
                         Timestamp:
-            <span class="timeStamp">2026-06-16T15:32:41.046Z</span>
+            <span class="timeStamp">2026-09-04T12:45:15.822Z</span>
         </h5>
         <div>
             <h3>Constraints</h3>
@@ -772,31 +772,22 @@ with "Junit5", "Test" and "Template".</pre>
                                     <th>TestClass</th><th>TestMethods</th>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.ContractIT</td><td>void contractTest()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.MessageIT</td><td>void simpleAttributes(), void tags(), void correlationId(), void traits(), void examples()</td>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.concept.AsyncApiIT</td><td>void channelMapsToChannelInSeparateContracts(), void resolveReferences(), void operationSendsToOperation()</td>
-                                </tr>
-                                <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.concept.LocalOperationMappingIT</td><td>void sendsToOerationsInOneContract()</td>
-                                </tr>
-                                <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.BindingsIT</td><td>void channelBindings(), void messageBindings(), void serverBindings(), void operationBindings()</td>
-                                </tr>
-                                <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.ComponentsIT</td><td>void basic(), void tags(), void channels(), void messages(), void parameters(), void externalDocs(), void operationTraits(), void messageTraits()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.TagIT</td><td>void test()</td>
                                 </tr>
                                 <tr>
                                     <td>org.jqassistant.plugin.asyncapi.ServerIT</td><td>void simpleAttributes(), void tags(), void externalDocs(), void serverVariables(), void securityScheme(), void bindings()</td>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.SchemasIT</td><td>void simpleAttributes()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.ContractIT</td><td>void contractTest()</td>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.ChannelsIT</td><td>void channels(), void messages(), void parameters(), void servers()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.ComponentsIT</td><td>void basic(), void tags(), void channels(), void messages(), void parameters(), void externalDocs(), void operationTraits(), void messageTraits()</td>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.OperationsIT</td><td>void simpleAttributes(), void channels(), void tags(), void bindings(), void traits(), void reply(), void replyAddress(), void messages()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.BindingsIT</td><td>void channelBindings(), void messageBindings(), void serverBindings(), void operationBindings()</td>
                                 </tr>
                                 <tr>
                                     <td>org.jqassistant.plugin.asyncapi.impl.mapper.ResolveReferencesIT</td><td>void resolveChannels()</td>
@@ -805,13 +796,22 @@ with "Junit5", "Test" and "Template".</pre>
                                     <td>org.jqassistant.plugin.asyncapi.impl.mapper.PathMappingTest</td><td>void treeTraversal()</td>
                                 </tr>
                                 <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.MessageIT</td><td>void simpleAttributes(), void tags(), void correlationId(), void traits(), void examples()</td>
+                                    <td>org.jqassistant.plugin.asyncapi.OperationsIT</td><td>void simpleAttributes(), void channels(), void tags(), void bindings(), void traits(), void reply(), void replyAddress(), void messages()</td>
+                                </tr>
+                                <tr>
+                                    <td>org.jqassistant.plugin.asyncapi.ChannelsIT</td><td>void channels(), void messages(), void parameters(), void servers()</td>
+                                </tr>
+                                <tr>
+                                    <td>org.jqassistant.plugin.asyncapi.SchemasIT</td><td>void simpleAttributes()</td>
+                                </tr>
+                                <tr>
+                                    <td>org.jqassistant.plugin.asyncapi.concept.AsyncApiIT</td><td>void channelMapsToChannelInSeparateContracts(), void resolveReferences(), void operationSendsToOperation()</td>
+                                </tr>
+                                <tr>
+                                    <td>org.jqassistant.plugin.asyncapi.concept.LocalOperationMappingIT</td><td>void sendsToOerationsInOneContract()</td>
                                 </tr>
                                 <tr>
                                     <td>org.jqassistant.plugin.asyncapi.InfoIT</td><td>void basic(), void simpleAttributes(), void infoTags(), void externalDocsOfInfo()</td>
-                                </tr>
-                                <tr>
-                                    <td>org.jqassistant.plugin.asyncapi.TagIT</td><td>void test()</td>
                                 </tr>
                             </table>
                         </div>
@@ -856,148 +856,148 @@ labels them with "Test" and "Junit5".</pre>
                                     <th>Test</th>
                                 </tr>
                                 <tr>
-                                    <td>void examples()</td>
-                                </tr>
-                                <tr>
-                                    <td>void correlationId()</td>
-                                </tr>
-                                <tr>
-                                    <td>void tags()</td>
-                                </tr>
-                                <tr>
-                                    <td>void parameters()</td>
-                                </tr>
-                                <tr>
-                                    <td>void test()</td>
-                                </tr>
-                                <tr>
-                                    <td>void serverBindings()</td>
-                                </tr>
-                                <tr>
-                                    <td>void traits()</td>
-                                </tr>
-                                <tr>
-                                    <td>void tags()</td>
-                                </tr>
-                                <tr>
-                                    <td>void reply()</td>
-                                </tr>
-                                <tr>
-                                    <td>void operationSendsToOperation()</td>
-                                </tr>
-                                <tr>
-                                    <td>void simpleAttributes()</td>
-                                </tr>
-                                <tr>
-                                    <td>void messageBindings()</td>
-                                </tr>
-                                <tr>
                                     <td>void messages()</td>
                                 </tr>
                                 <tr>
-                                    <td>void resolveReferences()</td>
+                                    <td>void externalDocs()</td>
                                 </tr>
                                 <tr>
-                                    <td>void simpleAttributes()</td>
-                                </tr>
-                                <tr>
-                                    <td>void bindings()</td>
+                                    <td>void basic()</td>
                                 </tr>
                                 <tr>
                                     <td>void serverVariables()</td>
                                 </tr>
                                 <tr>
-                                    <td>void externalDocsOfInfo()</td>
+                                    <td>void parameters()</td>
                                 </tr>
                                 <tr>
-                                    <td>void servers()</td>
+                                    <td>void channels()</td>
                                 </tr>
                                 <tr>
-                                    <td>void externalDocs()</td>
+                                    <td>void examples()</td>
                                 </tr>
                                 <tr>
-                                    <td>void operationTraits()</td>
-                                </tr>
-                                <tr>
-                                    <td>void replyAddress()</td>
-                                </tr>
-                                <tr>
-                                    <td>void channelMapsToChannelInSeparateContracts()</td>
-                                </tr>
-                                <tr>
-                                    <td>void bindings()</td>
-                                </tr>
-                                <tr>
-                                    <td>void securityScheme()</td>
+                                    <td>void simpleAttributes()</td>
                                 </tr>
                                 <tr>
                                     <td>void tags()</td>
                                 </tr>
                                 <tr>
-                                    <td>void messages()</td>
+                                    <td>void messageBindings()</td>
+                                </tr>
+                                <tr>
+                                    <td>void simpleAttributes()</td>
                                 </tr>
                                 <tr>
                                     <td>void messageTraits()</td>
                                 </tr>
                                 <tr>
-                                    <td>void treeTraversal()</td>
+                                    <td>void test()</td>
                                 </tr>
                                 <tr>
-                                    <td>void operationBindings()</td>
-                                </tr>
-                                <tr>
-                                    <td>void simpleAttributes()</td>
-                                </tr>
-                                <tr>
-                                    <td>void channels()</td>
-                                </tr>
-                                <tr>
-                                    <td>void simpleAttributes()</td>
-                                </tr>
-                                <tr>
-                                    <td>void messages()</td>
+                                    <td>void basic()</td>
                                 </tr>
                                 <tr>
                                     <td>void tags()</td>
                                 </tr>
                                 <tr>
-                                    <td>void parameters()</td>
-                                </tr>
-                                <tr>
-                                    <td>void contractTest()</td>
+                                    <td>void correlationId()</td>
                                 </tr>
                                 <tr>
                                     <td>void channels()</td>
                                 </tr>
                                 <tr>
-                                    <td>void channelBindings()</td>
+                                    <td>void serverBindings()</td>
                                 </tr>
                                 <tr>
-                                    <td>void infoTags()</td>
+                                    <td>void resolveReferences()</td>
                                 </tr>
                                 <tr>
-                                    <td>void sendsToOerationsInOneContract()</td>
+                                    <td>void messages()</td>
                                 </tr>
                                 <tr>
-                                    <td>void basic()</td>
+                                    <td>void securityScheme()</td>
+                                </tr>
+                                <tr>
+                                    <td>void messages()</td>
                                 </tr>
                                 <tr>
                                     <td>void simpleAttributes()</td>
                                 </tr>
                                 <tr>
+                                    <td>void reply()</td>
+                                </tr>
+                                <tr>
+                                    <td>void operationBindings()</td>
+                                </tr>
+                                <tr>
+                                    <td>void contractTest()</td>
+                                </tr>
+                                <tr>
+                                    <td>void simpleAttributes()</td>
+                                </tr>
+                                <tr>
+                                    <td>void parameters()</td>
+                                </tr>
+                                <tr>
+                                    <td>void tags()</td>
+                                </tr>
+                                <tr>
+                                    <td>void resolveChannels()</td>
+                                </tr>
+                                <tr>
+                                    <td>void servers()</td>
+                                </tr>
+                                <tr>
                                     <td>void traits()</td>
+                                </tr>
+                                <tr>
+                                    <td>void bindings()</td>
+                                </tr>
+                                <tr>
+                                    <td>void tags()</td>
+                                </tr>
+                                <tr>
+                                    <td>void simpleAttributes()</td>
+                                </tr>
+                                <tr>
+                                    <td>void channelBindings()</td>
+                                </tr>
+                                <tr>
+                                    <td>void treeTraversal()</td>
                                 </tr>
                                 <tr>
                                     <td>void externalDocs()</td>
                                 </tr>
                                 <tr>
-                                    <td>void basic()</td>
+                                    <td>void replyAddress()</td>
+                                </tr>
+                                <tr>
+                                    <td>void operationTraits()</td>
+                                </tr>
+                                <tr>
+                                    <td>void channelMapsToChannelInSeparateContracts()</td>
+                                </tr>
+                                <tr>
+                                    <td>void operationSendsToOperation()</td>
+                                </tr>
+                                <tr>
+                                    <td>void sendsToOerationsInOneContract()</td>
+                                </tr>
+                                <tr>
+                                    <td>void infoTags()</td>
+                                </tr>
+                                <tr>
+                                    <td>void traits()</td>
+                                </tr>
+                                <tr>
+                                    <td>void bindings()</td>
                                 </tr>
                                 <tr>
                                     <td>void channels()</td>
                                 </tr>
                                 <tr>
-                                    <td>void resolveChannels()</td>
+                                    <td>void externalDocsOfInfo()</td>
                                 </tr>
                             </table>
                         </div>
