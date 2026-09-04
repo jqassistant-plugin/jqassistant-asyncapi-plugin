@@ -40,7 +40,7 @@ public class ChannelObject extends ReferenceObject {
     private List<Server> servers;
 
     @JsonProperty(value = "parameters")
-    private Map<String, ChannelParameter> parameters;
+    private Map<String, ChannelParameter> parameter;
 
     @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     @JsonProperty(value = "tags")

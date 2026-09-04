@@ -67,9 +67,9 @@ class ComponentsIT extends AbstractPluginIT {
 
     @Test
     void parameters() {
-        List<ParametersDescriptor> parameters =
-                query("MATCH (:Components)-[:DEFINES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
-        assertThat(parameters.size()).isEqualTo(1);
+        List<ParameterDescriptor> parameter =
+                query("MATCH (:Components)-[:DEFINES_PARAMETER]->(parameter:Parameter) return parameter").getColumn("parameter");
+        assertThat(parameter.size()).isEqualTo(1);
         store.commitTransaction();
     }
 

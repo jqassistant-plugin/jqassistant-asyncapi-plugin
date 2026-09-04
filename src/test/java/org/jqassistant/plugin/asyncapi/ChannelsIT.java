@@ -44,8 +44,8 @@ class ChannelsIT extends AbstractPluginIT {
 
     @Test
     void parameters() {
-        List<ParametersDescriptor> parameters =
-                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:INCLUDES_PARAMETERS]->(parameters:Parameters) return parameters").getColumn("parameters");
+        List<ParameterDescriptor> parameters =
+                query("MATCH (:Components)-[:DEFINES_CHANNEL]->(:Channel {referenceableKey:'secondChannel'})-[:INCLUDES_PARAMETER]->(parameters:Parameter) return parameters").getColumn("parameters");
         assertThat(parameters.size()).isEqualTo(1);
         store.commitTransaction();
     }
